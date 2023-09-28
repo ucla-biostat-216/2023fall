@@ -60,7 +60,7 @@ Recommended books (not required):
 
     The first couple of weeks heavily use material in this textbook, which is referred as BV in lecture notes. Professor Vandenberghe teaches [EE133A](https://www.seas.ucla.edu/~vandenbe/133A/) out of this book this quarter. 
 
-* Strang, _Linear Algebra and Learning From Data_, Wellesley, MA: Wellesley-Cambridge Press (2019), [UCLA library link](https://search.library.ucla.edu/permalink/01UCS_LAL/17p22dp/alma9912384821806531)  
+* Strang, _Linear Algebra and Learning From Data_, Wellesley, MA: Wellesley-Cambridge Press (2019), [UCLA library link](https://search.library.ucla.edu/permalink/01UCS_LAL/17p22dp/alma9912384821806531). Professor Strang taught a [course](https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/) out of this book at MIT.  
 
 * Banerjee and Roy, _Linear Algebra And Matrix Analysis For Statistics_, 2nd Edition, CRC Press (2014), [UCLA library link](https://search.library.ucla.edu/permalink/01UCS_LAL/17p22dp/alma9974434803606533)  
 
