@@ -1,0 +1,35 @@
+---
+title: Biostat 216 Homework 1
+subtitle: 'Due Oct 6 @ 11:59pm'
+format:
+  html:
+    theme: cosmo
+    embed-resources: true
+    number-sections: true
+    toc: true
+    toc-depth: 4
+    toc-location: left
+    code-fold: false
+jupyter:
+  jupytext:
+    formats: 'ipynb,qmd'
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.15.2
+  kernelspec:
+    display_name: Julia 1.9.3
+    language: julia
+    name: julia-1.9
+---
+
+Submit a PDF (scanned/photographed from handwritten solutions, or converted from RMarkdown or Jupyter Notebook or Quarto) to Gradescope in BruinLearn. 
+
+BV exercises: 1.7, 1.9, 1.13, 1.20, 3.3, 3.4, 3.5, and 3.22 (replace Palo Alto by Los Angeles).
+
+Prove the formula 
+$$
+\operatorname{avg}(\mathbf{x})^2 + \operatorname{std}(\mathbf{x})^2 = \operatorname{rms}(\mathbf{x})^2
+$$
+using the vector notation and do BV 3.15.
