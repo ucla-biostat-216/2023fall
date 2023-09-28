@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Dr. Hua Zhou @ UCLA">
-<meta name="dcterms.date" content="2023-09-26">
+<meta name="dcterms.date" content="2023-09-27">
 
 <title>Vectors (BV Chapters 1, 3, 5)</title>
 <style>
@@ -3179,7 +3179,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 26, 2023</p>
+      <p class="date">September 27, 2023</p>
     </div>
   </div>
   
@@ -3265,7 +3265,7 @@ x_1 \\ x_2 \\ \vdots \\ x_n
 </div>
 </div>
 <ul>
-<li>Subvector: <span class="math inline">\(\mathbf{x}_{2:4} = (x_2, x_3, x_4)&#39;\)</span>.</li>
+<li>Subvector: <span class="math inline">\(\mathbf{x}_{2:4} = \begin{pmatrix} x_2 \\ x_3 \\ x_4 \end{pmatrix}\)</span>.</li>
 </ul>
 <div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>x[<span class="fl">2</span><span class="op">:</span><span class="fl">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -3360,7 +3360,7 @@ y_1 \\ \vdots \\ y_m \\ z_1 \\ \vdots \\ z_n
 <section id="vector-operations" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="vector-operations"><span class="header-section-number">1.3</span> Vector operations</h2>
 <ul>
-<li><strong>Vector addition</strong> and <strong>vector substraction</strong>. For two vectors <span class="math inline">\(\mathbf{x}, \mathbf{y} \in \mathbb{R}^n\)</span> (of same length) <span class="math display">\[
+<li><strong>Vector addition</strong> (or <strong>elementwise addition</strong>) and <strong>vector substraction</strong> (or <strong>elementwise substraction</strong>). For two vectors <span class="math inline">\(\mathbf{x}, \mathbf{y} \in \mathbb{R}^n\)</span> (of same length), <span class="math display">\[
 \mathbf{x} + \mathbf{y} = \begin{pmatrix}
 x_1 + y_1 \\ \vdots \\ x_n + y_n
 \end{pmatrix}, \quad \mathbf{x} - \mathbf{y} = \begin{pmatrix}
@@ -3452,18 +3452,20 @@ x_1 y_1 \\ \vdots \\ x_n y_n
 </div>
 </div>
 <ul>
-<li><p><strong>Vector transpose</strong>: <span class="math display">\[
+<li><strong>Vector transpose</strong>: <span class="math display">\[
 \mathbf{x}&#39; = \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}&#39; = (x_1 \, \ldots \, x_n).
-\]</span></p>
+\]</span></li>
+</ul>
 <p>Properties:</p>
 <ol type="1">
 <li><p><span class="math inline">\((\mathbf{x}&#39;)&#39; = \mathbf{x}\)</span>.</p></li>
 <li><p>Transposition is a linear operator: <span class="math inline">\((\alpha \mathbf{x} + \beta \mathbf{y})&#39; = \alpha \mathbf{x}&#39; + \beta \mathbf{y}&#39;\)</span>.</p></li>
 </ol>
-<p>Superscript <span class="math inline">\(^t\)</span> or <span class="math inline">\(^T\)</span> is also commonly used to denote transpose: <span class="math inline">\(\mathbf{x}^t\)</span>, <span class="math inline">\(\mathbf{x}^T\)</span>.</p></li>
-<li><p>The <strong>inner product</strong> or <strong>dot product</strong> between two vectors <span class="math inline">\(\mathbf{x}, \mathbf{y} \in \mathbb{R}^n\)</span> is <span class="math display">\[
+<p>Superscript <span class="math inline">\(^t\)</span> or <span class="math inline">\(^T\)</span> is also commonly used to denote transpose: <span class="math inline">\(\mathbf{x}^t\)</span>, <span class="math inline">\(\mathbf{x}^T\)</span>.</p>
+<ul>
+<li>The <strong>inner product</strong> or <strong>dot product</strong> between two vectors <span class="math inline">\(\mathbf{x}, \mathbf{y} \in \mathbb{R}^n\)</span> is <span class="math display">\[
 \mathbf{x}&#39; \mathbf{y} = (x_1 \, \ldots \, x_n) \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix} = x_1 y_1 + \cdots + x_n y_n.
-\]</span> Other notations for inner products: <span class="math inline">\(\langle \mathbf{x}, \mathbf{y} \rangle\)</span>, <span class="math inline">\(\sum_{i=1}^n x_i y_i\)</span>.</p></li>
+\]</span> Other notations for inner products: <span class="math inline">\(\langle \mathbf{x}, \mathbf{y} \rangle\)</span>, <span class="math inline">\(\sum_{i=1}^n x_i y_i\)</span>.</li>
 </ul>
 <div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>]</span>
@@ -3488,12 +3490,12 @@ x_1 y_1 \\ \vdots \\ x_n y_n
 <li><p>Associative with scalar multiplication: <span class="math inline">\((\alpha \mathbf{x})&#39; \mathbf{y} = \alpha (\mathbf{x}&#39; \mathbf{y}) = \mathbf{x}&#39; (\alpha \mathbf{y})\)</span>.</p></li>
 <li><p>Distributive with vector addition: <span class="math inline">\((\mathbf{x} + \mathbf{y})&#39; \mathbf{z} = \mathbf{x}&#39; \mathbf{z} + \mathbf{y}&#39; \mathbf{z}\)</span>.</p></li>
 </ol>
-<p>Examples of inner product:</p>
+<p>Examples of inner product. <strong>In class exercises</strong>: express the following quantities using vector inner products.</p>
 <ol type="1">
-<li><p>Inner product with unit vector: <span class="math inline">\(\mathbf{e}_i&#39; \mathbf{x} = x_i\)</span>.</p></li>
-<li><p>Differencing: <span class="math inline">\((\mathbf{e}_i - \mathbf{e}_j)&#39; \mathbf{x} = x_i - x_j\)</span>.</p></li>
-<li><p>Sum: <span class="math inline">\(\mathbf{1}&#39; \mathbf{x} = x_1 + \cdots + x_n\)</span>.</p></li>
-<li><p>Average: <span class="math inline">\((\frac 1n \mathbf{1})&#39; \mathbf{x} = (x_1 + \cdots + x_n) / n\)</span>.</p></li>
+<li><p>Individual component: <span class="math inline">\(x_i = \rule[-0.1cm]{1cm}{0.15mm}\)</span>.</p></li>
+<li><p>Differencing: <span class="math inline">\(x_i - x_j = \rule[-0.1cm]{1cm}{0.15mm}\)</span>.</p></li>
+<li><p>Sum: <span class="math inline">\(x_1 + \cdots + x_n = \rule[-0.1cm]{1cm}{0.15mm}\)</span>.</p></li>
+<li><p>Average: <span class="math inline">\((x_1 + \cdots + x_n) / n = \rule[-0.1cm]{1cm}{0.15mm}\)</span>.</p></li>
 </ol>
 </section>
 <section id="computational-complexity-of-vector-operations" class="level2" data-number="1.4">
@@ -3538,19 +3540,19 @@ Platform Info:
   Threads: 2 on 8 virtual cores</code></pre>
 </div>
 </div>
-<p>Intel Skylake CPUs can do 16 double-precision flops per CPU cylce. Then the theoretical throughput of a single core on my laptop is <span class="math display">\[
-2.9 \times 10^9 \times 16 = 46.4 \times 10^9 \text{ flops/second} = 46.4 \text{ GFLOPS}
+<p>Assume that the Apple M2 Max CPUs can do 8 double-precision flops per CPU cylce (?). Then the theoretical throughput of a single performance core on my laptop is <span class="math display">\[
+8 \times 10^9 \times 16 = 27.9 \times 10^9 \text{ flops/second} = 27.9 \text{ GFLOPS}
 \]</span> in double precision. I estimate my computer takes about <span class="math display">\[
-\frac{10^7 - 1}{46.4 \times 10^9} \approx 0.0002155 \text{ seconds}
+\frac{10^7 - 1}{27.9 \times 10^9} \approx 0.000358 \text{ seconds} = 358 \text{ micro seconds}
 \]</span> to sum a vector of length <span class="math inline">\(n = 10^7\)</span>.</p>
-<div class="cell" data-execution_count="19">
+<div class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the actual run time</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="fl">7</span></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fu">randn</span>(n)</span>
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x) <span class="co"># compile</span></span>
 <span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="pp">@time</span> <span class="fu">sum</span>(x);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  0.001648 seconds (1 allocation: 16 bytes)</code></pre>
+<pre><code>  0.002134 seconds (1 allocation: 16 bytes)</code></pre>
 </div>
 </div>
 </section>
@@ -3692,7 +3694,8 @@ Platform Info:
 Proof: use Cauchy-Schwartz inequality. TODO in class.</p></li>
 <li><p><strong>Cauchy-Schwartz inequality</strong>: <span class="math inline">\(|\mathbf{x}&#39; \mathbf{y}| \le \|\mathbf{x}\| \|\mathbf{y}\|\)</span> for any <span class="math inline">\(\mathbf{x}, \mathbf{y} \in \mathbb{R}^n\)</span>. The equality holds when (1) <span class="math inline">\(\mathbf{x} = \mathbf{0}\)</span> or <span class="math inline">\(\mathbf{y}=\mathbf{0}\)</span> or (2) <span class="math inline">\(\mathbf{x} \ne \mathbf{0}\)</span>, <span class="math inline">\(\mathbf{y} \ne \mathbf{0}\)</span>, and <span class="math inline">\(\mathbf{x} = \alpha \mathbf{y}\)</span> for some <span class="math inline">\(\alpha \ne 0\)</span>.</p></li>
 </ol>
-<p>Proof: The function <span class="math inline">\(f(t) = \|\mathbf{x} - t \mathbf{y}\|_2^2 = \|\mathbf{x}\|_2^2 - 2t (\mathbf{x}&#39; \mathbf{y}) + t^2\|\mathbf{y}\|_2^2\)</span> is minimized at <span class="math inline">\(t^\star =(\mathbf{x}&#39;\mathbf{y}) / \|\mathbf{y}\|^2\)</span> with minimal value <span class="math inline">\(f(t^\star) = \|\mathbf{x}\|^2 - (\mathbf{x}&#39;\mathbf{y})^2 / \|\mathbf{y}\|^2 \ge 0\)</span>.</p></li>
+<p>Proof: The function <span class="math inline">\(f(t) = \|\mathbf{x} - t \mathbf{y}\|_2^2 = \|\mathbf{x}\|_2^2 - 2t (\mathbf{x}&#39; \mathbf{y}) + t^2\|\mathbf{y}\|_2^2\)</span> is minimized at <span class="math inline">\(t^\star =(\mathbf{x}&#39;\mathbf{y}) / \|\mathbf{y}\|^2\)</span> with minimal value <span class="math inline">\(0 \le f(t^\star) = \|\mathbf{x}\|^2 - (\mathbf{x}&#39;\mathbf{y})^2 / \|\mathbf{y}\|^2\)</span>.</p>
+<p>There are at least 5 other proofs on <a href="https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality">Wikipedia</a>.</p></li>
 </ul>
 <div class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">2</span>, <span class="fl">1</span>]</span>
@@ -3787,7 +3790,7 @@ norm(x + y) ≤ norm(x) + norm(y) = true</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check Cauchy-Schwartz inequality</span></span>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check Cauchy-Schwartz inequality on random vectors</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> x <span class="op">=</span> <span class="fu">randn</span>(<span class="fl">5</span>)</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> y <span class="op">=</span> <span class="fu">randn</span>(<span class="fl">5</span>)</span>
 <span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">abs</span>(x<span class="op">&#39;</span>y)</span>
@@ -3844,7 +3847,7 @@ mean(x) ^ 2 + std(x, corrected = false) ^ 2 ≈ norm(x) ^ 2 / length(x) = true</
 <li><p><strong>Angle</strong> between two nonzero vectors <span class="math inline">\(\mathbf{x}, \mathbf{y}\)</span> is <span class="math display">\[
 \theta = \operatorname{arccos} \left(\frac{\mathbf{x}&#39;\mathbf{y}}{\|\mathbf{x}\|\|\mathbf{y}\|}\right).
 \]</span> This is the unique value of <span class="math inline">\(\theta \in [0, \pi]\)</span> that satisifies <span class="math display">\[
-\mathbf{x}&#39;\mathbf{y} = \|\mathbf{x}\|\|\mathbf{y}\| \cos \theta.
+\cos \theta = \frac{\mathbf{x}&#39;\mathbf{y}}{\|\mathbf{x}\|\|\mathbf{y}\|}.
 \]</span></p></li>
 <li><p>Cauchy-Schwartz inequality guarantees that <span class="math display">\[
 -1 \le \cos \theta = \frac{\mathbf{x}&#39;\mathbf{y}}{\|\mathbf{x}\|\|\mathbf{y}\|} \le 1.
@@ -3892,7 +3895,6 @@ mean(x) ^ 2 + std(x, corrected = false) ^ 2 ≈ norm(x) ^ 2 / length(x) = true</
 </tr>
 </tbody>
 </table>
-<p>TODO: Picture.</p>
 <div class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">2</span>, <span class="fl">1</span>]</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="fl">0.5</span>x</span>
@@ -4231,7 +4233,7 @@ mean(x) ^ 2 + std(x, corrected = false) ^ 2 ≈ norm(x) ^ 2 / length(x) = true</
 \]</span> Similarly, each one of these 4 vectors can be expressed as the linear combination of the other 3. We say these four vectors are linearly dependent.</p></li>
 <li><p>A set of vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_k \in \mathbb{R}^n\)</span> are <strong>linearly dependent</strong> if there exist constants <span class="math inline">\(\alpha_1, \ldots, \alpha_k\)</span>, which are not all zeros, such that <span class="math display">\[
 \alpha_1 \mathbf{a}_1 + \cdots + \alpha_k \mathbf{a}_k = \mathbf{0}.
-\]</span> They are <strong>linearly independent</strong> if they are not linearly dependent. That is if <span class="math inline">\(\alpha_1 \mathbf{a}_1 + \cdots + \alpha_k \mathbf{a}_k = \mathbf{0}\)</span> then <span class="math inline">\(\alpha_1 = \cdots = \alpha_k = 0\)</span> (this is usually how we show a set of vectors are linearly independent).</p></li>
+\]</span> They are <strong>linearly independent</strong> if they are not linearly dependent. That is if <span class="math inline">\(\alpha_1 \mathbf{a}_1 + \cdots + \alpha_k \mathbf{a}_k = \mathbf{0}\)</span> then <span class="math inline">\(\alpha_1 = \cdots = \alpha_k = 0\)</span> (this is usually how we show that a set of vectors are linearly independent).</p></li>
 <li><p>Theorem: Unit vectors <span class="math inline">\(\mathbf{e}_1, \ldots, \mathbf{e}_n \in \mathbb{R}^n\)</span> are linearly independent.</p>
 <p>Proof: TODO in class.</p></li>
 <li><p>Theorem: If <span class="math inline">\(\mathbf{x}\)</span> is a linear combination of linearly independent vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_k\)</span>. That is <span class="math inline">\(\mathbf{x} = \alpha_1 \mathbf{a}_1 + \cdots + \alpha_k \mathbf{a}_k\)</span>. Then the coefficients <span class="math inline">\(\alpha_1, \ldots, \alpha_k\)</span> are unique.</p>
@@ -4255,7 +4257,7 @@ Next we assume the scalars <span class="math inline">\(\alpha_i\)</span> are not
 <ul>
 <li><p>A set of <span class="math inline">\(n\)</span> linearly independent vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_n \in \mathbb{R}^n\)</span> is called a <strong>basis</strong> for <span class="math inline">\(\mathbb{R}^n\)</span>.</p></li>
 <li><p>Fact: the zero vector <span class="math inline">\(\mathbf{0}_n\)</span> cannot be a basis vector in <span class="math inline">\(\mathbb{R}^n\)</span>. Why?</p></li>
-<li><p>Any vector <span class="math inline">\(\mathbf{x} \in \mathbb{R}^n\)</span> can be expressed as a linear combination of basis vectors <span class="math inline">\(\mathbf{x} = \alpha_1 \mathbf{a}_1 + \cdots + \alpha_n \mathbf{a}_n\)</span> for some <span class="math inline">\(\alpha_1, \ldots, \alpha_n\)</span>, and these coefficients are unique. This is called expansion of <span class="math inline">\(\mathbf{x}\)</span> in the basis <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_n\)</span>.</p>
+<li><p><strong>Theorem</strong>: Any vector <span class="math inline">\(\mathbf{x} \in \mathbb{R}^n\)</span> can be expressed as a linear combination of basis vectors <span class="math inline">\(\mathbf{x} = \alpha_1 \mathbf{a}_1 + \cdots + \alpha_n \mathbf{a}_n\)</span> for some <span class="math inline">\(\alpha_1, \ldots, \alpha_n\)</span>, and these coefficients are unique. This is called expansion of <span class="math inline">\(\mathbf{x}\)</span> in the basis <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_n\)</span>.</p>
 <p>Proof of existence by contradition (optional). Suppose <span class="math inline">\(\mathbf{x}\)</span> can NOT be expressed as a linear combination of basis vectors <span class="math inline">\(\mathbf{x} = \alpha_1 \mathbf{a}_1 + \cdots + \alpha_n \mathbf{a}_n\)</span>. Suppose an arbitrary linear combination <span class="math inline">\(\alpha_1 \mathbf{a}_1 + \cdots + \alpha_n \mathbf{a}_n + \beta \mathbf{x} = \mathbf{0}\)</span>. Then <span class="math inline">\(\beta = 0\)</span> otherwise it contradictions with our assumption. Also <span class="math inline">\(\alpha_1 = \cdots = \alpha_n = 0\)</span> by linear independence of <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_n\)</span>. Therefore we conclude <span class="math inline">\(\alpha_1 = \cdots = \alpha_n = \beta = 0\)</span>. Thus <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_n, \mathbf{x}\)</span> are linearly independent, contradicting with the independence-dimension inequality.</p>
 <p>Proof of uniqueness: TODO in class.</p></li>
 <li><p>Example: Unit vectors <span class="math inline">\(\mathbf{e}_1, \ldots, \mathbf{e}_n\)</span> form a basis for <span class="math inline">\(\mathbb{R}^n\)</span>. Expansion of a vector <span class="math inline">\(\mathbf{x} \in \mathbb{R}^n\)</span> in this basis is <span class="math display">\[

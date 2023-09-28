@@ -70,7 +70,7 @@ x = [1, -1, 2, 0, 3]
 x'
 ```
 
-- Subvector: $\mathbf{x}_{2:4} = (x_2, x_3, x_4)'$.
+- Subvector: $\mathbf{x}_{2:4} = \begin{pmatrix} x_2 \\ x_3 \\ x_4 \end{pmatrix}$.
 
 ```{julia}
 x[2:4]
@@ -130,7 +130,7 @@ e3 = [i == 3 ? 1 : 0 for i in 1:5]
 
 ## Vector operations
 
-- **Vector addition** and **vector substraction**. For two vectors $\mathbf{x}, \mathbf{y} \in \mathbb{R}^n$ (of same length)
+- **Vector addition** (or **elementwise addition**) and **vector substraction** (or **elementwise substraction**). For two vectors $\mathbf{x}, \mathbf{y} \in \mathbb{R}^n$ (of same length),
 $$
 \mathbf{x} + \mathbf{y} = \begin{pmatrix}
 x_1 + y_1 \\ \vdots \\ x_n + y_n
@@ -193,13 +193,13 @@ $$
 \mathbf{x}' = \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}' = (x_1 \, \ldots \, x_n).
 $$
 
-    Properties:  
+Properties:
     
-    1. $(\mathbf{x}')' = \mathbf{x}$.  
+1. $(\mathbf{x}')' = \mathbf{x}$.  
     
-    2. Transposition is a linear operator: $(\alpha \mathbf{x} + \beta \mathbf{y})' = \alpha \mathbf{x}' + \beta \mathbf{y}'$.  
+2. Transposition is a linear operator: $(\alpha \mathbf{x} + \beta \mathbf{y})' = \alpha \mathbf{x}' + \beta \mathbf{y}'$.  
 
-    Superscript $^t$ or $^T$ is also commonly used to denote transpose: $\mathbf{x}^t$, $\mathbf{x}^T$.
+Superscript $^t$ or $^T$ is also commonly used to denote transpose: $\mathbf{x}^t$, $\mathbf{x}^T$.
 
 - The **inner product** or **dot product** between two vectors $\mathbf{x}, \mathbf{y} \in \mathbb{R}^n$ is
 $$
@@ -230,15 +230,15 @@ Properties of inner product:
 
 5. Distributive with vector addition: $(\mathbf{x} + \mathbf{y})' \mathbf{z} = \mathbf{x}' \mathbf{z} + \mathbf{y}' \mathbf{z}$.
 
-Examples of inner product:
+Examples of inner product. **In class exercises**: express the following quantities using vector inner products.
 
-1. Inner product with unit vector: $\mathbf{e}_i' \mathbf{x} = x_i$.
+1. Individual component: $x_i = \rule[-0.1cm]{1cm}{0.15mm}$.
 
-2. Differencing: $(\mathbf{e}_i - \mathbf{e}_j)' \mathbf{x} = x_i - x_j$.
+2. Differencing: $x_i - x_j = \rule[-0.1cm]{1cm}{0.15mm}$.
 
-3. Sum: $\mathbf{1}' \mathbf{x} = x_1 + \cdots + x_n$.
+3. Sum: $x_1 + \cdots + x_n = \rule[-0.1cm]{1cm}{0.15mm}$.
 
-4. Average: $(\frac 1n \mathbf{1})' \mathbf{x} = (x_1 + \cdots + x_n) / n$.
+4. Average: $(x_1 + \cdots + x_n) / n = \rule[-0.1cm]{1cm}{0.15mm}$.
 
 ## Computational complexity of vector operations
 
@@ -283,13 +283,13 @@ $$
 versioninfo()
 ```
 
-Intel Skylake CPUs can do 16 double-precision flops per CPU cylce. Then the theoretical throughput of a single core on my laptop is
+Assume that the Apple M2 Max CPUs can do 8 double-precision flops per CPU cylce (?). Then the theoretical throughput of a single performance core on my laptop is
 $$
-2.9 \times 10^9 \times 16 = 46.4 \times 10^9 \text{ flops/second} = 46.4 \text{ GFLOPS}
+8 \times 10^9 \times 16 = 27.9 \times 10^9 \text{ flops/second} = 27.9 \text{ GFLOPS}
 $$
 in double precision. I estimate my computer takes about
 $$
-\frac{10^7 - 1}{46.4 \times 10^9} \approx 0.0002155 \text{ seconds}
+\frac{10^7 - 1}{27.9 \times 10^9} \approx 0.000358 \text{ seconds} = 358 \text{ micro seconds}
 $$
 to sum a vector of length $n = 10^7$.
 
@@ -349,7 +349,9 @@ plot([0 x[1]; x[1] x[1]], [0 0; 0 x[2]], arrow = true, color = :blue,
     
     4. **Cauchy-Schwartz inequality**: $|\mathbf{x}' \mathbf{y}| \le \|\mathbf{x}\| \|\mathbf{y}\|$ for any $\mathbf{x}, \mathbf{y} \in \mathbb{R}^n$. The equality holds when (1) $\mathbf{x} = \mathbf{0}$ or $\mathbf{y}=\mathbf{0}$ or (2) $\mathbf{x} \ne \mathbf{0}$, $\mathbf{y} \ne \mathbf{0}$, and $\mathbf{x} = \alpha \mathbf{y}$ for some $\alpha \ne 0$.
     
-    Proof: The function $f(t) = \|\mathbf{x} - t \mathbf{y}\|_2^2 = \|\mathbf{x}\|_2^2 - 2t (\mathbf{x}' \mathbf{y}) + t^2\|\mathbf{y}\|_2^2$ is minimized at $t^\star =(\mathbf{x}'\mathbf{y}) / \|\mathbf{y}\|^2$ with minimal value $f(t^\star) = \|\mathbf{x}\|^2 - (\mathbf{x}'\mathbf{y})^2 / \|\mathbf{y}\|^2 \ge 0$. 
+    Proof: The function $f(t) = \|\mathbf{x} - t \mathbf{y}\|_2^2 = \|\mathbf{x}\|_2^2 - 2t (\mathbf{x}' \mathbf{y}) + t^2\|\mathbf{y}\|_2^2$ is minimized at $t^\star =(\mathbf{x}'\mathbf{y}) / \|\mathbf{y}\|^2$ with minimal value $0 \le f(t^\star) = \|\mathbf{x}\|^2 - (\mathbf{x}'\mathbf{y})^2 / \|\mathbf{y}\|^2$.
+
+    There are at least 5 other proofs on [Wikipedia](https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality).
 
 ```{julia}
 x = [2, 1]
@@ -380,7 +382,7 @@ plot!([x[1] 0; x[1] + y[1] x[1] + y[1]], [x[2] 0; x[2] + y[2] x[2] + y[2]],
 ```
 
 ```{julia}
-# check Cauchy-Schwartz inequality
+# check Cauchy-Schwartz inequality on random vectors
 @show x = randn(5)
 @show y = randn(5)
 @show abs(x'y)
@@ -432,7 +434,7 @@ $$
 $$
 This is the unique value of $\theta \in [0, \pi]$ that satisifies
 $$
-\mathbf{x}'\mathbf{y} = \|\mathbf{x}\|\|\mathbf{y}\| \cos \theta.
+\cos \theta = \frac{\mathbf{x}'\mathbf{y}}{\|\mathbf{x}\|\|\mathbf{y}\|}.
 $$
 
 - Cauchy-Schwartz inequality guarantees that 
@@ -449,8 +451,6 @@ $$
 | $\theta = \pi / 2$       | $\mathbf{x}'\mathbf{y} = 0$                             | $\mathbf{x}$ and $\mathbf{y}$ are **orthogonal**, $\mathbf{x} \perp \mathbf{y}$ |
 | $\pi/2 < \theta \le \pi$ | $\mathbf{x}'\mathbf{y} < 0$                             | $\mathbf{x}$ and $\mathbf{y}$ make an obtuse angle                                |
 | $\theta = \pi$           | $\mathbf{x}'\mathbf{y} = -\|\mathbf{x}\|\|\mathbf{y}\|$ | $\mathbf{x}$ and $\mathbf{y}$ are anti-aligned or opposed                         |
-
-TODO: Picture.
 
 ```{julia}
 x = [2, 1]
@@ -550,7 +550,7 @@ Similarly, each one of these 4 vectors can be expressed as the linear combinatio
 $$
 \alpha_1 \mathbf{a}_1 + \cdots + \alpha_k \mathbf{a}_k = \mathbf{0}.
 $$
-They are **linearly independent** if they are not linearly dependent. That is if $\alpha_1 \mathbf{a}_1 + \cdots + \alpha_k \mathbf{a}_k = \mathbf{0}$ then $\alpha_1 = \cdots = \alpha_k = 0$ (this is usually how we show a set of vectors are linearly independent).
+They are **linearly independent** if they are not linearly dependent. That is if $\alpha_1 \mathbf{a}_1 + \cdots + \alpha_k \mathbf{a}_k = \mathbf{0}$ then $\alpha_1 = \cdots = \alpha_k = 0$ (this is usually how we show that a set of vectors are linearly independent).
 
 - Theorem: Unit vectors $\mathbf{e}_1, \ldots, \mathbf{e}_n \in \mathbb{R}^n$ are linearly independent. 
 
@@ -587,7 +587,7 @@ with $\gamma = - \alpha_j^{-1} \left( \sum_{i=1}^{j-1} \beta_i \alpha_i + \sum_{
 
 - Fact: the zero vector $\mathbf{0}_n$ cannot be a basis vector in $\mathbb{R}^n$. Why?
 
-- Any vector $\mathbf{x} \in \mathbb{R}^n$ can be expressed as a linear combination of basis vectors $\mathbf{x} = \alpha_1 \mathbf{a}_1 + \cdots + \alpha_n \mathbf{a}_n$ for some $\alpha_1, \ldots, \alpha_n$, and these coefficients are unique. This is called expansion of $\mathbf{x}$ in the basis $\mathbf{a}_1, \ldots, \mathbf{a}_n$.
+- **Theorem**: Any vector $\mathbf{x} \in \mathbb{R}^n$ can be expressed as a linear combination of basis vectors $\mathbf{x} = \alpha_1 \mathbf{a}_1 + \cdots + \alpha_n \mathbf{a}_n$ for some $\alpha_1, \ldots, \alpha_n$, and these coefficients are unique. This is called expansion of $\mathbf{x}$ in the basis $\mathbf{a}_1, \ldots, \mathbf{a}_n$.
 
     Proof of existence by contradition (optional). Suppose $\mathbf{x}$ can NOT be expressed as a linear combination of basis vectors $\mathbf{x} = \alpha_1 \mathbf{a}_1 + \cdots + \alpha_n \mathbf{a}_n$. Suppose an arbitrary linear combination $\alpha_1 \mathbf{a}_1 + \cdots + \alpha_n \mathbf{a}_n + \beta \mathbf{x} = \mathbf{0}$. Then $\beta = 0$ otherwise it contradictions with our assumption. Also $\alpha_1 = \cdots = \alpha_n = 0$ by linear independence of $\mathbf{a}_1, \ldots, \mathbf{a}_n$. Therefore we conclude $\alpha_1 = \cdots = \alpha_n = \beta = 0$. Thus $\mathbf{a}_1, \ldots, \mathbf{a}_n, \mathbf{x}$ are linearly independent, contradicting with the independence-dimension inequality.
     
