@@ -76,7 +76,7 @@ Class attendance is **mandatory**. If you are not able to attend a lecture due t
 
 ### Exam
 
-In-class midterm on Oct 26. In-class final exam TBD.
+In-class midterm on Oct 26. In-class final exam Dec 11 8am-11am (location TBD).
 
 ### Final Grade
 
