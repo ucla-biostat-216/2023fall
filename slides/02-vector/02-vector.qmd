@@ -50,15 +50,19 @@ Random.seed!(216)
 
 ## Notation
 
-- A column vector $\mathbf{x} \in \mathbb{R}^n$
+- A column vector $\mathbf{x} \in \mathbb{R}^n$:
 $$
 \mathbf{x} = \begin{pmatrix}
 x_1 \\ x_2 \\ \vdots \\ x_n
-\end{pmatrix}.
-$$
-$n$ is the **dimension** or **length** or **size** of the vector. $x_i$ is the $i$-th **entry** or **element** or **component** of $\mathbf{x}$.
+\end{pmatrix} = (x_1, x_2, \ldots, x_n).
+$$  
+  - $n$ is the **dimension** (or **length** or **size**) of the vector. 
 
-- A row vector $\mathbf{x}' = (x_1 \ldots x_n)$.
+  - $x_i$ is the $i$-th **entry** (or **element** or **component** or **coefficient**) of $\mathbf{x}$. 
+
+  - A vector of length $n$ is called an **$n$-vector**.
+
+- A row vector $\mathbf{x}' = (x_1 \, x_2 \, \ldots x_n)$ (without commas).
 
 ```{julia}
 # a (column) vector in Julia
@@ -80,7 +84,7 @@ x[2:4]
 $$
 \mathbf{x} = \begin{pmatrix}
 \mathbf{y} \\ \mathbf{z}
-\end{pmatrix} = \begin{pmatrix}
+\end{pmatrix} = (\mathbf{y}, \mathbf{z}) = \begin{pmatrix}
 y_1 \\ \vdots \\ y_m \\ z_1 \\ \vdots \\ z_n
 \end{pmatrix}.
 $$
@@ -240,6 +244,16 @@ Examples of inner product. **In class exercises**: express the following quantit
 
 4. Average: $(x_1 + \cdots + x_n) / n = \rule[-0.1cm]{1cm}{0.15mm}$.
 
+## Computer representation of numbers and vectors
+
+- Real numbers are represented as the **floating point numbers** in computers.
+
+- (Double precision) floating point numbers approximate real numbers to an accuracy of 15-16 digits.
+
+- One (double precision) floating point number takes 64 bits (0s and 1s), or 8 bytes.
+
+- An $n$-vector requires $8n$ bytes to store.
+
 ## Computational complexity of vector operations
 
 - One **floating point operation** (flop) is one basic arithmetic operation in $\mathbb{R}$ or $\mathbb{C}$: $+, -, *, /, \sqrt, ...$
@@ -262,19 +276,19 @@ $$
 $$
 
 
-- Assume vectors are all of length $n$. 
+- **In-class exercises**. Assume vectors are all of length $n$. Give the flop counts of the following operations.
 
-    1. Sum the elements of a vector: $n-1$ flops.
+    1. Sum the elements of a vector: $\rule[-0.1cm]{1cm}{0.15mm}$ flops.
     
-    2. Vector addition and substraction: $n$ flops.
+    2. Vector addition and substraction: $\rule[-0.1cm]{1cm}{0.15mm}$ flops.
 
-    3. Scalar multiplication: $n$ flops.
+    3. Scalar multiplication: $\rule[-0.1cm]{1cm}{0.15mm}$ flops.
 
-    4. Elementwise multiplication: $n$ flops.
+    4. Elementwise multiplication: $\rule[-0.1cm]{1cm}{0.15mm}$ flops.
 
-    5. Inner product: $2n - 1$ flops.  
+    5. Inner product: $\rule[-0.1cm]{1cm}{0.15mm}$ flops.  
     
-    6. Norm of a vector: $2n$ flops.
+    6. Norm of a vector: $\rule[-0.1cm]{1cm}{0.15mm}$ flops.
     
 - These vector operations are all order $n$ algorithms.
 
@@ -418,7 +432,7 @@ $$
 
     This result underlies the famous _bias-variance tradeoff_ in statistics. 
     
-    Proof: TODO in class. $\operatorname{std}(\mathbf{x})^2 = \frac{\|\mathbf{x} - (\mathbf{1}' \mathbf{x} / n) \mathbf{1}\|^2}{n} = ... = \operatorname{rms}(\mathbf{x})^2 - \operatorname{avg}(\mathbf{x})^2$. 
+    Proof: HW1. Hint: $\operatorname{std}(\mathbf{x})^2 = \frac{\|\mathbf{x} - (\mathbf{1}' \mathbf{x} / n) \mathbf{1}\|^2}{n} = ... = \operatorname{rms}(\mathbf{x})^2 - \operatorname{avg}(\mathbf{x})^2$. 
 
 ```{julia}
 x = randn(5)
@@ -587,7 +601,7 @@ with $\gamma = - \alpha_j^{-1} \left( \sum_{i=1}^{j-1} \beta_i \alpha_i + \sum_{
 
 - Fact: the zero vector $\mathbf{0}_n$ cannot be a basis vector in $\mathbb{R}^n$. Why?
 
-- **Theorem**: Any vector $\mathbf{x} \in \mathbb{R}^n$ can be expressed as a linear combination of basis vectors $\mathbf{x} = \alpha_1 \mathbf{a}_1 + \cdots + \alpha_n \mathbf{a}_n$ for some $\alpha_1, \ldots, \alpha_n$, and these coefficients are unique. This is called expansion of $\mathbf{x}$ in the basis $\mathbf{a}_1, \ldots, \mathbf{a}_n$.
+- Theorem: Any vector $\mathbf{x} \in \mathbb{R}^n$ can be expressed as a linear combination of basis vectors $\mathbf{x} = \alpha_1 \mathbf{a}_1 + \cdots + \alpha_n \mathbf{a}_n$ for some $\alpha_1, \ldots, \alpha_n$, and these coefficients are unique. This is called expansion of $\mathbf{x}$ in the basis $\mathbf{a}_1, \ldots, \mathbf{a}_n$.
 
     Proof of existence by contradition (optional). Suppose $\mathbf{x}$ can NOT be expressed as a linear combination of basis vectors $\mathbf{x} = \alpha_1 \mathbf{a}_1 + \cdots + \alpha_n \mathbf{a}_n$. Suppose an arbitrary linear combination $\alpha_1 \mathbf{a}_1 + \cdots + \alpha_n \mathbf{a}_n + \beta \mathbf{x} = \mathbf{0}$. Then $\beta = 0$ otherwise it contradictions with our assumption. Also $\alpha_1 = \cdots = \alpha_n = 0$ by linear independence of $\mathbf{a}_1, \ldots, \mathbf{a}_n$. Therefore we conclude $\alpha_1 = \cdots = \alpha_n = \beta = 0$. Thus $\mathbf{a}_1, \ldots, \mathbf{a}_n, \mathbf{x}$ are linearly independent, contradicting with the independence-dimension inequality.
     
