@@ -29,7 +29,7 @@ Office hours: Tuesdays 12am-1pm and Thursdays 9am-10am @ CHS 21-254A.
 ### Teaching Assistant
 
 Tomoki Okuno: <tomokiokuno0528@ucla.edu>  
-Office hours: TBD @ CHS 51-236D.
+Office hours: Wednesday 12pm-1pm @ CHS 51-236D and Friday 2pm-3pm @ Zoom <https://ucla.zoom.us/j/98224611941>.
 
 ### Course Description
 
