@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Dr. Hua Zhou @ UCLA">
-<meta name="dcterms.date" content="2023-09-27">
+<meta name="dcterms.date" content="2023-10-02">
 
 <title>Vectors (BV Chapters 1, 3, 5)</title>
 <style>
@@ -3151,7 +3151,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
   <li><a href="#linear-independence" id="toc-linear-independence" class="nav-link" data-scroll-target="#linear-independence"><span class="header-section-number">1.7</span> Linear independence</a></li>
   <li><a href="#basis" id="toc-basis" class="nav-link" data-scroll-target="#basis"><span class="header-section-number">1.8</span> Basis</a></li>
   <li><a href="#orthonormal-basis" id="toc-orthonormal-basis" class="nav-link" data-scroll-target="#orthonormal-basis"><span class="header-section-number">1.9</span> Orthonormal basis</a></li>
-  <li><a href="#gram-schmidt-algorithm" id="toc-gram-schmidt-algorithm" class="nav-link" data-scroll-target="#gram-schmidt-algorithm"><span class="header-section-number">1.10</span> Gram-Schmidt algorithm</a></li>
+  <li><a href="#how-to-orthonormalize-a-set-of-vectors-gram-schmidt-algorithm" id="toc-how-to-orthonormalize-a-set-of-vectors-gram-schmidt-algorithm" class="nav-link" data-scroll-target="#how-to-orthonormalize-a-set-of-vectors-gram-schmidt-algorithm"><span class="header-section-number">1.10</span> How to orthonormalize a set of vectors? Gram-Schmidt algorithm</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -3180,7 +3180,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 27, 2023</p>
+      <p class="date">October 2, 2023</p>
     </div>
   </div>
   
@@ -3238,7 +3238,7 @@ Platform Info:
 <section id="notation" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="notation"><span class="header-section-number">1.1</span> Notation</h2>
 <ul>
-<li>A column vector <span class="math inline">\(\mathbf{x} \in \mathbb{R}^n\)</span>: <span class="math display">\[
+<li>A (column) vector <span class="math inline">\(\mathbf{x} \in \mathbb{R}^n\)</span>: <span class="math display">\[
 \mathbf{x} = \begin{pmatrix}
 x_1 \\ x_2 \\ \vdots \\ x_n
 \end{pmatrix} = (x_1, x_2, \ldots, x_n).
@@ -3340,7 +3340,7 @@ y_1 \\ \vdots \\ y_m \\ z_1 \\ \vdots \\ z_n
 </div>
 </div>
 <ul>
-<li>Unit vector, <span class="math inline">\(\mathbf{e}_i\)</span>. It has all zero entries except the <span class="math inline">\(i\)</span>-th entry being 1. Note the length of <span class="math inline">\(\mathbf{e}_i\)</span> is often implied by context. <span class="math display">\[
+<li>The unit vector (or elementary basis vector), <span class="math inline">\(\mathbf{e}_i\)</span>, has all zero entries except the <span class="math inline">\(i\)</span>-th entry being 1. Note the length of <span class="math inline">\(\mathbf{e}_i\)</span> is often implied by context. <span class="math display">\[
 \mathbf{e}_1 = \begin{pmatrix}
 1 \\ 0 \\ 0 \\ \vdots \\ 0
 \end{pmatrix}, \quad \mathbf{e}_2 = \begin{pmatrix}
@@ -3419,7 +3419,7 @@ x_1 - y_1 \\ \vdots \\ x_n - y_n
 </div>
 </div>
 <ul>
-<li><strong>Elementwise multiplication</strong> or <strong>Hadamard product</strong>. For two vectors <span class="math inline">\(\mathbf{x}, \mathbf{y} \in \mathbb{R}^n\)</span> (of same length) <span class="math display">\[
+<li><strong>Elementwise multiplication</strong> or <strong>Hadamard product</strong>. For two vectors <span class="math inline">\(\mathbf{x}, \mathbf{y} \in \mathbb{R}^n\)</span> (of same length), <span class="math display">\[
 \mathbf{x} \circ \mathbf{y} = \begin{pmatrix}
 x_1 y_1 \\ \vdots \\ x_n y_n
 \end{pmatrix}.
@@ -3441,7 +3441,7 @@ x_1 y_1 \\ \vdots \\ x_n y_n
 </div>
 <ul>
 <li>For scalars <span class="math inline">\(\alpha_1, \ldots, \alpha_k \in \mathbb{R}\)</span> and vectors <span class="math inline">\(\mathbf{x}_1, \ldots, \mathbf{x}_k \in \mathbb{R}^n\)</span>, the <strong>linear combination</strong> <span class="math display">\[
-\alpha_1 \mathbf{x}_1 + \cdots + \alpha_k \mathbf{x}_k
+\sum_{i=1}^k \alpha_i \mathbf{x}_i = \alpha_1 \mathbf{x}_1 + \cdots + \alpha_k \mathbf{x}_k
 \]</span> is a sum of scalar-vector products.</li>
 </ul>
 <div class="cell" data-execution_count="15">
@@ -3496,7 +3496,7 @@ x_1 y_1 \\ \vdots \\ x_n y_n
 <li><p>Associative with scalar multiplication: <span class="math inline">\((\alpha \mathbf{x})&#39; \mathbf{y} = \alpha (\mathbf{x}&#39; \mathbf{y}) = \mathbf{x}&#39; (\alpha \mathbf{y})\)</span>.</p></li>
 <li><p>Distributive with vector addition: <span class="math inline">\((\mathbf{x} + \mathbf{y})&#39; \mathbf{z} = \mathbf{x}&#39; \mathbf{z} + \mathbf{y}&#39; \mathbf{z}\)</span>.</p></li>
 </ol>
-<p>Examples of inner product. <strong>In class exercises</strong>: express the following quantities using vector inner products.</p>
+<p>Examples of inner product. <strong>In class exercises</strong>: express the following quantities using vector inner products of a vector <span class="math inline">\(\mathbf{x} \in \mathbb{R}^n\)</span> and another vector.</p>
 <ol type="1">
 <li><p>Individual component: <span class="math inline">\(x_i = \rule[-0.1cm]{1cm}{0.15mm}\)</span>.</p></li>
 <li><p>Differencing: <span class="math inline">\(x_i - x_j = \rule[-0.1cm]{1cm}{0.15mm}\)</span>.</p></li>
@@ -3555,11 +3555,11 @@ Platform Info:
   Threads: 2 on 8 virtual cores</code></pre>
 </div>
 </div>
-<p>Assume that the Apple M2 Max CPUs can do 8 double-precision flops per CPU cylce (?). Then the theoretical throughput of a single performance core on my laptop is <span class="math display">\[
+<p>Assume that one Apple M2 performance core can do 8 double-precision flops per CPU cylce (?). Then the theoretical throughput of a single performance core on my laptop is <span class="math display">\[
 8 \times 10^9 \times 16 = 27.9 \times 10^9 \text{ flops/second} = 27.9 \text{ GFLOPS}
 \]</span> in double precision. I estimate my computer takes about <span class="math display">\[
 \frac{10^7 - 1}{27.9 \times 10^9} \approx 0.000358 \text{ seconds} = 358 \text{ micro seconds}
-\]</span> to sum a vector of length <span class="math inline">\(n = 10^7\)</span>.</p>
+\]</span> to sum a vector of length <span class="math inline">\(n = 10^7\)</span> using a single performance core.</p>
 <div class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the actual run time</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="fl">10</span><span class="op">^</span><span class="fl">7</span></span>
@@ -3579,6 +3579,8 @@ Platform Info:
 \]</span> The Euclidean/L2 norm captures the Euclidean length of the vector.</li>
 </ul>
 <div class="cell" data-execution_count="20">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">2</span>, <span class="fl">1</span>]</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>([<span class="fl">0</span>; x[<span class="fl">1</span>]], [<span class="fl">0</span>; x[<span class="fl">2</span>]], arrow <span class="op">=</span> <span class="cn">true</span>, color <span class="op">=</span> <span class="op">:</span>blue,</span>
@@ -3587,6 +3589,7 @@ Platform Info:
 <span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    xticks <span class="op">=</span> <span class="op">-</span><span class="fl">3</span><span class="op">:</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, yticks <span class="op">=</span> <span class="op">-</span><span class="fl">2</span><span class="op">:</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>,</span>
 <span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    framestyle <span class="op">=</span> <span class="op">:</span>origin,</span>
 <span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    aspect_ratio <span class="op">=</span> <span class="op">:</span>equal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <!--?xml version="1.0" encoding="utf-8"?-->
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="600" height="400" viewbox="0 0 2400 1600">
@@ -3641,6 +3644,8 @@ Platform Info:
 \]</span> Also known as <strong>Manhattan Distance</strong> or <strong>Taxicab norm</strong>. The L1 norm is the distance you have to travel between the origin <span class="math inline">\(\mathbf{0}_n\)</span> to the destination <span class="math inline">\(\mathbf{x} = (x_1, \ldots, x_n)&#39;\)</span>, in a way that resembles how a taxicab drives between city blocks to arrive at its destination.</li>
 </ul>
 <div class="cell" data-execution_count="21">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">2</span>, <span class="fl">1</span>]</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>([<span class="fl">0</span> x[<span class="fl">1</span>]; x[<span class="fl">1</span>] x[<span class="fl">1</span>]], [<span class="fl">0</span> <span class="fl">0</span>; <span class="fl">0</span> x[<span class="fl">2</span>]], arrow <span class="op">=</span> <span class="cn">true</span>, color <span class="op">=</span> <span class="op">:</span>blue,</span>
@@ -3649,6 +3654,7 @@ Platform Info:
 <span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    xticks <span class="op">=</span> <span class="op">-</span><span class="fl">3</span><span class="op">:</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, yticks <span class="op">=</span> <span class="op">-</span><span class="fl">2</span><span class="op">:</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>,</span>
 <span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    framestyle <span class="op">=</span> <span class="op">:</span>origin,</span>
 <span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    aspect_ratio <span class="op">=</span> <span class="op">:</span>equal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <!--?xml version="1.0" encoding="utf-8"?-->
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="600" height="400" viewbox="0 0 2400 1600">
@@ -3713,6 +3719,8 @@ Proof: use Cauchy-Schwartz inequality. TODO in class.</p></li>
 <p>There are at least 5 other proofs on <a href="https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality">Wikipedia</a>.</p></li>
 </ul>
 <div class="cell" data-execution_count="22">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">2</span>, <span class="fl">1</span>]</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [<span class="fl">0.5</span>, <span class="fl">1</span>]</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -3729,6 +3737,7 @@ Proof: use Cauchy-Schwartz inequality. TODO in class.</p></li>
 <span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>    annotations <span class="op">=</span> [(x[<span class="fl">1</span>] <span class="op">+</span> y[<span class="fl">1</span>] <span class="op">-</span> <span class="fl">0.2</span>, </span>
 <span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>                    x[<span class="fl">2</span>] <span class="op">+</span> y[<span class="fl">2</span>] <span class="op">+</span> <span class="fl">0.2</span>, </span>
 <span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>                    L<span class="st">&quot;x+y=(%</span><span class="sc">$</span>(x[<span class="fl">1</span>] <span class="op">+</span> y[<span class="fl">1</span>])<span class="st">, %</span><span class="sc">$</span>(x[<span class="fl">2</span>] <span class="op">+</span> y[<span class="fl">2</span>])<span class="st">)&#39;&quot;</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <!--?xml version="1.0" encoding="utf-8"?-->
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="600" height="400" viewbox="0 0 2400 1600">
@@ -3911,6 +3920,8 @@ mean(x) ^ 2 + std(x, corrected = false) ^ 2 ≈ norm(x) ^ 2 / length(x) = true</
 </tbody>
 </table>
 <div class="cell" data-execution_count="26">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">2</span>, <span class="fl">1</span>]</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="fl">0.5</span>x</span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -3922,6 +3933,7 @@ mean(x) ^ 2 + std(x, corrected = false) ^ 2 ≈ norm(x) ^ 2 / length(x) = true</
 <span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>    framestyle <span class="op">=</span> <span class="op">:</span>origin,</span>
 <span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>    aspect_ratio <span class="op">=</span> <span class="op">:</span>equal,</span>
 <span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> L<span class="st">&quot;</span><span class="sc">$</span>x<span class="st">$ and </span><span class="sc">$</span>y<span class="st">$ are aligned or parallel: </span><span class="sc">$</span>x<span class="st">&#39;y = %</span><span class="sc">$</span>(<span class="fu">dot</span>(x, y))<span class="st"> = \|\|x\|\| \|\|y\|\|&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <!--?xml version="1.0" encoding="utf-8"?-->
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="600" height="400" viewbox="0 0 2400 1600">
@@ -3974,6 +3986,8 @@ mean(x) ^ 2 + std(x, corrected = false) ^ 2 ≈ norm(x) ^ 2 / length(x) = true</
 </div>
 </div>
 <div class="cell" data-execution_count="27">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">2</span>, <span class="fl">1</span>]</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>θ <span class="op">=</span> <span class="cn">π</span><span class="op">/</span><span class="fl">4</span></span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [<span class="fu">cos</span>(θ) <span class="fu">-sin</span>(θ); <span class="fu">sin</span>(θ) <span class="fu">cos</span>(θ)]</span>
@@ -3988,6 +4002,7 @@ mean(x) ^ 2 + std(x, corrected = false) ^ 2 ≈ norm(x) ^ 2 / length(x) = true</
 <span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>    aspect_ratio <span class="op">=</span> <span class="op">:</span>equal,</span>
 <span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> L<span class="st">&quot;</span><span class="sc">$</span>x<span class="st">$ and </span><span class="sc">$</span>y<span class="st">$ make an acute angle: </span></span>
 <span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">$</span><span class="fl">0</span> <span class="op">&lt;</span> x<span class="op">&#39;</span>y <span class="op">=</span> <span class="op">%$</span>(<span class="fu">round</span>(<span class="fu">dot</span>(x, y), digits<span class="op">=</span><span class="fl">1</span>)) <span class="op">&lt;</span> <span class="op">%$</span>(<span class="fu">round</span>(<span class="fu">norm</span>(x) <span class="op">*</span> <span class="fu">norm</span>(y), digits<span class="op">=</span><span class="fl">1</span>)) <span class="op">=</span> <span class="op">\|\|</span>x<span class="op">\|\|</span> <span class="op">\|\|</span>y<span class="op">\|\|</span><span class="st">&quot;)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <!--?xml version="1.0" encoding="utf-8"?-->
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="600" height="400" viewbox="0 0 2400 1600">
@@ -4040,6 +4055,8 @@ mean(x) ^ 2 + std(x, corrected = false) ^ 2 ≈ norm(x) ^ 2 / length(x) = true</
 </div>
 </div>
 <div class="cell" data-execution_count="28">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">2</span>, <span class="fl">1</span>]</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>θ <span class="op">=</span> <span class="cn">π</span><span class="op">/</span><span class="fl">2</span></span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [<span class="fu">cos</span>(θ) <span class="fu">-sin</span>(θ); <span class="fu">sin</span>(θ) <span class="fu">cos</span>(θ)]</span>
@@ -4054,6 +4071,7 @@ mean(x) ^ 2 + std(x, corrected = false) ^ 2 ≈ norm(x) ^ 2 / length(x) = true</
 <span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>    aspect_ratio <span class="op">=</span> <span class="op">:</span>equal,</span>
 <span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> L<span class="st">&quot;</span><span class="sc">$</span>x<span class="st">$ is orthogonal to </span><span class="sc">$</span>y<span class="st">$ (</span><span class="sc">$</span>x<span class="st"> \perp y</span><span class="sc">$</span><span class="st">): </span></span>
 <span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a><span class="st">    </span><span class="sc">$</span>x<span class="st">&#39;y = %</span><span class="sc">$</span>(<span class="fu">round</span>(<span class="fu">dot</span>(x, y), digits<span class="op">=</span><span class="fl">1</span>))<span class="st">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <!--?xml version="1.0" encoding="utf-8"?-->
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="600" height="400" viewbox="0 0 2400 1600">
@@ -4106,6 +4124,8 @@ mean(x) ^ 2 + std(x, corrected = false) ^ 2 ≈ norm(x) ^ 2 / length(x) = true</
 </div>
 </div>
 <div class="cell" data-execution_count="29">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">2</span>, <span class="fl">1</span>]</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>θ <span class="op">=</span> (<span class="fl">3</span><span class="op">/</span><span class="fl">4</span>)<span class="cn">π</span></span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [<span class="fu">cos</span>(θ) <span class="fu">-sin</span>(θ); <span class="fu">sin</span>(θ) <span class="fu">cos</span>(θ)]</span>
@@ -4120,6 +4140,7 @@ mean(x) ^ 2 + std(x, corrected = false) ^ 2 ≈ norm(x) ^ 2 / length(x) = true</
 <span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a>    aspect_ratio <span class="op">=</span> <span class="op">:</span>equal,</span>
 <span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> L<span class="st">&quot;</span><span class="sc">$</span>x<span class="st">$ and </span><span class="sc">$</span>y<span class="st">$ make an obtuse angle: </span></span>
 <span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">$-</span> <span class="op">\|\|</span>x<span class="op">\|\|</span> <span class="op">\|\|</span>y<span class="op">\|\|</span> <span class="op">=</span> <span class="op">-%$</span>(<span class="fu">round</span>(<span class="fu">norm</span>(x) <span class="op">*</span> <span class="fu">norm</span>(y), digits<span class="op">=</span><span class="fl">1</span>)) <span class="op">&lt;</span> <span class="op">%$</span>(<span class="fu">round</span>(<span class="fu">dot</span>(x, y), digits<span class="op">=</span><span class="fl">1</span>)) <span class="op">=</span> x<span class="op">&#39;</span>y <span class="op">&lt;</span> <span class="fl">0</span><span class="st">&quot;)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <!--?xml version="1.0" encoding="utf-8"?-->
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="600" height="400" viewbox="0 0 2400 1600">
@@ -4172,6 +4193,8 @@ mean(x) ^ 2 + std(x, corrected = false) ^ 2 ≈ norm(x) ^ 2 / length(x) = true</
 </div>
 </div>
 <div class="cell" data-execution_count="30">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">2</span>, <span class="fl">1</span>]</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>θ <span class="op">=</span> <span class="cn">π</span></span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [<span class="fu">cos</span>(θ) <span class="fu">-sin</span>(θ); <span class="fu">sin</span>(θ) <span class="fu">cos</span>(θ)]</span>
@@ -4186,6 +4209,7 @@ mean(x) ^ 2 + std(x, corrected = false) ^ 2 ≈ norm(x) ^ 2 / length(x) = true</
 <span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a>    aspect_ratio <span class="op">=</span> <span class="op">:</span>equal,</span>
 <span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> L<span class="st">&quot;</span><span class="sc">$</span>x<span class="st">$ and </span><span class="sc">$</span>y<span class="st">$ are anti-aligned or opposed: </span></span>
 <span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">$</span>x<span class="op">&#39;</span>y <span class="op">=</span> <span class="op">%$</span>(<span class="fu">round</span>(<span class="fu">dot</span>(x, y), digits<span class="op">=</span><span class="fl">1</span>)) <span class="op">=</span> <span class="op">-\|\|</span>x<span class="op">\|\|</span> <span class="op">\|\|</span>y<span class="op">\|\|</span><span class="st">&quot;)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <!--?xml version="1.0" encoding="utf-8"?-->
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="600" height="400" viewbox="0 0 2400 1600">
@@ -4252,7 +4276,7 @@ mean(x) ^ 2 + std(x, corrected = false) ^ 2 ≈ norm(x) ^ 2 / length(x) = true</
 <li><p>Theorem: Unit vectors <span class="math inline">\(\mathbf{e}_1, \ldots, \mathbf{e}_n \in \mathbb{R}^n\)</span> are linearly independent.</p>
 <p>Proof: TODO in class.</p></li>
 <li><p>Theorem: If <span class="math inline">\(\mathbf{x}\)</span> is a linear combination of linearly independent vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_k\)</span>. That is <span class="math inline">\(\mathbf{x} = \alpha_1 \mathbf{a}_1 + \cdots + \alpha_k \mathbf{a}_k\)</span>. Then the coefficients <span class="math inline">\(\alpha_1, \ldots, \alpha_k\)</span> are unique.</p>
-<p>Proof: TODO in class.</p></li>
+<p>Proof: TODO in class. Hint: proof by contradition.</p></li>
 <li><p><strong>Independence-dimension inequality</strong> or <strong>order-dimension inequality</strong>. If the vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_k \in \mathbb{R}^n\)</span> are linearly independent, then <span class="math inline">\(k \le n\)</span>.</p>
 <p>In words, there can be at most <span class="math inline">\(n\)</span> linearly independent vectors in <span class="math inline">\(\mathbb{R}^n\)</span>. Or any set of <span class="math inline">\(n+1\)</span> or more vectors in <span class="math inline">\(\mathbb{R}^n\)</span> must linearly dependent.</p>
 <p>Proof (optional): We show this by induction. Let <span class="math inline">\(a_1, \ldots, a_k \in \mathbb{R}^1\)</span> be linearly independent. We must have <span class="math inline">\(a_1 \ne 0\)</span>. This means that every element <span class="math inline">\(a_i\)</span> of the collection can be expressed as a multiple of <span class="math inline">\(a_i = (a_i / a_1) a_1\)</span> of the first element <span class="math inline">\(a_1\)</span>. This contradicts the linear independence thus <span class="math inline">\(k\)</span> must be 1.<br>
@@ -4317,6 +4341,8 @@ Next we assume the scalars <span class="math inline">\(\alpha_i\)</span> are not
 </div>
 </div>
 <div class="cell" data-execution_count="32">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot3d</span>([<span class="fl">0</span>; a1[<span class="fl">1</span>]], [<span class="fl">0</span>; a1[<span class="fl">2</span>]], [<span class="fl">0</span>; a1[<span class="fl">3</span>]], </span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    arrow <span class="op">=</span> <span class="cn">true</span>, legend <span class="op">=</span> <span class="op">:</span>none,</span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>    framestyle <span class="op">=</span> <span class="op">:</span>origin,</span>
@@ -4326,6 +4352,7 @@ Next we assume the scalars <span class="math inline">\(\alpha_i\)</span> are not
 <span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot3d!</span>([<span class="fl">0</span>; a2[<span class="fl">1</span>]], [<span class="fl">0</span>; a2[<span class="fl">2</span>]], [<span class="fl">0</span>; a2[<span class="fl">3</span>]])</span>
 <span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot3d!</span>([<span class="fl">0</span>; a3[<span class="fl">1</span>]], [<span class="fl">0</span>; a3[<span class="fl">2</span>]], [<span class="fl">0</span>; a3[<span class="fl">3</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <!--?xml version="1.0" encoding="utf-8"?-->
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="600" height="400" viewbox="0 0 2400 1600">
@@ -4369,9 +4396,10 @@ Next we assume the scalars <span class="math inline">\(\alpha_i\)</span> are not
 </div>
 <ul>
 <li><p><strong>Orthonormal expansion</strong>. If <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_n \in \mathbb{R}^n\)</span> is an orthonormal basis, then for any vector <span class="math inline">\(\mathbf{x} \in \mathbb{R}^n\)</span>, <span class="math display">\[
-\mathbf{x} = (\mathbf{a}_1&#39;\mathbf{x}) \mathbf{a}_1 + \ldots + (\mathbf{a}_n&#39;\mathbf{x}) \mathbf{a}_n.
+\mathbf{x} = (\mathbf{a}_1&#39;\mathbf{x}) \mathbf{a}_1 + \cdots + (\mathbf{a}_n&#39;\mathbf{x}) \mathbf{a}_n.
 \]</span></p>
-<p>Proof: Take inner product with <span class="math inline">\(\mathbf{a}_i\)</span> on both sides.</p></li>
+<p>Proof: Take inner product with <span class="math inline">\(\mathbf{a}_i\)</span> on both sides.</p>
+<p>Later we will learn that the right hand side is the orthogonal projection of the vector <span class="math inline">\(\mathbf{x}\)</span> to the space spanned by the vectors <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_n\)</span>.</p></li>
 </ul>
 <div class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> x <span class="op">=</span> <span class="fu">randn</span>(<span class="fl">3</span>)</span>
@@ -4387,8 +4415,8 @@ x ≈ (a1&#39; * x) * a1 + (a2&#39; * x) * a2 + (a3&#39; * x) * a3 = true</code>
 </div>
 </div>
 </section>
-<section id="gram-schmidt-algorithm" class="level2" data-number="1.10">
-<h2 data-number="1.10" class="anchored" data-anchor-id="gram-schmidt-algorithm"><span class="header-section-number">1.10</span> Gram-Schmidt algorithm</h2>
+<section id="how-to-orthonormalize-a-set-of-vectors-gram-schmidt-algorithm" class="level2" data-number="1.10">
+<h2 data-number="1.10" class="anchored" data-anchor-id="how-to-orthonormalize-a-set-of-vectors-gram-schmidt-algorithm"><span class="header-section-number">1.10</span> How to orthonormalize a set of vectors? Gram-Schmidt algorithm</h2>
 <ul>
 <li><p>Given vectros <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_k \in \mathbb{R}^n\)</span>. G-S algorithm generates a sequence of orthonormal vectors <span class="math inline">\(\mathbf{q}_1, \mathbf{q}_2, \ldots\)</span>.</p></li>
 <li><p>For <span class="math inline">\(i=1,\ldots,k\)</span>:</p>
@@ -4401,6 +4429,8 @@ x ≈ (a1&#39; * x) * a1 + (a2&#39; * x) * a2 + (a3&#39; * x) * a3 = true</code>
 <li><p>If G-S stops early in iteration <span class="math inline">\(i=j\)</span>, then <span class="math inline">\(\mathbf{a}_j\)</span> is a linear combination of <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_{j-1}\)</span> and <span class="math inline">\(\mathbf{a}_1, \ldots, \mathbf{a}_{j-1}\)</span> are linearly independent.</p></li>
 </ul>
 <div class="cell" data-execution_count="34">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>a1 <span class="op">=</span> [<span class="fl">0.5</span>, <span class="fl">2</span>]</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>a2 <span class="op">=</span> [<span class="fl">1.5</span>, <span class="fl">0.5</span>]</span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -4469,6 +4499,7 @@ x ≈ (a1&#39; * x) * a1 + (a2&#39; * x) * a2 + (a3&#39; * x) * a3 = true</code>
 <span id="cb64-66"><a href="#cb64-66" aria-hidden="true" tabindex="-1"></a><span class="fu">plot!</span>(p5, <span class="fu">sin</span>.(t), <span class="fu">cos</span>.(t), color <span class="op">=</span> <span class="op">:</span>gray)</span>
 <span id="cb64-67"><a href="#cb64-67" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb64-68"><a href="#cb64-68" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(p1, p2, p3, p4, p5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <!--?xml version="1.0" encoding="utf-8"?-->
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="600" height="400" viewbox="0 0 2400 1600">

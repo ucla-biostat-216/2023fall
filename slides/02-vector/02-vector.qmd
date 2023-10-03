@@ -50,7 +50,7 @@ Random.seed!(216)
 
 ## Notation
 
-- A column vector $\mathbf{x} \in \mathbb{R}^n$:
+- A (column) vector $\mathbf{x} \in \mathbb{R}^n$:
 $$
 \mathbf{x} = \begin{pmatrix}
 x_1 \\ x_2 \\ \vdots \\ x_n
@@ -116,7 +116,7 @@ $$
 ones(5)
 ```
 
-- Unit vector, $\mathbf{e}_i$. It has all zero entries except the $i$-th entry being 1. Note the length of $\mathbf{e}_i$ is often implied by context.
+- The unit vector (or elementary basis vector), $\mathbf{e}_i$, has all zero entries except the $i$-th entry being 1. Note the length of $\mathbf{e}_i$ is often implied by context.
 $$
 \mathbf{e}_1 = \begin{pmatrix}
 1 \\ 0 \\ 0 \\ \vdots \\ 0
@@ -166,7 +166,7 @@ x = [1, 2, 3, 4, 5]
 α * x
 ```
 
-- **Elementwise multiplication** or **Hadamard product**. For two vectors $\mathbf{x}, \mathbf{y} \in \mathbb{R}^n$ (of same length)
+- **Elementwise multiplication** or **Hadamard product**. For two vectors $\mathbf{x}, \mathbf{y} \in \mathbb{R}^n$ (of same length),
 $$
 \mathbf{x} \circ \mathbf{y} = \begin{pmatrix}
 x_1 y_1 \\ \vdots \\ x_n y_n
@@ -182,7 +182,7 @@ x .* y
 
 - For scalars $\alpha_1, \ldots, \alpha_k \in \mathbb{R}$ and vectors $\mathbf{x}_1, \ldots, \mathbf{x}_k \in \mathbb{R}^n$, the **linear combination**
 $$
-\alpha_1 \mathbf{x}_1 + \cdots + \alpha_k \mathbf{x}_k
+\sum_{i=1}^k \alpha_i \mathbf{x}_i = \alpha_1 \mathbf{x}_1 + \cdots + \alpha_k \mathbf{x}_k
 $$
 is a sum of scalar-vector products. 
 
@@ -234,7 +234,7 @@ Properties of inner product:
 
 5. Distributive with vector addition: $(\mathbf{x} + \mathbf{y})' \mathbf{z} = \mathbf{x}' \mathbf{z} + \mathbf{y}' \mathbf{z}$.
 
-Examples of inner product. **In class exercises**: express the following quantities using vector inner products.
+Examples of inner product. **In class exercises**: express the following quantities using vector inner products of a vector $\mathbf{x} \in \mathbb{R}^n$ and another vector.
 
 1. Individual component: $x_i = \rule[-0.1cm]{1cm}{0.15mm}$.
 
@@ -297,7 +297,7 @@ $$
 versioninfo()
 ```
 
-Assume that the Apple M2 Max CPUs can do 8 double-precision flops per CPU cylce (?). Then the theoretical throughput of a single performance core on my laptop is
+Assume that one Apple M2 performance core can do 8 double-precision flops per CPU cylce (?). Then the theoretical throughput of a single performance core on my laptop is
 $$
 8 \times 10^9 \times 16 = 27.9 \times 10^9 \text{ flops/second} = 27.9 \text{ GFLOPS}
 $$
@@ -305,7 +305,7 @@ in double precision. I estimate my computer takes about
 $$
 \frac{10^7 - 1}{27.9 \times 10^9} \approx 0.000358 \text{ seconds} = 358 \text{ micro seconds}
 $$
-to sum a vector of length $n = 10^7$.
+to sum a vector of length $n = 10^7$ using a single performance core.
 
 ```{julia}
 # the actual run time
@@ -325,6 +325,8 @@ $$
 The Euclidean/L2 norm captures the Euclidean length of the vector.
 
 ```{julia}
+#| code-fold: true
+
 x = [2, 1]
 
 plot([0; x[1]], [0; x[2]], arrow = true, color = :blue,
@@ -342,6 +344,8 @@ $$
 Also known as **Manhattan Distance** or **Taxicab norm**. The L1 norm is the distance you have to travel between the origin $\mathbf{0}_n$ to the destination $\mathbf{x} = (x_1, \ldots, x_n)'$, in a way that resembles how a taxicab drives between city blocks to arrive at its destination.
 
 ```{julia}
+#| code-fold: true
+
 x = [2, 1]
 
 plot([0 x[1]; x[1] x[1]], [0 0; 0 x[2]], arrow = true, color = :blue,
@@ -368,6 +372,8 @@ plot([0 x[1]; x[1] x[1]], [0 0; 0 x[2]], arrow = true, color = :blue,
     There are at least 5 other proofs on [Wikipedia](https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality).
 
 ```{julia}
+#| code-fold: true
+
 x = [2, 1]
 y = [0.5, 1]
 
@@ -467,6 +473,8 @@ $$
 | $\theta = \pi$           | $\mathbf{x}'\mathbf{y} = -\|\mathbf{x}\|\|\mathbf{y}\|$ | $\mathbf{x}$ and $\mathbf{y}$ are anti-aligned or opposed                         |
 
 ```{julia}
+#| code-fold: true
+
 x = [2, 1]
 y = 0.5x
 
@@ -481,6 +489,8 @@ plot([0 0; x[1] y[1]], [0 0; x[2] y[2]], arrow = true, color = [:blue, :purple],
 ```
 
 ```{julia}
+#| code-fold: true
+
 x = [2, 1]
 θ = π/4
 A = [cos(θ) -sin(θ); sin(θ) cos(θ)]
@@ -498,6 +508,8 @@ plot([0 0; x[1] y[1]], [0 0; x[2] y[2]], arrow = true, color = [:blue, :purple],
 ```
 
 ```{julia}
+#| code-fold: true
+
 x = [2, 1]
 θ = π/2
 A = [cos(θ) -sin(θ); sin(θ) cos(θ)]
@@ -515,6 +527,8 @@ plot([0 0; x[1] y[1]], [0 0; x[2] y[2]], arrow = true, color = [:blue, :purple],
 ```
 
 ```{julia}
+#| code-fold: true
+
 x = [2, 1]
 θ = (3/4)π
 A = [cos(θ) -sin(θ); sin(θ) cos(θ)]
@@ -532,6 +546,8 @@ plot([0 0; x[1] y[1]], [0 0; x[2] y[2]], arrow = true, color = [:blue, :purple],
 ```
 
 ```{julia}
+#| code-fold: true
+
 x = [2, 1]
 θ = π
 A = [cos(θ) -sin(θ); sin(θ) cos(θ)]
@@ -572,7 +588,7 @@ They are **linearly independent** if they are not linearly dependent. That is if
     
 - Theorem: If $\mathbf{x}$ is a linear combination of linearly independent vectors $\mathbf{a}_1, \ldots, \mathbf{a}_k$. That is $\mathbf{x} = \alpha_1 \mathbf{a}_1 + \cdots + \alpha_k \mathbf{a}_k$. Then the coefficients $\alpha_1, \ldots, \alpha_k$ are unique. 
 
-    Proof: TODO in class.
+    Proof: TODO in class. Hint: proof by contradition.
     
 - **Independence-dimension inequality** or **order-dimension inequality**. If the vectors $\mathbf{a}_1, \ldots, \mathbf{a}_k \in \mathbb{R}^n$ are linearly independent, then $k \le n$.
 
@@ -648,6 +664,8 @@ a3 = (1 / sqrt(2)) * [1, -1, 0]
 ```
 
 ```{julia}
+#| code-fold: true
+
 plot3d([0; a1[1]], [0; a1[2]], [0; a1[3]], 
     arrow = true, legend = :none,
     framestyle = :origin,
@@ -661,10 +679,10 @@ plot3d!([0; a3[1]], [0; a3[2]], [0; a3[3]])
 
 - **Orthonormal expansion**. If $\mathbf{a}_1, \ldots, \mathbf{a}_n \in \mathbb{R}^n$ is an orthonormal basis, then for any vector $\mathbf{x} \in \mathbb{R}^n$, 
 $$
-\mathbf{x} = (\mathbf{a}_1'\mathbf{x}) \mathbf{a}_1 + \ldots + (\mathbf{a}_n'\mathbf{x}) \mathbf{a}_n.
+\mathbf{x} = (\mathbf{a}_1'\mathbf{x}) \mathbf{a}_1 + \cdots + (\mathbf{a}_n'\mathbf{x}) \mathbf{a}_n.
 $$
 
-    Proof: Take inner product with $\mathbf{a}_i$ on both sides. 
+    Proof: Take inner product with $\mathbf{a}_i$ on both sides.
 
 ```{julia}
 @show x = randn(3)
@@ -672,7 +690,7 @@ $$
 @show x ≈ (a1'x) * a1 + (a2'x) * a2 + (a3'x) * a3
 ```
 
-## Gram-Schmidt algorithm
+## How to orthonormalize a set of vectors? Gram-Schmidt algorithm
 
 - Given vectros $\mathbf{a}_1, \ldots, \mathbf{a}_k \in \mathbb{R}^n$. G-S algorithm generates a sequence of orthonormal vectors $\mathbf{q}_1, \mathbf{q}_2, \ldots$.
 
@@ -689,6 +707,8 @@ $$
 - If G-S stops early in iteration $i=j$, then $\mathbf{a}_j$ is a linear combination of $\mathbf{a}_1, \ldots, \mathbf{a}_{j-1}$ and $\mathbf{a}_1, \ldots, \mathbf{a}_{j-1}$ are linearly independent.
 
 ```{julia}
+#| code-fold: true
+
 a1 = [0.5, 2]
 a2 = [1.5, 0.5]
 
