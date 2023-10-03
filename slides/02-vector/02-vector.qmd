@@ -42,7 +42,7 @@ Pkg.status()
 ```
 
 ```{julia}
-using LaTeXStrings, LinearAlgebra, Plots, Random, Statistics
+using BenchmarkTools, LaTeXStrings, LinearAlgebra, Plots, Random, Statistics
 Random.seed!(216)
 ```
 
@@ -294,16 +294,16 @@ $$
 
 ```{julia}
 # info about my computer 
-versioninfo()
+versioninfo(verbose = true)
 ```
 
-Assume that one Apple M2 performance core can do 8 double-precision flops per CPU cylce (?). Then the theoretical throughput of a single performance core on my laptop is
+Assume that one Apple M2 performance core can do 8 double-precision flops per CPU cylce (?) at 2.4GHz (cycles/second). Then the theoretical throughput of a single performance core on my laptop is
 $$
-8 \times 10^9 \times 16 = 27.9 \times 10^9 \text{ flops/second} = 27.9 \text{ GFLOPS}
+8 \times 10^9 \times 2.4 = 19.2 \times 10^9 \text{ flops/second} = 19.2 \text{ GFLOPS}
 $$
 in double precision. I estimate my computer takes about
 $$
-\frac{10^7 - 1}{27.9 \times 10^9} \approx 0.000358 \text{ seconds} = 358 \text{ micro seconds}
+\frac{10^7 - 1}{19.2 \times 10^9} \approx 0.00052 \text{ seconds} = 520 \text{ micro seconds}
 $$
 to sum a vector of length $n = 10^7$ using a single performance core.
 
@@ -313,6 +313,10 @@ n = 10^7
 x = randn(n)
 sum(x) # compile
 @time sum(x);
+```
+
+```{julia}
+@benchmark sum($x)
 ```
 
 ## Norm, distance, angle
