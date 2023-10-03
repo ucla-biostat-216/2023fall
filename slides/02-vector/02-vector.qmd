@@ -317,7 +317,6 @@ sum(x) # compile
 
 ## Norm, distance, angle
 
-
 - The **Euclidean norm** or **L2 norm** of a vector $\mathbf{x} \in \mathbb{R}^n$ is
 $$
 \|\mathbf{x}\| = \|\mathbf{x}\|_2 = (\mathbf{x}'\mathbf{x})^{1/2} = \sqrt{x_1^2 + \cdots + x_n^2}.
@@ -369,7 +368,9 @@ plot([0 x[1]; x[1] x[1]], [0 0; 0 x[2]], arrow = true, color = :blue,
     
     Proof: The function $f(t) = \|\mathbf{x} - t \mathbf{y}\|_2^2 = \|\mathbf{x}\|_2^2 - 2t (\mathbf{x}' \mathbf{y}) + t^2\|\mathbf{y}\|_2^2$ is minimized at $t^\star =(\mathbf{x}'\mathbf{y}) / \|\mathbf{y}\|^2$ with minimal value $0 \le f(t^\star) = \|\mathbf{x}\|^2 - (\mathbf{x}'\mathbf{y})^2 / \|\mathbf{y}\|^2$.
 
-    There are at least 5 other proofs on [Wikipedia](https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality).
+    There are at least 5 other proofs of CS inequality on [Wikipedia](https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality).
+
+The first there properties are the defining properties of any vector norm.
 
 ```{julia}
 #| code-fold: true
