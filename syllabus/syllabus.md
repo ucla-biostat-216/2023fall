@@ -24,12 +24,12 @@ Tuesdays and Thursdays, 10am-11:50am @ CHS 61-235.
 [Dr. Hua Zhou](http://hua-zhou.github.io/)  
 Office: CHS 21-254A  
 Email: <huazhou@ucla.edu>  
-Office hours: Tuesdays 12am-1pm and Thursdays 9am-10am @ CHS 21-254A.
+Office hours: Tuesdays 12am-1pm and Thursdays 2pm-3pm @ Zoom <https://ucla.zoom.us/j/98224611941>.
 
 ### Teaching Assistant
 
 Tomoki Okuno: <tomokiokuno0528@ucla.edu>  
-Office hours: Wednesday 12pm-1pm @ CHS 51-236D and Friday 2pm-3pm @ Zoom <https://ucla.zoom.us/j/98224611941>.
+Office hours: Wednesday 5pm-6pm @ TBD and Friday 2pm-3pm @ Zoom <https://ucla.zoom.us/j/98224611941>.
 
 ### Course Description
 
