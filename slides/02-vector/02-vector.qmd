@@ -455,7 +455,7 @@ x = randn(5)
 
 - **Angle** between two nonzero vectors $\mathbf{x}, \mathbf{y}$ is
 $$
-\theta = \operatorname{arccos} \left(\frac{\mathbf{x}'\mathbf{y}}{\|\mathbf{x}\|\|\mathbf{y}\|}\right).
+\theta = \angle (\mathbf{x}, \mathbf{y}) = \operatorname{arccos} \left(\frac{\mathbf{x}'\mathbf{y}}{\|\mathbf{x}\|\|\mathbf{y}\|}\right).
 $$
 This is the unique value of $\theta \in [0, \pi]$ that satisifies
 $$
@@ -490,7 +490,8 @@ plot([0 0; x[1] y[1]], [0 0; x[2] y[2]], arrow = true, color = [:blue, :purple],
     xticks = -3:1:3, yticks = -2:1:2,
     framestyle = :origin,
     aspect_ratio = :equal,
-    title = L"$x$ and $y$ are aligned or parallel: $x'y = %$(dot(x, y)) = \|\|x\|\| \|\|y\|\|")
+    title = L"$x$ and $y$ are aligned or parallel: 
+    $x'y = %$(dot(x, y)) = \|\|x\|\| \|\|y\|\|$")
 ```
 
 ```{julia}
@@ -509,7 +510,7 @@ plot([0 0; x[1] y[1]], [0 0; x[2] y[2]], arrow = true, color = [:blue, :purple],
     framestyle = :origin,
     aspect_ratio = :equal,
     title = L"$x$ and $y$ make an acute angle: 
-    $0 < x'y = %$(round(dot(x, y), digits=1)) < %$(round(norm(x) * norm(y), digits=1)) = \|\|x\|\| \|\|y\|\|")
+    $0 < x'y = %$(round(dot(x, y), digits=1)) < %$(round(norm(x) * norm(y), digits=1)) = \|\|x\|\| \|\|y\|\|$")
 ```
 
 ```{julia}
@@ -624,7 +625,7 @@ with $\gamma = - \alpha_j^{-1} \left( \sum_{i=1}^{j-1} \beta_i \alpha_i + \sum_{
 
 - Theorem: Any vector $\mathbf{x} \in \mathbb{R}^n$ can be expressed as a linear combination of basis vectors $\mathbf{x} = \alpha_1 \mathbf{a}_1 + \cdots + \alpha_n \mathbf{a}_n$ for some $\alpha_1, \ldots, \alpha_n$, and these coefficients are unique. This is called expansion of $\mathbf{x}$ in the basis $\mathbf{a}_1, \ldots, \mathbf{a}_n$.
 
-    Proof of existence by contradition (optional). Suppose $\mathbf{x}$ can NOT be expressed as a linear combination of basis vectors $\mathbf{x} = \alpha_1 \mathbf{a}_1 + \cdots + \alpha_n \mathbf{a}_n$. Suppose an arbitrary linear combination $\alpha_1 \mathbf{a}_1 + \cdots + \alpha_n \mathbf{a}_n + \beta \mathbf{x} = \mathbf{0}$. Then $\beta = 0$ otherwise it contradictions with our assumption. Also $\alpha_1 = \cdots = \alpha_n = 0$ by linear independence of $\mathbf{a}_1, \ldots, \mathbf{a}_n$. Therefore we conclude $\alpha_1 = \cdots = \alpha_n = \beta = 0$. Thus $\mathbf{a}_1, \ldots, \mathbf{a}_n, \mathbf{x}$ are linearly independent, contradicting with the independence-dimension inequality.
+    Proof of existence by contradition (optional). Suppose $\mathbf{x}$ can NOT be expressed as a linear combination of basis vectors. Suppose an arbitrary linear combination $\alpha_1 \mathbf{a}_1 + \cdots + \alpha_n \mathbf{a}_n + \beta \mathbf{x} = \mathbf{0}$. Then $\beta = 0$ otherwise it contradictions with our assumption. Also $\alpha_1 = \cdots = \alpha_n = 0$ by linear independence of $\mathbf{a}_1, \ldots, \mathbf{a}_n$. Therefore we conclude $\alpha_1 = \cdots = \alpha_n = \beta = 0$. Thus $\mathbf{a}_1, \ldots, \mathbf{a}_n, \mathbf{x}$ are linearly independent, contradicting with the independence-dimension inequality.
     
     Proof of uniqueness: TODO in class.
 
@@ -848,9 +849,9 @@ Computational complexity of G-S algorithm:
 
 - Step 1 of iteration $i$ requires $i-1$ inner products, $\mathbf{q}_1' \mathbf{a}_i, \ldots, \mathbf{q}_{i-1}' \mathbf{a}_i$, which costs $(i-1)(2n-1)$ flops.  
 
-- $2n(i-1)$ flops to compute $\tilde{\mathbf{q}}_i$.  
+- Step 2 of iteration $i$ requires $2n(i-1)$ flops to compute $\tilde{\mathbf{q}}_i$.  
 
-- $3n$ flops to compute $\|\tilde{\mathbf{q}}_i\|$ and $\mathbf{q}_i$. 
+- Step 3 of iteration $i$ requires $3n$ flops to compute $\|\tilde{\mathbf{q}}_i\|$ and $\mathbf{q}_i$. 
 
 - Assuming no early termination, total computational cost is:
 $$
