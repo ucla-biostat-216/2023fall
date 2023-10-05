@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Dr. Hua Zhou @ UCLA">
-<meta name="dcterms.date" content="2023-10-04">
+<meta name="dcterms.date" content="2023-10-05">
 
 <title>Vectors (BV Chapters 1, 3, 5)</title>
 <style>
@@ -3180,7 +3180,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 4, 2023</p>
+      <p class="date">October 5, 2023</p>
     </div>
   </div>
   
@@ -4685,7 +4685,7 @@ q3 = q̃3 / norm(q̃3) = [0.7678128636064446, -0.5620337648719156, -0.1948948407
 <li><p>Orthogonalization step ensures that <span class="math inline">\(\tilde{\mathbf{q}}_i \perp \mathbf{q}_1, \ldots, \tilde{\mathbf{q}}_i \perp \mathbf{q}_{i-1}\)</span>. To show this, take inner product of both sides with <span class="math inline">\(\mathbf{q}_j\)</span>, <span class="math inline">\(j &lt; i\)</span> <span class="math display">\[
 \mathbf{q}_j&#39; \tilde{\mathbf{q}}_i = \mathbf{q}_j&#39; \mathbf{a}_i - (\mathbf{q}_1&#39; \mathbf{a}_i) (\mathbf{q}_j&#39; \mathbf{q}_1) - \cdots - (\mathbf{q}_{i-1}&#39; \mathbf{a}_i) (\mathbf{q}_j&#39; \mathbf{q}_{i-1}) = \mathbf{q}_j&#39; \mathbf{a}_i - \mathbf{q}_j&#39; \mathbf{a}_i = 0.
 \]</span></p></li>
-<li><p>So <span class="math inline">\(\mathbf{q}_1, \ldots, \mathbf{q}_i\)</span> are orthogonal. The normalization step enures <span class="math inline">\(\mathbf{q}_i\)</span> is normal.</p></li>
+<li><p>So <span class="math inline">\(\mathbf{q}_1, \ldots, \mathbf{q}_i\)</span> are orthogonal. The normalization step ensures <span class="math inline">\(\mathbf{q}_i\)</span> is normal.</p></li>
 </ul>
 <p>Suppose G-S has not terminated by iteration <span class="math inline">\(i\)</span>, then</p>
 <ul>
@@ -4694,11 +4694,11 @@ q3 = q̃3 / norm(q̃3) = [0.7678128636064446, -0.5620337648719156, -0.1948948407
 </ul>
 <p>Computational complexity of G-S algorithm:</p>
 <ul>
-<li><p>Step 1 of iteration <span class="math inline">\(i\)</span> requires <span class="math inline">\(i-1\)</span> inner products, <span class="math inline">\(\mathbf{q}_1&#39; \mathbf{a}_i, \ldots, \mathbf{q}_{i-1}&#39; \mathbf{a}_i\)</span>, which costs <span class="math inline">\((i-1)(2n-1)\)</span> flops.</p></li>
-<li><p>Step 2 of iteration <span class="math inline">\(i\)</span> requires <span class="math inline">\(2n(i-1)\)</span> flops to compute <span class="math inline">\(\tilde{\mathbf{q}}_i\)</span>.</p></li>
-<li><p>Step 3 of iteration <span class="math inline">\(i\)</span> requires <span class="math inline">\(3n\)</span> flops to compute <span class="math inline">\(\|\tilde{\mathbf{q}}_i\|\)</span> and <span class="math inline">\(\mathbf{q}_i\)</span>.</p></li>
-<li><p>Assuming no early termination, total computational cost is: <span class="math display">\[
-\sum_{i=1}^k [(4n-1) (i - 1) + 3n] = (4n - 1) \frac{k(k-1)}{2} + 3nk \approx 2nk^2,
+<li><p>Step 1 of iteration <span class="math inline">\(i\)</span> requires (1) <span class="math inline">\(i-1\)</span> inner products, <span class="math inline">\(\mathbf{q}_1&#39; \mathbf{a}_i, \ldots, \mathbf{q}_{i-1}&#39; \mathbf{a}_i\)</span>, which costs <span class="math inline">\((i-1)(2n-1)\)</span> flops, (2) <span class="math inline">\(2n(i-1)\)</span> flops to compute <span class="math inline">\(\tilde{\mathbf{q}}_i\)</span></p></li>
+<li><p>Step 2 of iteration <span class="math inline">\(i\)</span> requires less than <span class="math inline">\(n\)</span> flops.</p></li>
+<li><p>Step 3 of iteration <span class="math inline">\(i\)</span> requires <span class="math inline">\(3n\)</span> flops to normalize <span class="math inline">\(\|\tilde{\mathbf{q}}_i\|\)</span>.</p></li>
+<li><p>Assuming no early termination, total computational cost of the GS algorithm to orthonormalize a set of <span class="math inline">\(k\)</span> vectors in <span class="math inline">\(\mathbb{R}^n\)</span> is: <span class="math display">\[
+\sum_{i=1}^k [(4n-1) (i - 1) + 3n] = (4n - 1) \frac{k(k-1)}{2} + 3nk \approx 2nk^2 = O(nk^2),
 \]</span> using <span class="math inline">\(\sum_{i=1}^k (i - 1) = k(k-1)/2\)</span>.</p></li>
 </ul>
 </section>

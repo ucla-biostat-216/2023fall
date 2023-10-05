@@ -837,7 +837,7 @@ $$
 \mathbf{q}_j' \tilde{\mathbf{q}}_i = \mathbf{q}_j' \mathbf{a}_i - (\mathbf{q}_1' \mathbf{a}_i) (\mathbf{q}_j' \mathbf{q}_1) - \cdots - (\mathbf{q}_{i-1}' \mathbf{a}_i) (\mathbf{q}_j' \mathbf{q}_{i-1}) = \mathbf{q}_j' \mathbf{a}_i - \mathbf{q}_j' \mathbf{a}_i = 0.
 $$
 
-- So $\mathbf{q}_1, \ldots, \mathbf{q}_i$ are orthogonal. The normalization step enures $\mathbf{q}_i$ is normal.
+- So $\mathbf{q}_1, \ldots, \mathbf{q}_i$ are orthogonal. The normalization step ensures $\mathbf{q}_i$ is normal.
 
 Suppose G-S has not terminated by iteration $i$, then 
 
@@ -847,14 +847,14 @@ Suppose G-S has not terminated by iteration $i$, then
 
 Computational complexity of G-S algorithm:
 
-- Step 1 of iteration $i$ requires $i-1$ inner products, $\mathbf{q}_1' \mathbf{a}_i, \ldots, \mathbf{q}_{i-1}' \mathbf{a}_i$, which costs $(i-1)(2n-1)$ flops.  
+- Step 1 of iteration $i$ requires (1) $i-1$ inner products, $\mathbf{q}_1' \mathbf{a}_i, \ldots, \mathbf{q}_{i-1}' \mathbf{a}_i$, which costs $(i-1)(2n-1)$ flops, (2) $2n(i-1)$ flops to compute $\tilde{\mathbf{q}}_i$
 
-- Step 2 of iteration $i$ requires $2n(i-1)$ flops to compute $\tilde{\mathbf{q}}_i$.  
+- Step 2 of iteration $i$ requires less than $n$ flops.  
 
-- Step 3 of iteration $i$ requires $3n$ flops to compute $\|\tilde{\mathbf{q}}_i\|$ and $\mathbf{q}_i$. 
+- Step 3 of iteration $i$ requires $3n$ flops to normalize $\|\tilde{\mathbf{q}}_i\|$. 
 
-- Assuming no early termination, total computational cost is:
+- Assuming no early termination, total computational cost of the GS algorithm to orthonormalize a set of $k$ vectors in $\mathbb{R}^n$ is:
 $$
-\sum_{i=1}^k [(4n-1) (i - 1) + 3n] = (4n - 1) \frac{k(k-1)}{2} + 3nk \approx 2nk^2,
+\sum_{i=1}^k [(4n-1) (i - 1) + 3n] = (4n - 1) \frac{k(k-1)}{2} + 3nk \approx 2nk^2 = O(nk^2),
 $$
 using $\sum_{i=1}^k (i - 1) = k(k-1)/2$. 
