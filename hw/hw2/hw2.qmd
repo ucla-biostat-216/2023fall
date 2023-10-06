@@ -1,0 +1,90 @@
+---
+title: Biostat 216 Homework 2
+subtitle: 'Due Oct 13 @ 11:59pm'
+format:
+  html:
+    theme: cosmo
+    embed-resources: true
+    number-sections: true
+    toc: true
+    toc-depth: 4
+    toc-location: left
+    code-fold: false
+jupyter:
+  jupytext:
+    formats: 'ipynb,qmd'
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.15.2
+  kernelspec:
+    display_name: Julia 1.9.3
+    language: julia
+    name: julia-1.9
+---
+
+Submit a PDF (scanned/photographed from handwritten solutions, or converted from RMarkdown or Jupyter Notebook or Quarto) to Gradescope in BruinLearn. 
+
+## Q1. Average and norm
+
+Use the Cauchy-Schwarz inequality to prove that
+$$
+- \frac{1}{\sqrt{n}} \|\mathbf{x}\| \le \frac{1}{n} \sum_{i=1}^n x_i \le \frac{1}{\sqrt{n}} \|\mathbf{x}\|
+$$
+for any $\mathbf{x} \in \mathbb{R}^n$. In other words, $-\operatorname{rms}(\mathbf{x}) \le \operatorname{avg}(\mathbf{x}) \le \operatorname{rms}(\mathbf{x})$.
+
+What are the conditions on $\mathbf{x}$ to have equality in the upper bound? When do we have equality in the lower bound?
+
+## Q2. AM-GM inequality
+
+Use the Cauchy-Schwartz inequality to prove that
+$$
+\frac{1}{n} \sum_{i=1}^n x_i \ge \left( \frac{1}{n} \sum_{i=1}^n \frac{1}{x_i} \right)^{-1}
+$$
+for any $\mathbf{x} \in \mathbb{R}^n$ with positive entries $x_i$. 
+
+The left hand side is called the arithmetic mean (AM) and the right hand side is called the geometric mean (GM). You may wonder what can be a practical use of such a simple inequality. See this [paper](http://hua-zhou.github.io/media/pdf/LangeZhou14GP.pdf), which uses the AM-GM inequality to derive a class of optimization algorithms for geometric and signomial programming.
+
+## Q3. Sub-multiplicity for matrix norm
+
+Show the norm property 
+$$
+\|\mathbf{A} \mathbf{B}\| \le \|\mathbf{A}\| \|\mathbf{B}\|
+$$ 
+for the Frobenius norm. Hint: Cauchy-Schwartz inequality.
+
+BV exercise 6.14 is a special case of this result.
+
+## Q4. $k$-means clustering
+
+Read BV Chapter 4.
+
+1. BV exercise 4.1.
+
+2. (Optional) Implement the $k$-means algorithm (BV Algorithm 4.1) and apply to the 60,000 MNIST training images with $k=20$. Can we reproduce the Figures 4.7-4.9 in BV textbook? For Julia users, you can start with the following code.
+
+```{julia}
+#| echo: false
+#| output: false
+
+using Pkg
+Pkg.activate(pwd())
+Pkg.instantiate()
+```
+
+```{julia}
+using MLDatasets
+
+# training images
+size(MNIST().features)
+```
+
+```{julia}
+# vec each image into a 784-vector
+X = reshape(MNIST().features, (28 * 28, 60000))
+```
+
+## BV exercises
+
+5.1, 5.2, 5.4, 5.6, 5.8, 5.9, 6.3, 6.11, 6.17, 6.21, 6.22
