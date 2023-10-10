@@ -670,7 +670,7 @@ A * A
 A * A * A
 ```
 
-**Answer**: $(A^k)_{ij}$ counts the number of paths from node $i$ to node $j$ in exactly $k$ steps.
+**Answer**: $(\mathbf{A}^k)_{ij}$ counts the number of paths from node $i$ to node $j$ in exactly $k$ steps.
 
 ### Properties of matrix multiplications
 
