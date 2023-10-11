@@ -36,7 +36,7 @@ for any $\mathbf{x} \in \mathbb{R}^n$. In other words, $-\operatorname{rms}(\mat
 
 What are the conditions on $\mathbf{x}$ to have equality in the upper bound? When do we have equality in the lower bound?
 
-## Q2. AM-GM inequality
+## Q2. AM-HM inequality
 
 Use the Cauchy-Schwartz inequality to prove that
 $$
@@ -44,7 +44,7 @@ $$
 $$
 for any $\mathbf{x} \in \mathbb{R}^n$ with positive entries $x_i$. 
 
-The left hand side is called the arithmetic mean (AM) and the right hand side is called the geometric mean (GM). You may wonder what can be a practical use of such a simple inequality. See this [paper](http://hua-zhou.github.io/media/pdf/LangeZhou14GP.pdf), which uses the AM-GM inequality to derive a class of optimization algorithms for geometric and signomial programming.
+The left hand side is called the arithmetic mean (AM) and the right hand side is called the harmonic mean (HM). You may wonder what can be a practical use of such a simple inequality. See this [paper](http://hua-zhou.github.io/media/pdf/LangeZhou14GP.pdf), which uses the AM-GM inequality to derive a class of optimization algorithms for geometric and signomial programming.
 
 ## Q3. Sub-multiplicity for matrix norm
 
