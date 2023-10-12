@@ -1593,7 +1593,7 @@ plt = plot(x_vals, y_vals, arrow = true, color = :blue,
 
 ### QR factorization
 
-- Recall in the [Gram-Schmidt algorithm](https://ucla-biostat-216.github.io/2022fall/slides/02-vector/02-vector.html#Gram-Schmidt-algorithm), given input vectors $\mathbf{a}_1, \ldots, \mathbf{a}_k \in \mathbb{R}^n$, the Gram-Schmidt algorithm outputs orthonormal vectors $\mathbf{q}_1, \ldots, \mathbf{q}_k$.
+- Recall in the [Gram-Schmidt algorithm](https://ucla-biostat-216.github.io/2023fall/slides/02-vector/02-vector.html#how-to-orthonormalize-a-set-of-vectors-gram-schmidt-algorithm), given input vectors $\mathbf{a}_1, \ldots, \mathbf{a}_k \in \mathbb{R}^n$, the Gram-Schmidt algorithm outputs orthonormal vectors $\mathbf{q}_1, \ldots, \mathbf{q}_k$.
 
     This can be compactly expressed as
 $$
