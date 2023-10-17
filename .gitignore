@@ -29,7 +29,7 @@ Manifest.toml
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
 books/
-midterm/
+midterm.*
 final/
 hw*sol.*
 hw*.pdf
