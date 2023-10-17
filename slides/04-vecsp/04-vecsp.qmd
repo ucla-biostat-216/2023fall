@@ -1,5 +1,5 @@
 ---
-title: Vector space
+title: Vector Space
 subtitle: Biostat 216
 author: Dr. Hua Zhou @ UCLA
 date: today
@@ -57,6 +57,8 @@ using Plots
 * Two vector spaces $\mathcal{S}_1$ and $\mathcal{S}_2$ are **essentially disjoint** or **virtually disjoint** if the only element in $\mathcal{S}_1 \cap \mathcal{S}_2$ is the zero vector $\mathbf{0}$.
 
 ```{julia}
+#| code-fold: true
+
 x = [1, -2, -2]
 α = -3:0.1:3
 f = x * α'
@@ -72,6 +74,8 @@ plot!(plt, [0, x[1]], [0, x[2]], [0, x[3]], arrow = true, lw = 5, marker = 5)
 ```
 
 ```{julia}
+#| code-fold: true
+
 x1 = [2, 1, 0]
 x2 = [2, 0, 1]
 
@@ -104,6 +108,8 @@ plot!(plt, [0, x2[1]], [0, x2[2]], [0, x2[3]],
     Give a counter-example in HW3.    
 
 ```{julia}
+#| code-fold: true
+
 # plane 1
 x1 = [2, 1, 0]
 x2 = [2, 0, 1]

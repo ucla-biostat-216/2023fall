@@ -1,5 +1,5 @@
 ---
-title: Rank and nullity
+title: Rank and Nullity
 subtitle: Biostat 216
 author: Dr. Hua Zhou @ UCLA
 date: today
@@ -28,18 +28,20 @@ jupyter:
 
 **Highlights**: In this lecture we will show some most important results about the rank of a matrix:  
 
-1. column rank = row rank.
+1. For any $\mathbf{A} \in \mathbb{R}^{m \times n}$, $\text{rank}(\mathbf{A}) \le \min \{m, n\}$.
 
-2. Matrix multiplication can only decrease the rank:  
+2. column rank = row rank.
+
+3. Matrix multiplication can only decrease the rank:  
 $\text{rank}(\mathbf{A} \mathbf{B}) \le \text{rank}(\mathbf{A})$  
     $\text{rank}(\mathbf{A} \mathbf{B}) \le \text{rank}(\mathbf{B})$.  
     Some special cases: (1) $\text{rank}(\mathbf{A} \mathbf{B}) = \text{rank}(\mathbf{A})$ if $\mathbf{B}$ has full row rank. (2) $\text{rank}(\mathbf{A} \mathbf{B}) = \text{rank}(\mathbf{B})$ if $\mathbf{A}$ has full column rank. (3). $\text{rank}(\mathbf{A}' \mathbf{A}) = \text{rank}(\mathbf{A})$ for any $\mathbf{A}$.
    
-3. $\text{rank}(\mathbf{A} + \mathbf{B}) \le \text{rank}(\mathbf{B}) + \text{rank}(\mathbf{B})$.
+4. $\text{rank}(\mathbf{A} + \mathbf{B}) \le \text{rank}(\mathbf{B}) + \text{rank}(\mathbf{B})$.
 
-4. Rank-nullity theorem: For any $\mathbf{A} \in \mathbb{R}^{m \times n}$, $\text{rank}(\mathbf{A}) + \text{nullity}(\mathbf{A}) = n$.
+5. Rank-nullity theorem: For any $\mathbf{A} \in \mathbb{R}^{m \times n}$, $\text{rank}(\mathbf{A}) + \text{nullity}(\mathbf{A}) = n$.
 
-5. Fundamental theorem of ranks: $\text{rank}(\mathbf{A}) = \text{rank}(\mathbf{A}') = \text{rank}(\mathbf{A}'\mathbf{A}) = \text{rank}(\mathbf{A}\mathbf{A}')$.
+6. Fundamental theorem of ranks: $\text{rank}(\mathbf{A}) = \text{rank}(\mathbf{A}') = \text{rank}(\mathbf{A}'\mathbf{A}) = \text{rank}(\mathbf{A}\mathbf{A}')$.
 
 <img src="../04-vecsp/four_fundamental_subspaces.png" width=400 align="center"/>
 
@@ -132,7 +134,7 @@ rank(A')
     
     It is **full column rank** if $\text{rank}(\mathbf{A}) = n$.
 
-- A square matrix $\mathbf{A} \in \mathbb{R}^{n \times n}$ is **singular** if $\text{rank}(\mathbf{A}) < n$ and **non-singular** or **invertible** if $\text{rank}(\mathbf{A}) = n$.
+- A square matrix $\mathbf{A} \in \mathbb{R}^{n \times n}$ is **singular** if $\text{rank}(\mathbf{A}) < n$ and **non-singular** (or **invertible**) if $\text{rank}(\mathbf{A}) = n$.
 
 - Example: The identity matrix
 $$

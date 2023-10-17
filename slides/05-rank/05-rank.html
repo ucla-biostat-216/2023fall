@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Dr. Hua Zhou @ UCLA">
-<meta name="dcterms.date" content="2023-10-14">
+<meta name="dcterms.date" content="2023-10-17">
 
-<title>Rank and nullity</title>
+<title>Rank and Nullity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -3154,7 +3154,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Rank and nullity</h1>
+<h1 class="title">Rank and Nullity</h1>
 <p class="subtitle lead">Biostat 216</p>
 </div>
 
@@ -3172,7 +3172,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 14, 2023</p>
+      <p class="date">October 17, 2023</p>
     </div>
   </div>
   
@@ -3184,6 +3184,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 
 <p><strong>Highlights</strong>: In this lecture we will show some most important results about the rank of a matrix:</p>
 <ol type="1">
+<li><p>For any <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{m \times n}\)</span>, <span class="math inline">\(\text{rank}(\mathbf{A}) \le \min \{m, n\}\)</span>.</p></li>
 <li><p>column rank = row rank.</p></li>
 <li><p>Matrix multiplication can only decrease the rank:<br>
 <span class="math inline">\(\text{rank}(\mathbf{A} \mathbf{B}) \le \text{rank}(\mathbf{A})\)</span><br>
@@ -3572,7 +3573,7 @@ rank(X) = 7</code></pre>
 <li><p>For <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{m \times n}\)</span>, we say <span class="math inline">\(\mathbf{A}\)</span> is <strong>full rank</strong> if <span class="math inline">\(\text{rank}(\mathbf{A}) = \min \{m, n\}\)</span>.</p>
 <p>It is <strong>full row rank</strong> if <span class="math inline">\(\text{rank}(\mathbf{A}) = m\)</span>.</p>
 <p>It is <strong>full column rank</strong> if <span class="math inline">\(\text{rank}(\mathbf{A}) = n\)</span>.</p></li>
-<li><p>A square matrix <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{n \times n}\)</span> is <strong>singular</strong> if <span class="math inline">\(\text{rank}(\mathbf{A}) &lt; n\)</span> and <strong>non-singular</strong> or <strong>invertible</strong> if <span class="math inline">\(\text{rank}(\mathbf{A}) = n\)</span>.</p></li>
+<li><p>A square matrix <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{n \times n}\)</span> is <strong>singular</strong> if <span class="math inline">\(\text{rank}(\mathbf{A}) &lt; n\)</span> and <strong>non-singular</strong> (or <strong>invertible</strong>) if <span class="math inline">\(\text{rank}(\mathbf{A}) = n\)</span>.</p></li>
 <li><p>Example: The identity matrix <span class="math display">\[
   \mathbf{I} = \begin{pmatrix}
   1 &amp; \cdots &amp; 0 \\
