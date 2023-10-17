@@ -1495,7 +1495,7 @@ x = randn(n);
 ```
 
 ```{julia}
-@benchmark $A * $B * $x
+@benchmark ($A * $B) * $x
 ```
 
 ```{julia}
