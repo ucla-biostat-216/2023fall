@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Dr. Hua Zhou @ UCLA">
-<meta name="dcterms.date" content="2023-10-17">
+<meta name="dcterms.date" content="2023-10-19">
 
 <title>Rank and Nullity</title>
 <style>
@@ -3172,7 +3172,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 17, 2023</p>
+      <p class="date">October 19, 2023</p>
     </div>
   </div>
   
@@ -3184,8 +3184,8 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 
 <p><strong>Highlights</strong>: In this lecture we will show some most important results about the rank of a matrix:</p>
 <ol type="1">
+<li><p>column rank = row rank = rank.</p></li>
 <li><p>For any <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{m \times n}\)</span>, <span class="math inline">\(\text{rank}(\mathbf{A}) \le \min \{m, n\}\)</span>.</p></li>
-<li><p>column rank = row rank.</p></li>
 <li><p>Matrix multiplication can only decrease the rank:<br>
 <span class="math inline">\(\text{rank}(\mathbf{A} \mathbf{B}) \le \text{rank}(\mathbf{A})\)</span><br>
 <span class="math inline">\(\text{rank}(\mathbf{A} \mathbf{B}) \le \text{rank}(\mathbf{B})\)</span>.<br>
@@ -3740,7 +3740,7 @@ rank(X) = 7</code></pre>
 <section id="rank-factorization-important" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="rank-factorization-important"><span class="header-section-number">5</span> Rank factorization (important)</h2>
 <ul>
-<li><p>Let <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{m \times n}\)</span> with rank <span class="math inline">\(r \ge 1\)</span>. The product <span class="math inline">\(\mathbf{A} = \mathbf{C} \mathbf{R}\)</span>, where <span class="math inline">\(\mathbf{C} \in \mathbb{R}^{m \times r}\)</span> and <span class="math inline">\(\mathbf{R} \in \mathbb{R}^{r \times n}\)</span> is called a <strong>rank decomposition</strong> or <strong>rank factorization</strong> of <span class="math inline">\(\mathbf{A}\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{m \times n}\)</span> with (column) rank <span class="math inline">\(r \ge 1\)</span>. The product <span class="math inline">\(\mathbf{A} = \mathbf{C} \mathbf{R}\)</span>, where <span class="math inline">\(\mathbf{C} \in \mathbb{R}^{m \times r}\)</span> and <span class="math inline">\(\mathbf{R} \in \mathbb{R}^{r \times n}\)</span> is called a <strong>rank decomposition</strong> or <strong>rank factorization</strong> of <span class="math inline">\(\mathbf{A}\)</span>.</p></li>
 <li><p>Visualize (TODO): <span class="math display">\[
 \mathbf{A} = \begin{pmatrix}
 | &amp; &amp; | \\
