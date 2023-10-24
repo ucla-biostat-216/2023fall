@@ -368,7 +368,7 @@ plot([0 x[1]; x[1] x[1]], [0 0; 0 x[2]], arrow = true, color = :blue,
     3. Triangle inequality: $\|\mathbf{x} + \mathbf{y}\| \le \|\mathbf{x}\| + \|\mathbf{y}\|$ for any $\mathbf{x}, \mathbf{y} \in \mathbb{R}^n$.  
     Proof: use Cauchy-Schwartz inequality. TODO in class.
     
-    4. **Cauchy-Schwartz inequality**: $|\mathbf{x}' \mathbf{y}| \le \|\mathbf{x}\| \|\mathbf{y}\|$ for any $\mathbf{x}, \mathbf{y} \in \mathbb{R}^n$. The equality holds when (1) $\mathbf{x} = \mathbf{0}$ or $\mathbf{y}=\mathbf{0}$ or (2) $\mathbf{x} \ne \mathbf{0}$, $\mathbf{y} \ne \mathbf{0}$, and $\mathbf{x} = \alpha \mathbf{y}$ for some $\alpha \ne 0$.
+    4. **Cauchy-Schwarz inequality**: $|\mathbf{x}' \mathbf{y}| \le \|\mathbf{x}\| \|\mathbf{y}\|$ for any $\mathbf{x}, \mathbf{y} \in \mathbb{R}^n$. The equality holds when (1) $\mathbf{x} = \mathbf{0}$ or $\mathbf{y}=\mathbf{0}$ or (2) $\mathbf{x} \ne \mathbf{0}$, $\mathbf{y} \ne \mathbf{0}$, and $\mathbf{x} = \alpha \mathbf{y}$ for some $\alpha \ne 0$.
     
     Proof: The function $f(t) = \|\mathbf{x} - t \mathbf{y}\|_2^2 = \|\mathbf{x}\|_2^2 - 2t (\mathbf{x}' \mathbf{y}) + t^2\|\mathbf{y}\|_2^2$ is minimized at $t^\star =(\mathbf{x}'\mathbf{y}) / \|\mathbf{y}\|^2$ with minimal value $0 \le f(t^\star) = \|\mathbf{x}\|^2 - (\mathbf{x}'\mathbf{y})^2 / \|\mathbf{y}\|^2$.
 
@@ -407,7 +407,7 @@ plot!([x[1] 0; x[1] + y[1] x[1] + y[1]], [x[2] 0; x[2] + y[2] x[2] + y[2]],
 ```
 
 ```{julia}
-# check Cauchy-Schwartz inequality on random vectors
+# check Cauchy-Schwarz inequality on random vectors
 @show x = randn(5)
 @show y = randn(5)
 @show abs(x'y)
@@ -462,7 +462,7 @@ $$
 \cos \theta = \frac{\mathbf{x}'\mathbf{y}}{\|\mathbf{x}\|\|\mathbf{y}\|}.
 $$
 
-- Cauchy-Schwartz inequality guarantees that 
+- Cauchy-Schwarz inequality guarantees that 
 $$
 -1 \le \cos \theta = \frac{\mathbf{x}'\mathbf{y}}{\|\mathbf{x}\|\|\mathbf{y}\|} \le 1.
 $$
