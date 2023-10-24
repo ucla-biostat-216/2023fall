@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Dr. Hua Zhou @ UCLA">
-<meta name="dcterms.date" content="2023-10-19">
+<meta name="dcterms.date" content="2023-10-23">
 
 <title>Rank and Nullity</title>
 <style>
@@ -3172,7 +3172,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 19, 2023</p>
+      <p class="date">October 23, 2023</p>
     </div>
   </div>
   
@@ -3593,7 +3593,7 @@ rank(X) = 7</code></pre>
 <p>Proof (optional): We show the more general statement. Assume <span class="math inline">\(\mathbf{B} \in \mathbb{R}^{m \times n}\)</span> has full row rank, we want to show <span class="math inline">\(\text{rank}(\mathbf{A}) = \text{rank}(\mathbf{A}\mathbf{B})\)</span>. Since <span class="math inline">\(\mathbf{B} \in \mathbb{R}^{m \times n}\)</span> has full row rank, there exists a permutation matrix <span class="math inline">\(\mathbf{P} \in \{0,1\}^{n \times n}\)</span> such that <span class="math display">\[
   \mathbf{B} \mathbf{P} = \begin{pmatrix} \mathbf{B}_1 : \mathbf{B}_2 \end{pmatrix},
 \]</span> where <span class="math inline">\(\mathbf{B}_1 \in \mathbb{R}^{m \times m}\)</span> is non-singular and <span class="math inline">\(\mathbf{B}_2 \in \mathbb{R}^{m \times (n-m)}\)</span>. Then <span class="math display">\[
-  \text{rank}(\mathbf{A}) \ge \text{rank}(\mathbf{A}\mathbf{B}) = \text{rank}(\mathbf{A} \begin{pmatrix} \mathbf{B}_1 : \mathbf{B}_2 \end{pmatrix} \mathbf{P}&#39;) \ge \text{rank} \left( \mathbf{A} \begin{pmatrix} \mathbf{B}_1 : \mathbf{B}_2 \end{pmatrix} \mathbf{P}&#39; \mathbf{P} \begin{pmatrix} \mathbf{B}_1^{-1} \\ \mathbf{O} \end{pmatrix} \right) = \text{rank} (\mathbf{A} \mathbf{I}_n) = \text{rank} (\mathbf{A}).
+  \text{rank}(\mathbf{A}) \ge \text{rank}(\mathbf{A}\mathbf{B}) = \text{rank}(\mathbf{A} \begin{pmatrix} \mathbf{B}_1 : \mathbf{B}_2 \end{pmatrix} \mathbf{P}&#39;) \ge \text{rank} \left( \mathbf{A} \begin{pmatrix} \mathbf{B}_1 : \mathbf{B}_2 \end{pmatrix} \mathbf{P}&#39; \mathbf{P} \begin{pmatrix} \mathbf{B}_1^{-1} \\ \mathbf{O} \end{pmatrix} \right) = \text{rank} (\mathbf{A} \mathbf{I}_m) = \text{rank} (\mathbf{A}).
 \]</span> Thus <span class="math inline">\(\text{rank}(\mathbf{A}) = \text{rank} (\mathbf{A} \mathbf{B})\)</span>. Proof for the other half of the statement follows the same argument.</p></li>
 <li><p>Example: 2019 qual. exam Q1.</p></li>
 </ul>
