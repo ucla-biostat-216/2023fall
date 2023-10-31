@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Dr. Hua Zhou @ UCLA">
-<meta name="dcterms.date" content="2023-10-30">
+<meta name="dcterms.date" content="2023-10-31">
 
 <title>Orthogonal Projections</title>
 <style>
@@ -3139,7 +3139,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 30, 2023</p>
+      <p class="date">October 31, 2023</p>
     </div>
   </div>
   
@@ -3289,7 +3289,7 @@ Proof of 4: Follows from essential disjointness between <span class="math inline
 <p>Let <span class="math inline">\(\mathbf{q}_1, \ldots, \mathbf{q}_r\)</span> be an orthonormal basis of <span class="math inline">\(\mathcal{C}(\mathbf{X})\)</span>, e.g., by Gram-Schmidt with pivoting. Then <span class="math display">\[
 \mathbf{P} = \mathbf{Q} \mathbf{Q}&#39;, \text{where } \mathbf{Q} = \begin{pmatrix} | &amp; &amp; | \\ \mathbf{q}_1 &amp; \dots &amp; \mathbf{q}_r \\ | &amp; &amp; | \end{pmatrix},
 \]</span> is the orthogonal projector <span class="math inline">\(\mathbf{P}\)</span> into <span class="math inline">\(\mathcal{C}(\mathbf{X})\)</span>.</p>
-<p>Proof: For any <span class="math inline">\(\mathbf{y} \in \mathbb{R}^n\)</span>, we show <span class="math inline">\(\mathbf{y} = \mathbf{P} \mathbf{y} + (\mathbf{y} - \mathbf{P} \mathbf{y})\)</span> such that <span class="math inline">\(\mathbf{P} \mathbf{y} \in \mathcal{C}(\mathbf{X})\)</span> and <span class="math inline">\(\mathbf{y} - \mathbf{P} \mathbf{y} \in \mathcal{C}(\mathbf{X}^\perp = \mathcal{N}(\mathbf{X}&#39;)\)</span>. <span class="math display">\[
+<p>Proof: For any <span class="math inline">\(\mathbf{y} \in \mathbb{R}^n\)</span>, we show <span class="math inline">\(\mathbf{y} = \mathbf{P} \mathbf{y} + (\mathbf{y} - \mathbf{P} \mathbf{y})\)</span> such that <span class="math inline">\(\mathbf{P} \mathbf{y} \in \mathcal{C}(\mathbf{X})\)</span> and <span class="math inline">\(\mathbf{y} - \mathbf{P} \mathbf{y} \in \mathcal{C}(\mathbf{X})^\perp = \mathcal{N}(\mathbf{X}&#39;)\)</span>. <span class="math display">\[
 \mathbf{P} \mathbf{y} = \mathbf{Q} \mathbf{Q}&#39; \mathbf{y} \in \mathcal{C}(\mathbf{Q}) = \mathcal{C}(\mathbf{X}).
 \]</span> And <span class="math display">\[
 \mathbf{Q}&#39; (\mathbf{y} - \mathbf{P} \mathbf{y}) = \mathbf{Q}&#39; (\mathbf{y} - \mathbf{Q} \mathbf{Q}&#39; \mathbf{y}) = \mathbf{Q}&#39; \mathbf{y} - \mathbf{Q}&#39; \mathbf{y} = \mathbf{0}_r
