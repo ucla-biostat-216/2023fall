@@ -181,8 +181,8 @@ where $\mathbf{A} \in \mathbb{R}^{m \times n}$ (coefficient matrix), $\mathbf{x}
     & & \mathbf{A} \mathbf{x} = \mathbf{b} \\
     &\Leftrightarrow& \mathbf{A} \mathbf{x} = \mathbf{A} \mathbf{A}^- \mathbf{b} \\
     &\Leftrightarrow& \mathbf{A} (\mathbf{x} - \mathbf{A}^- \mathbf{b}) = \mathbf{0} \\
-    &\Leftrightarrow& \mathbf{x} - \mathbf{A}^- \mathbf{b} = (\mathbf{I}_n - \mathbf{A}^- \mathbf{A}) \mathbf{q} \\
-    &\Leftrightarrow& \mathbf{x} = \mathbf{A}^- \mathbf{b} + (\mathbf{I}_n - \mathbf{A}^- \mathbf{A}) \mathbf{q}.
+    &\Leftrightarrow& \mathbf{x} - \mathbf{A}^- \mathbf{b} = (\mathbf{I}_n - \mathbf{A}^- \mathbf{A}) \mathbf{q} \text{ for some } \mathbf{q} \in \mathbb{R}^n \\
+    &\Leftrightarrow& \mathbf{x} = \mathbf{A}^- \mathbf{b} + (\mathbf{I}_n - \mathbf{A}^- \mathbf{A}) \mathbf{q} \text{ for some } \mathbf{q} \in \mathbb{R}^n.
     \end{eqnarray*}
 
 - Corollary: $\mathbf{A} \mathbf{x} = \mathbf{b}$ is consistent for _all_ $\mathbf{b}$ if and only if $\mathbf{A}$ has full row rank.
@@ -191,11 +191,23 @@ where $\mathbf{A} \in \mathbb{R}^{m \times n}$ (coefficient matrix), $\mathbf{x}
 
 ## Invertible matrix
 
-- If a square $\mathbf{A}$ has full row and column rank, then $\mathbf{A}$ is invertible (or nonsingular).
+Assume that a square $\mathbf{A} \in \mathbb{R}^n$ has full row and column rank.
 
-    The generalized inverse $\mathbf{A}^-$ is unique, denoted by $\mathbf{A}^{-1}$.
+- If a square $\mathbf{A}$ has full row and column rank, then $\mathbf{A}$ is **invertible** (or **nonsingular**).
 
-    For any $\mathbf{b}$, the unique solution is $\mathbf{A}^{-1} \mathbf{b}$.
+- Consider the left inverse $\mathbf{X}$ that satisifies $\mathbf{X} \mathbf{A} = \mathbf{I}$ and the right inverse $\mathbf{Y}$ that satisfies $\mathbf{A} \mathbf{Y} = \mathbf{I}$. Both left and right inverses exist (why?) and they are equal:
+$$
+\mathbf{X} = \mathbf{X} \mathbf{I} = \mathbf{X} \mathbf{A} \mathbf{Y} = \mathbf{I} \mathbf{Y} = \mathbf{Y}.
+$$
+Uniqueness of the left and right inverse follows from uniqueness of the basis expansion. 
+
+- We say that $\mathbf{A}$ is **invertible** (or **nonsingular**), and denote the (left and right) **inverse** by $\mathbf{A}^{-1}$.
+
+- The generalized inverse $\mathbf{A}^-$ is unique, which is the same as $\mathbf{A}^{-1}$.
+
+    Proof: Let $\mathbf{G}_1$ and $\mathbf{G}_2$ be two generalized inverses of $\mathbf{A}$. Then $\mathbf{A} \mathbf{G}_1 \mathbf{A} = \mathbf{A}$ and $\mathbf{A} \mathbf{G}_2 \mathbf{A} = \mathbf{A}$. Multiplying both equations by $\mathbf{A}^{-1}$ on the left and right, we obtain $\mathbf{G}_1 = \mathbf{A}^{-1} = \mathbf{G}_2$.
+
+- For any $\mathbf{b}$, the unique solution is $\mathbf{A}^{-1} \mathbf{b}$.
 
 ### Examples of matrix inverse
 

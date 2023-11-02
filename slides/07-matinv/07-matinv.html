@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Dr. Hua Zhou @ UCLA">
-<meta name="dcterms.date" content="2023-11-01">
+<meta name="dcterms.date" content="2023-11-02">
 
 <title>Linear equations and matrix inverses (BV Chapter 11)</title>
 <style>
@@ -3179,7 +3179,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 1, 2023</p>
+      <p class="date">November 2, 2023</p>
     </div>
   </div>
   
@@ -3354,8 +3354,8 @@ a_{m1} x_1 + \cdots + a_{mn} x_n &amp;=&amp; b_m
   &amp; &amp; \mathbf{A} \mathbf{x} = \mathbf{b} \\
   &amp;\Leftrightarrow&amp; \mathbf{A} \mathbf{x} = \mathbf{A} \mathbf{A}^- \mathbf{b} \\
   &amp;\Leftrightarrow&amp; \mathbf{A} (\mathbf{x} - \mathbf{A}^- \mathbf{b}) = \mathbf{0} \\
-  &amp;\Leftrightarrow&amp; \mathbf{x} - \mathbf{A}^- \mathbf{b} = (\mathbf{I}_n - \mathbf{A}^- \mathbf{A}) \mathbf{q} \\
-  &amp;\Leftrightarrow&amp; \mathbf{x} = \mathbf{A}^- \mathbf{b} + (\mathbf{I}_n - \mathbf{A}^- \mathbf{A}) \mathbf{q}.
+  &amp;\Leftrightarrow&amp; \mathbf{x} - \mathbf{A}^- \mathbf{b} = (\mathbf{I}_n - \mathbf{A}^- \mathbf{A}) \mathbf{q} \text{ for some } \mathbf{q} \in \mathbb{R}^n \\
+  &amp;\Leftrightarrow&amp; \mathbf{x} = \mathbf{A}^- \mathbf{b} + (\mathbf{I}_n - \mathbf{A}^- \mathbf{A}) \mathbf{q} \text{ for some } \mathbf{q} \in \mathbb{R}^n.
   \end{eqnarray*}\]</span></p></li>
 <li><p>Corollary: <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> is consistent for <em>all</em> <span class="math inline">\(\mathbf{b}\)</span> if and only if <span class="math inline">\(\mathbf{A}\)</span> has full row rank.</p></li>
 <li><p>Corollary: If a system is consistent, its solution is unique if and only if <span class="math inline">\(\mathbf{b}\)</span> has full column rank.</p></li>
@@ -3364,10 +3364,16 @@ a_{m1} x_1 + \cdots + a_{mn} x_n &amp;=&amp; b_m
 </section>
 <section id="invertible-matrix" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="invertible-matrix"><span class="header-section-number">3</span> Invertible matrix</h2>
+<p>Assume that a square <span class="math inline">\(\mathbf{A} \in \mathbb{R}^n\)</span> has full row and column rank.</p>
 <ul>
-<li><p>If a square <span class="math inline">\(\mathbf{A}\)</span> has full row and column rank, then <span class="math inline">\(\mathbf{A}\)</span> is invertible (or nonsingular).</p>
-<p>The generalized inverse <span class="math inline">\(\mathbf{A}^-\)</span> is unique, denoted by <span class="math inline">\(\mathbf{A}^{-1}\)</span>.</p>
-<p>For any <span class="math inline">\(\mathbf{b}\)</span>, the unique solution is <span class="math inline">\(\mathbf{A}^{-1} \mathbf{b}\)</span>.</p></li>
+<li><p>If a square <span class="math inline">\(\mathbf{A}\)</span> has full row and column rank, then <span class="math inline">\(\mathbf{A}\)</span> is <strong>invertible</strong> (or <strong>nonsingular</strong>).</p></li>
+<li><p>Consider the left inverse <span class="math inline">\(\mathbf{X}\)</span> that satisifies <span class="math inline">\(\mathbf{X} \mathbf{A} = \mathbf{I}\)</span> and the right inverse <span class="math inline">\(\mathbf{Y}\)</span> that satisfies <span class="math inline">\(\mathbf{A} \mathbf{Y} = \mathbf{I}\)</span>. Both left and right inverses exist (why?) and they are equal: <span class="math display">\[
+\mathbf{X} = \mathbf{X} \mathbf{I} = \mathbf{X} \mathbf{A} \mathbf{Y} = \mathbf{I} \mathbf{Y} = \mathbf{Y}.
+\]</span> Uniqueness of the left and right inverse follows from uniqueness of the basis expansion.</p></li>
+<li><p>We say that <span class="math inline">\(\mathbf{A}\)</span> is <strong>invertible</strong> (or <strong>nonsingular</strong>), and denote the (left and right) <strong>inverse</strong> by <span class="math inline">\(\mathbf{A}^{-1}\)</span>.</p></li>
+<li><p>The generalized inverse <span class="math inline">\(\mathbf{A}^-\)</span> is unique, which is the same as <span class="math inline">\(\mathbf{A}^{-1}\)</span>.</p>
+<p>Proof: Let <span class="math inline">\(\mathbf{G}_1\)</span> and <span class="math inline">\(\mathbf{G}_2\)</span> be two generalized inverses of <span class="math inline">\(\mathbf{A}\)</span>. Then <span class="math inline">\(\mathbf{A} \mathbf{G}_1 \mathbf{A} = \mathbf{A}\)</span> and <span class="math inline">\(\mathbf{A} \mathbf{G}_2 \mathbf{A} = \mathbf{A}\)</span>. Multiplying both equations by <span class="math inline">\(\mathbf{A}^{-1}\)</span> on the left and right, we obtain <span class="math inline">\(\mathbf{G}_1 = \mathbf{A}^{-1} = \mathbf{G}_2\)</span>.</p></li>
+<li><p>For any <span class="math inline">\(\mathbf{b}\)</span>, the unique solution is <span class="math inline">\(\mathbf{A}^{-1} \mathbf{b}\)</span>.</p></li>
 </ul>
 <section id="examples-of-matrix-inverse" class="level3" data-number="3.1">
 <h3 data-number="3.1" class="anchored" data-anchor-id="examples-of-matrix-inverse"><span class="header-section-number">3.1</span> Examples of matrix inverse</h3>
