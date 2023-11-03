@@ -191,7 +191,7 @@ where $\mathbf{A} \in \mathbb{R}^{m \times n}$ (coefficient matrix), $\mathbf{x}
 
 ## Invertible matrix
 
-Assume that a square $\mathbf{A} \in \mathbb{R}^n$ has full row and column rank.
+Assume that a square $\mathbf{A} \in \mathbb{R}^{n \times n}$ has full row and column rank.
 
 - If a square $\mathbf{A}$ has full row and column rank, then $\mathbf{A}$ is **invertible** (or **nonsingular**).
 

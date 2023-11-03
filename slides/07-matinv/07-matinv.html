@@ -3348,7 +3348,9 @@ a_{m1} x_1 + \cdots + a_{mn} x_n &amp;=&amp; b_m
 <p>Proof: <em>If</em>: Apparently <span class="math inline">\((\mathbf{I}_n - \mathbf{A}^- \mathbf{A}) \mathbf{q}\)</span> is a solution regardless value of <span class="math inline">\(\mathbf{q}\)</span> since <span class="math inline">\(\mathbf{A} (\mathbf{I}_n - \mathbf{A}^- \mathbf{A}) = \mathbf{A} - \mathbf{A} = \mathbf{0}\)</span>. <em>Only if</em>: If <span class="math inline">\(\tilde{\mathbf{x}}\)</span> is a solution, then <span class="math inline">\(\tilde{\mathbf{x}} = (\mathbf{I}_n - \mathbf{A}^- \mathbf{A}) \mathbf{q}\)</span> by taking <span class="math inline">\(\mathbf{q} = \tilde{\mathbf{x}}\)</span>.</p></li>
 <li><p>Rephrasing above result, we have <span class="math inline">\(\mathcal{N}(\mathbf{A}) = \mathcal{C}(\mathbf{I}_n - \mathbf{A}^- \mathbf{A})\)</span>.</p></li>
 <li><p>Now for the inhomogenous case <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span>.</p>
-<p>Theorem: If <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> is consistent, then <span class="math inline">\(\tilde{\mathbf{x}}\)</span> is a solution if and only if <span class="math display">\[      \tilde{\mathbf{x}} = \mathbf{A}^- \mathbf{b} + (\mathbf{I}_n - \mathbf{A}^- \mathbf{A}) \mathbf{q}     \]</span> for some <span class="math inline">\(\mathbf{q} \in \mathbb{R}^n\)</span>.</p>
+<p>Theorem: If <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> is consistent, then <span class="math inline">\(\tilde{\mathbf{x}}\)</span> is a solution if and only if <span class="math display">\[
+    \tilde{\mathbf{x}} = \mathbf{A}^- \mathbf{b} + (\mathbf{I}_n - \mathbf{A}^- \mathbf{A}) \mathbf{q}
+  \]</span> for some <span class="math inline">\(\mathbf{q} \in \mathbb{R}^n\)</span>.</p>
 <p>Interpretation: <strong>a specific solution</strong> + <strong>a vector in <span class="math inline">\(\mathcal{N}(\mathbf{A})\)</span></strong>.</p>
 <p>Proof: <span class="math display">\[\begin{eqnarray*}
   &amp; &amp; \mathbf{A} \mathbf{x} = \mathbf{b} \\
@@ -3364,7 +3366,7 @@ a_{m1} x_1 + \cdots + a_{mn} x_n &amp;=&amp; b_m
 </section>
 <section id="invertible-matrix" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="invertible-matrix"><span class="header-section-number">3</span> Invertible matrix</h2>
-<p>Assume that a square <span class="math inline">\(\mathbf{A} \in \mathbb{R}^n\)</span> has full row and column rank.</p>
+<p>Assume that a square <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{n \times n}\)</span> has full row and column rank.</p>
 <ul>
 <li><p>If a square <span class="math inline">\(\mathbf{A}\)</span> has full row and column rank, then <span class="math inline">\(\mathbf{A}\)</span> is <strong>invertible</strong> (or <strong>nonsingular</strong>).</p></li>
 <li><p>Consider the left inverse <span class="math inline">\(\mathbf{X}\)</span> that satisifies <span class="math inline">\(\mathbf{X} \mathbf{A} = \mathbf{I}\)</span> and the right inverse <span class="math inline">\(\mathbf{Y}\)</span> that satisfies <span class="math inline">\(\mathbf{A} \mathbf{Y} = \mathbf{I}\)</span>. Both left and right inverses exist (why?) and they are equal: <span class="math display">\[
