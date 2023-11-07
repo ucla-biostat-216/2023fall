@@ -303,7 +303,7 @@ $n^2$ flops.
 
 - For an invertible matrix $\mathbf{A} \in \mathbb{R}^{n \times n}$ and $\mathbf{b} \in \mathbb{R}^n$, we can solve the linear equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ by following steps.  
     - Step 1: Compute QR factorization: $\mathbf{A} = \mathbf{Q} \mathbf{R}$. $2n^3$ flops.  
-    - Step 2: Compute $\mathbf{Q}^T \mathbf{b}$. $2n^2$ flops.  
+    - Step 2: Compute $\mathbf{Q}' \mathbf{b}$. $2n^2$ flops.  
     - Step 3: Solve the triangular equation $\mathbf{R} \mathbf{x} = \mathbf{Q}' \mathbf{b}$ by back substitution. $n^2$ flops.   
     
     The total number of flops is $2n^3 + 3n^2$. The dominant step is $2n^3$.
