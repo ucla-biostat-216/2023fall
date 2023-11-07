@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Dr. Hua Zhou @ UCLA">
-<meta name="dcterms.date" content="2023-11-06">
+<meta name="dcterms.date" content="2023-11-07">
 
 <title>Linear equations and matrix inverses (BV Chapter 11)</title>
 <style>
@@ -3179,7 +3179,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 6, 2023</p>
+      <p class="date">November 7, 2023</p>
     </div>
   </div>
   
@@ -3195,10 +3195,10 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">instantiate</span>()</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">status</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>  Activating project at `~/Documents/github.com/ucla-biostat-216/2022fall/slides/06-matinv`</code></pre>
+<pre><code>  Activating project at `~/Documents/github.com/ucla-biostat-216/2023fall/slides/07-matinv`</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Status `~/Documents/github.com/ucla-biostat-216/2022fall/slides/06-matinv/Project.toml`
+<pre><code>Status `~/Documents/github.com/ucla-biostat-216/2023fall/slides/07-matinv/Project.toml`
   [37e2e46d] LinearAlgebra</code></pre>
 </div>
 </div>
@@ -3261,38 +3261,38 @@ Proof of 2: Since <span class="math inline">\(\mathbf{A} = \mathbf{A} \mathbf{A}
 <li><p>If <span class="math inline">\(\mathbf{A}\)</span> has full row rank, then the MP inverse is <span class="math inline">\(\mathbf{A}^+ = \mathbf{A}&#39;(\mathbf{A} \mathbf{A}&#39;)^{-1}\)</span>. Given QR factorization <span class="math inline">\(\mathbf{A}&#39; = \mathbf{Q} \mathbf{R}\)</span>, <span class="math inline">\(\mathbf{A}^+ = \mathbf{Q} \mathbf{R}&#39;^{-1}\)</span>.</p></li>
 </ol></li>
 </ul>
-<div class="cell" data-scrolled="true" data-execution_count="39">
+<div class="cell" data-scrolled="true" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a 3x2 matrix (full column rank)</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [<span class="op">-</span><span class="fl">3</span> <span class="op">-</span><span class="fl">4</span>; <span class="fl">4</span> <span class="fl">6</span>; <span class="fl">1</span> <span class="fl">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="39">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>3×2 Matrix{Int64}:
  -3  -4
   4   6
   1   1</code></pre>
 </div>
 </div>
-<div class="cell" data-scrolled="true" data-execution_count="40">
+<div class="cell" data-scrolled="true" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute MP inverse using SVD</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pinv</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="40">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>2×3 Matrix{Float64}:
  -1.22222   -1.11111    1.77778
   0.777778   0.888889  -1.22222</code></pre>
 </div>
 </div>
-<div class="cell" data-scrolled="true" data-execution_count="41">
+<div class="cell" data-scrolled="true" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute MP inverse using pseudo-inverse</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>(A<span class="op">&#39;</span>A) <span class="op">\</span> A<span class="op">&#39;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="41">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>2×3 Matrix{Float64}:
  -1.22222   -1.11111    1.77778
   0.777778   0.888889  -1.22222</code></pre>
 </div>
 </div>
-<div class="cell" data-scrolled="true" data-execution_count="42">
+<div class="cell" data-scrolled="true" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compute MP inverse by QR</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>qra <span class="op">=</span> <span class="fu">qr</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="42">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>LinearAlgebra.QRCompactWY{Float64, Matrix{Float64}, Matrix{Float64}}
 Q factor:
 3×3 LinearAlgebra.QRCompactWYQ{Float64, Matrix{Float64}, Matrix{Float64}}:
@@ -3305,9 +3305,9 @@ R factor:
  0.0      -0.588348</code></pre>
 </div>
 </div>
-<div class="cell" data-scrolled="true" data-execution_count="43">
+<div class="cell" data-scrolled="true" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>qra.R <span class="op">\</span> qra.Q[<span class="op">:</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>]<span class="ch">&#39;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="43">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>2×3 Matrix{Float64}:
  -1.22222   -1.11111    1.77778
   0.777778   0.888889  -1.22222</code></pre>
@@ -3347,6 +3347,13 @@ a_{m1} x_1 + \cdots + a_{mn} x_n &amp;=&amp; b_m
 <p>Theorem: <span class="math inline">\(\tilde{\mathbf{x}}\)</span> is a solution to <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{0}\)</span> if and only if <span class="math inline">\(\tilde{\mathbf{x}} = (\mathbf{I}_n - \mathbf{A}^- \mathbf{A}) \mathbf{q}\)</span> for some <span class="math inline">\(\mathbf{q} \in \mathbb{R}^n\)</span>.</p>
 <p>Proof: <em>If</em>: Apparently <span class="math inline">\((\mathbf{I}_n - \mathbf{A}^- \mathbf{A}) \mathbf{q}\)</span> is a solution regardless value of <span class="math inline">\(\mathbf{q}\)</span> since <span class="math inline">\(\mathbf{A} (\mathbf{I}_n - \mathbf{A}^- \mathbf{A}) = \mathbf{A} - \mathbf{A} = \mathbf{0}\)</span>. <em>Only if</em>: If <span class="math inline">\(\tilde{\mathbf{x}}\)</span> is a solution, then <span class="math inline">\(\tilde{\mathbf{x}} = (\mathbf{I}_n - \mathbf{A}^- \mathbf{A}) \mathbf{q}\)</span> by taking <span class="math inline">\(\mathbf{q} = \tilde{\mathbf{x}}\)</span>.</p></li>
 <li><p>Rephrasing above result, we have <span class="math inline">\(\mathcal{N}(\mathbf{A}) = \mathcal{C}(\mathbf{I}_n - \mathbf{A}^- \mathbf{A})\)</span>.</p></li>
+<li><p>Remarks (optional):</p>
+<ol type="1">
+<li><p>The matrix <span class="math inline">\(\mathbf{I}_n - \mathbf{A}^- \mathbf{A}\)</span> is idempotent and is an oblique projection onto <span class="math inline">\(\mathcal{N}(\mathbf{A})\)</span>.</p></li>
+<li><p>The matrix <span class="math inline">\(\mathbf{I}_n - \mathbf{A}^+ \mathbf{A}\)</span> is symmetric and idempotent and is an orthogonal projection onto <span class="math inline">\(\mathcal{N}(\mathbf{A})\)</span>.</p></li>
+<li><p>The matrix <span class="math inline">\(\mathbf{A} \mathbf{A}^-\)</span> is idempotent and is an oblique projection onto <span class="math inline">\(\mathcal{C}(\mathbf{A})\)</span>.</p></li>
+<li><p>The matrix <span class="math inline">\(\mathbf{A} \mathbf{A}^+\)</span> is symmetric and idempotent and is an orthogonal projection onto <span class="math inline">\(\mathcal{C}(\mathbf{A})\)</span>.</p></li>
+</ol></li>
 <li><p>Now for the inhomogenous case <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span>.</p>
 <p>Theorem: If <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> is consistent, then <span class="math inline">\(\tilde{\mathbf{x}}\)</span> is a solution if and only if <span class="math display">\[
     \tilde{\mathbf{x}} = \mathbf{A}^- \mathbf{b} + (\mathbf{I}_n - \mathbf{A}^- \mathbf{A}) \mathbf{q}
@@ -3459,13 +3466,13 @@ b_1 \\ \vdots \\ b_{n-1} \\ b_n
 <ul>
 <li><p>For an invertible matrix <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{n \times n}\)</span> and <span class="math inline">\(\mathbf{b} \in \mathbb{R}^n\)</span>, we can solve the linear equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> by following steps.</p>
 <ul>
-<li>Step 1: Compute QR factorization: <span class="math inline">\(\mathbf{A} = \mathbf{Q} \mathbf{R}\)</span>. <span class="math inline">\(2n^3\)</span> flops.<br>
+<li>Step 1: Compute QR factorization, e.g., by <a href="https://ucla-biostat-216.github.io/2023fall/slides/02-vector/02-vector.html#how-to-orthonormalize-a-set-of-vectors-gram-schmidt-algorithm">Gram–Schmidt</a> or <a href="https://ucla-biostat-216.github.io/2023fall/hw/hw4/hw4.html#q3-household-reflections">Household algorithm</a> (HW4): <span class="math inline">\(\mathbf{A} = \mathbf{Q} \mathbf{R}\)</span>. <span class="math inline">\(2n^3\)</span> flops.<br>
 </li>
 <li>Step 2: Compute <span class="math inline">\(\mathbf{Q}&#39; \mathbf{b}\)</span>. <span class="math inline">\(2n^2\)</span> flops.<br>
 </li>
 <li>Step 3: Solve the triangular equation <span class="math inline">\(\mathbf{R} \mathbf{x} = \mathbf{Q}&#39; \mathbf{b}\)</span> by back substitution. <span class="math inline">\(n^2\)</span> flops.</li>
 </ul>
-<p>The total number of flops is <span class="math inline">\(2n^3 + 3n^2\)</span>. The dominant step is <span class="math inline">\(2n^3\)</span>.</p></li>
+<p>The total number of flops is <span class="math inline">\(2n^3 + 3n^2 \approx 2n^3\)</span>.</p></li>
 <li><p>Factor-solve method with multiple right-hand sides. For multiple right hand sides <span class="math inline">\(\mathbf{b}\)</span>, we only need to do Step 1 once.</p></li>
 <li><p>Compute the inverse, <span class="math inline">\(\mathbf{B}\)</span>, of an invertible matrix <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{n \times n}\)</span>.</p>
 <ul>
@@ -3482,6 +3489,7 @@ b_1 \\ \vdots \\ b_{n-1} \\ b_n
 <p>In this section, we (1) review the Gaussian elimination (GE) for solving linear equations <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span>, and then (2) show that GE leads to a useful decomposition <span class="math display">\[
 \mathbf{A} = \mathbf{L} \mathbf{U}.
 \]</span></p>
+<p>Remark: In practice, LU decomposition is used much less frequently than Cholesky decomposition in statistics and machinear learning because <span class="math inline">\(\mathbf{A}\)</span> is almost always symmetric and positive semidefinite in applications.</p>
 <section id="gaussian-elimination-ge" class="level3" data-number="6.1">
 <h3 data-number="6.1" class="anchored" data-anchor-id="gaussian-elimination-ge"><span class="header-section-number">6.1</span> Gaussian elimination (GE)</h3>
 <p>Let’s review (from any undergraduate linear algebra textbook) how to solve a linear system <span class="math display">\[
@@ -3528,44 +3536,44 @@ b_1 \\ \vdots \\ b_{n-1} \\ b_n
 <p>Substituting <span class="math inline">\(x_3 = -1\)</span> to equation (2) and solve for <span class="math inline">\(x_2 = 3\)</span>.</p>
 <p>Substituting <span class="math inline">\(x_2=3\)</span> and <span class="math inline">\(x_3 = 1\)</span> to equation (1) and solve for <span class="math inline">\(x_2 = 2\)</span>.</p>
 <p>This is essentially how computer solves linear equation:</p>
-<div class="cell" data-execution_count="29">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">LinearAlgebra</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [<span class="fl">2.0</span> <span class="fl">1.0</span> <span class="op">-</span><span class="fl">1.0</span>; <span class="op">-</span><span class="fl">3.0</span> <span class="op">-</span><span class="fl">1.0</span> <span class="fl">2.0</span>; <span class="op">-</span><span class="fl">2.0</span> <span class="fl">1.0</span> <span class="fl">2.0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="29">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>3×3 Matrix{Float64}:
   2.0   1.0  -1.0
  -3.0  -1.0   2.0
  -2.0   1.0   2.0</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="30">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> [<span class="fl">8.0</span>, <span class="op">-</span><span class="fl">11.0</span>, <span class="op">-</span><span class="fl">3.0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="30">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>3-element Vector{Float64}:
    8.0
  -11.0
   -3.0</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="31">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Julia way to solve linear equation</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalent to `solve(A, b)` in R</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">\</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="31">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>3-element Vector{Float64}:
   2.0000000000000004
   2.9999999999999996
- -0.9999999999999994</code></pre>
+ -0.9999999999999991</code></pre>
 </div>
 </div>
 </section>
 <section id="lu-decomposition" class="level3" data-number="6.2">
 <h3 data-number="6.2" class="anchored" data-anchor-id="lu-decomposition"><span class="header-section-number">6.2</span> LU decomposition</h3>
 <p>Let’s collect those multipliers <span class="math inline">\(-\ell_{ij}\)</span> into a unit lower triangular matrix <span class="math inline">\(\mathbf{L}\)</span></p>
-<div class="cell" data-execution_count="32">
+<div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> [<span class="fl">1.0</span> <span class="fl">0.0</span> <span class="fl">0.0</span>; <span class="op">-</span><span class="fl">1.5</span> <span class="fl">1.0</span> <span class="fl">0.0</span>; <span class="op">-</span><span class="fl">1.0</span> <span class="fl">4.0</span> <span class="fl">1.0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="32">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>3×3 Matrix{Float64}:
   1.0  0.0  0.0
  -1.5  1.0  0.0
@@ -3573,9 +3581,9 @@ b_1 \\ \vdots \\ b_{n-1} \\ b_n
 </div>
 </div>
 <p>and save the resultant upper triangular matrix after GE into <span class="math inline">\(\mathbf{U}\)</span></p>
-<div class="cell" data-execution_count="33">
+<div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>U <span class="op">=</span> [<span class="fl">2.0</span> <span class="fl">1.0</span> <span class="op">-</span><span class="fl">1.0</span>; <span class="fl">0.0</span> <span class="fl">0.5</span> <span class="fl">0.5</span>; <span class="fl">0.0</span> <span class="fl">0.0</span> <span class="op">-</span><span class="fl">1.0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="33">
+<div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>3×3 Matrix{Float64}:
  2.0  1.0  -1.0
  0.0  0.5   0.5
@@ -3583,9 +3591,9 @@ b_1 \\ \vdots \\ b_{n-1} \\ b_n
 </div>
 </div>
 <p>Surprisingly, we find that <span class="math inline">\(\mathbf{A} = \mathbf{L} \mathbf{U}\)</span>!</p>
-<div class="cell" data-execution_count="34">
+<div class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">≈</span> L <span class="op">*</span> U</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="34">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>true</code></pre>
 </div>
 </div>
@@ -3601,19 +3609,20 @@ b_1 \\ \vdots \\ b_{n-1} \\ b_n
 \mathbf{P} \mathbf{A} = \mathbf{L} \mathbf{U},
 \]</span> where <span class="math inline">\(\mathbf{P}\)</span> is a permutation matrix. All multipliers <span class="math inline">\(\ell_{ij}\)</span> in <span class="math inline">\(\mathbf{L}\)</span> has magnitude <span class="math inline">\(\le 1\)</span>.</p></li>
 <li><p>Total computational cost of LU decomposition is <span class="math inline">\((2/3)n^3\)</span> flops.</p></li>
+<li><p>Remark: Total computational cost of the Cholesky decomposition is <span class="math inline">\((1/3)n^3\)</span> flops.</p></li>
 </ul>
-<div class="cell" data-execution_count="35">
+<div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="35">
+<div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>3×3 Matrix{Float64}:
   2.0   1.0  -1.0
  -3.0  -1.0   2.0
  -2.0   1.0   2.0</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="36">
+<div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>Alu <span class="op">=</span> <span class="fu">lu</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="36">
+<div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>LU{Float64, Matrix{Float64}, Vector{Int64}}
 L factor:
 3×3 Matrix{Float64}:
@@ -3627,18 +3636,18 @@ U factor:
   0.0   0.0      0.2</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="37">
+<div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>Alu.p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="37">
+<div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>3-element Vector{Int64}:
  2
  3
  1</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="38">
+<div class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>A[Alu.p, <span class="op">:</span>] <span class="op">≈</span> Alu.L <span class="op">*</span> Alu.U</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="38">
+<div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>true</code></pre>
 </div>
 </div>

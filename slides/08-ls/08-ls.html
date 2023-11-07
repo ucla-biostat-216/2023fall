@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Dr. Hua Zhou @ UCLA">
-<meta name="dcterms.date" content="2023-11-06">
+<meta name="dcterms.date" content="2023-11-07">
 
 <title>Least squares (BV Chapters 12-13)</title>
 <style>
@@ -3166,7 +3166,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 6, 2023</p>
+      <p class="date">November 7, 2023</p>
     </div>
   </div>
   
@@ -3182,11 +3182,12 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">instantiate</span>()</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">Pkg</span>.<span class="fu">status</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>  Activating project at `~/Documents/github.com/ucla-biostat-216/2022fall/slides/06-matinv`</code></pre>
+<pre><code>  Activating new project at `~/Documents/github.com/ucla-biostat-216/2023fall/slides/08-ls`
+  No Changes to `~/Documents/github.com/ucla-biostat-216/2023fall/slides/08-ls/Project.toml`
+  No Changes to `~/Documents/github.com/ucla-biostat-216/2023fall/slides/08-ls/Manifest.toml`</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Status `~/Documents/github.com/ucla-biostat-216/2022fall/slides/06-matinv/Project.toml`
-  [37e2e46d] LinearAlgebra</code></pre>
+<pre><code>Status `~/Documents/github.com/ucla-biostat-216/2023fall/slides/08-ls/Project.toml` (empty project)</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="2">
@@ -3195,8 +3196,9 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <section id="method-of-least-squares" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="method-of-least-squares"><span class="header-section-number">1</span> Method of least squares</h2>
 <ul>
-<li><p>In previous lecture, we study when does a linear equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> have solution and how to characterize all the solutions. What if <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> is <strong>inconsistent</strong>, that is there is no solution?</p></li>
-<li><p>A sensible question to ask is can we find an <span class="math inline">\(\mathbf{x}\)</span> such that <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span> approximates <span class="math inline">\(\mathbf{b}\)</span> best? The method of least squares (due to Gauss) seeks to minimize <span class="math display">\[\begin{eqnarray*}
+<li><p>In the previous lecture, we study when does a linear equation <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> have solution and how to characterize all the solutions.</p></li>
+<li><p>What if <span class="math inline">\(\mathbf{A} \mathbf{x} = \mathbf{b}\)</span> is <strong>inconsistent</strong>, i.e., there is no solution?</p>
+<p>A sensible question to ask is can we find an <span class="math inline">\(\mathbf{x}\)</span> such that <span class="math inline">\(\mathbf{A} \mathbf{x}\)</span> approximates <span class="math inline">\(\mathbf{b}\)</span> best? The <strong>method of least squares</strong> (due to Gauss) seeks to minimize <span class="math display">\[\begin{eqnarray*}
 Q(\mathbf{x}) &amp;=&amp; \|\mathbf{b} - \mathbf{A} \mathbf{x}\|^2 \\
 &amp;=&amp; (\mathbf{b} - \mathbf{A} \mathbf{x})&#39; (\mathbf{b} - \mathbf{A} \mathbf{x}) \\
 &amp;=&amp; \mathbf{b}&#39; \mathbf{b} - 2 \mathbf{b}&#39; \mathbf{A} \mathbf{x} + \mathbf{x}&#39; \mathbf{A}&#39; \mathbf{A} \mathbf{x}.
@@ -3221,9 +3223,10 @@ Q(\mathbf{x}) &amp;=&amp; \|\mathbf{b} - \mathbf{A} \mathbf{x}\|^2 \\
 &amp;\Rightarrow&amp; \mathbf{b} - \mathbf{A} \hat{\mathbf{x}} \text{ is orthogonal to all columns of } \mathbf{A} \\
 &amp;\Rightarrow&amp; \mathbf{b} - \mathbf{A} \hat{\mathbf{x}} \in \mathcal{C}(\mathbf{A})^\perp = \mathcal{N}(\mathbf{A}&#39;).
 \end{eqnarray*}\]</span> Therefore <span class="math inline">\(\mathbf{b} = \mathbf{A} \hat{\mathbf{x}} + (\mathbf{b} - \mathbf{A} \hat{\mathbf{x}})\)</span> where <span class="math inline">\(\mathbf{A} \hat{\mathbf{x}} \in \mathcal{C}(\mathbf{A})\)</span> and <span class="math inline">\(\mathbf{b} - \mathbf{A} \hat{\mathbf{x}} \in \mathcal{C}(\mathbf{A})^\perp\)</span>. In other words, <span class="math inline">\(\mathbf{A} \hat{\mathbf{x}}\)</span> is the orthogonal projection of <span class="math inline">\(\mathbf{b}\)</span> into <span class="math inline">\(\mathcal{C}(\mathbf{A})\)</span>. Then by the cloest point theorem, we know <span class="math inline">\(Q(\mathbf{x})\)</span> is minimized by <span class="math inline">\(\hat{\mathbf{x}}\)</span>.</p></li>
-<li><p>The direct argument also reveals that the <em>fitted values</em> <span class="math inline">\(\mathbf{A} \hat{\mathbf{x}}\)</span> is invariant to the choice of the solution to the normal equation.</p></li>
+<li><p>The direct argument also reveals that the <em>fitted values</em> <span class="math inline">\(\hat{\mathbf{b}} = \mathbf{A} \hat{\mathbf{x}}\)</span> is invariant to the choice of the solution to the normal equation.</p></li>
 <li><p>Now we know the normal equation is always consistent and we want to find all solution(s). In general the least squares solution can be represented as <span class="math display">\[\begin{eqnarray*}
-(\mathbf{A}&#39; \mathbf{A})^- \mathbf{A}&#39; \mathbf{b} + [\mathbf{I} - (\mathbf{A}&#39; \mathbf{A})^- (\mathbf{A}&#39; \mathbf{A})] \mathbf{q}
+&amp; &amp; (\mathbf{A}&#39; \mathbf{A})^- \mathbf{A}&#39; \mathbf{b} + [\mathbf{I} - (\mathbf{A}&#39; \mathbf{A})^- (\mathbf{A}&#39; \mathbf{A})] \mathbf{q} \\
+&amp;=&amp; (\mathbf{A}&#39; \mathbf{A})^- \mathbf{A}&#39; \mathbf{b} + (\mathbf{I} - \mathbf{A}^- \mathbf{A}&#39;) \mathbf{q},
 \end{eqnarray*}\]</span> where <span class="math inline">\(\mathbf{q}\)</span> is arbitrary. One specific solution is <span class="math display">\[\begin{eqnarray*}
   \hat{\mathbf{x}} = (\mathbf{A}&#39; \mathbf{A})^- \mathbf{A}&#39; \mathbf{b}
 \end{eqnarray*}\]</span> with corresponding fitted values <span class="math display">\[\begin{eqnarray*}
@@ -3240,21 +3243,22 @@ The least squares solution is unique if and only if <span class="math inline">\(
 <ul>
 <li><p><span class="math inline">\((\mathbf{A}&#39; \mathbf{A})^- \mathbf{A}&#39;\)</span> is a generalized inverse of <span class="math inline">\(\mathbf{A}\)</span>.</p>
 <p>Proof: HW4.</p></li>
-<li><p><span class="math inline">\(\mathbf{A} (\mathbf{A}&#39; \mathbf{A})^- \mathbf{A}&#39;\)</span> is the orthogonal projector onto <span class="math inline">\(\mathcal{C}(\mathbf{A})\)</span>.</p>
+<li><p><span class="math inline">\(\mathbf{P}_{\mathbf{A}} = \mathbf{A} (\mathbf{A}&#39; \mathbf{A})^- \mathbf{A}&#39;\)</span> is the orthogonal projector onto <span class="math inline">\(\mathcal{C}(\mathbf{A})\)</span>.</p>
 <p>Since orthogonal projection is unique, <span class="math inline">\(\mathbf{A} (\mathbf{A}&#39; \mathbf{A})^- \mathbf{A}&#39;\)</span> is invariant to the choice of the generalized inverse <span class="math inline">\((\mathbf{A}&#39; \mathbf{A})^-\)</span> and thus can be denoted by <span class="math inline">\(\mathbf{P}_{\mathbf{A}}\)</span>.</p></li>
-<li><p>Whichever least squares solution <span class="math inline">\(\hat{\mathbf{x}}\)</span> we use, the fitted value <span class="math inline">\(\hat{\mathbf{b}} = \mathbf{A} \hat{\mathbf{x}} = \mathbf{A} (\mathbf{A}&#39; \mathbf{A})^- \mathbf{A}&#39; \mathbf{b}\)</span> is the same.</p></li>
+<li><p>Whichever least squares solution <span class="math inline">\(\hat{\mathbf{x}}\)</span> we use, the fitted value <span class="math inline">\(\hat{\mathbf{b}} = \mathbf{A} \hat{\mathbf{x}} = \mathbf{A} (\mathbf{A}&#39; \mathbf{A})^- \mathbf{A}&#39; \mathbf{b} = \mathbf{P}_{\mathbf{A}} \mathbf{b}\)</span> is the same.</p></li>
 <li><p>Geometry: The fitted value from the least squares solution <span class="math inline">\(\hat{\mathbf{b}} = \mathbf{P}_{\mathbf{A}} \mathbf{b}\)</span> is the orthogonal projection of the response vector <span class="math inline">\(\mathbf{b}\)</span> onto the column space <span class="math inline">\(\mathcal{C}(\mathbf{A})\)</span>.</p></li>
 <li><p>Decomposition of <span class="math inline">\(\mathbf{b} = \mathbf{P}_{\mathbf{A}} \mathbf{b} + (\mathbf{I} - \mathbf{P}_{\mathbf{A}}) \mathbf{b} = \hat{\mathbf{b}} + \hat{\mathbf{e}}\)</span>, where <span class="math inline">\(\hat{\mathbf{b}} \perp \hat{\mathbf{e}}\)</span>.</p></li>
 </ul>
 </section>
 <section id="solve-least-squares-problems-by-qr" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="solve-least-squares-problems-by-qr"><span class="header-section-number">4</span> Solve least squares problems by QR</h2>
-<p>Assume <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{m \times n}\)</span> and <span class="math inline">\(\mathbf{b} \in \mathbb{R}^m\)</span>.</p>
+<p>Assume <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{m \times n}\)</span> has full column rank and <span class="math inline">\(\mathbf{b} \in \mathbb{R}^m\)</span>.</p>
 <ul>
-<li><p>Step 1: Compute the (thin) QR factorization <span class="math inline">\(\mathbf{A} = \mathbf{Q} \mathbf{R}\)</span>.</p></li>
+<li><p>Step 1: Compute the (thin) QR factorization e.g., by <a href="https://ucla-biostat-216.github.io/2023fall/slides/02-vector/02-vector.html#how-to-orthonormalize-a-set-of-vectors-gram-schmidt-algorithm">Gram–Schmidt</a> or <a href="https://ucla-biostat-216.github.io/2023fall/hw/hw4/hw4.html#q3-household-reflections">Household algorithm</a> (HW4): <span class="math inline">\(\mathbf{A} = \mathbf{Q} \mathbf{R}\)</span>.</p></li>
 <li><p>Step 2: Compute <span class="math inline">\(\mathbf{Q}&#39; \mathbf{b}\)</span>.</p></li>
 <li><p>Step 3: Back substitution: Solve triangular system <span class="math inline">\(\mathbf{R} \hat{\mathbf{x}} = \mathbf{Q}&#39; \mathbf{b}\)</span>.</p></li>
 <li><p>Remark: The only difference of this algorithm from the <a href="https://ucla-biostat-216.github.io/2023fall/slides/07-matinv/07-matinv.html#solving-linear-equations-by-qr">QR approach for solving linear equation</a> is that <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{Q}\)</span> can be tall.</p></li>
+<li><p>Total number of flops is <span class="math inline">\(2mn^2 + 2mn + n^2 \approx 2mn^2\)</span>.</p></li>
 </ul>
 </section>
 

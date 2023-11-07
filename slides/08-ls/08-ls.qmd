@@ -39,9 +39,11 @@ using LinearAlgebra
 
 ## Method of least squares
 
-- In previous lecture, we study when does a linear equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ have solution and how to characterize all the solutions. What if $\mathbf{A} \mathbf{x} = \mathbf{b}$ is **inconsistent**, that is there is no solution? 
+- In the previous lecture, we study when does a linear equation $\mathbf{A} \mathbf{x} = \mathbf{b}$ have solution and how to characterize all the solutions.  
+  
+- What if $\mathbf{A} \mathbf{x} = \mathbf{b}$ is **inconsistent**, i.e., there is no solution?  
 
-- A sensible question to ask is can we find an $\mathbf{x}$ such that $\mathbf{A} \mathbf{x}$ approximates $\mathbf{b}$ best? The method of least squares (due to Gauss) seeks to minimize
+    A sensible question to ask is can we find an $\mathbf{x}$ such that $\mathbf{A} \mathbf{x}$ approximates $\mathbf{b}$ best? The **method of least squares** (due to Gauss) seeks to minimize
 \begin{eqnarray*}
 Q(\mathbf{x}) &=& \|\mathbf{b} - \mathbf{A} \mathbf{x}\|^2 \\
 &=& (\mathbf{b} - \mathbf{A} \mathbf{x})' (\mathbf{b} - \mathbf{A} \mathbf{x}) \\
@@ -76,11 +78,12 @@ $$
 \end{eqnarray*}
 Therefore $\mathbf{b} = \mathbf{A} \hat{\mathbf{x}} + (\mathbf{b} - \mathbf{A} \hat{\mathbf{x}})$ where $\mathbf{A} \hat{\mathbf{x}} \in \mathcal{C}(\mathbf{A})$ and $\mathbf{b} - \mathbf{A} \hat{\mathbf{x}} \in \mathcal{C}(\mathbf{A})^\perp$. In other words, $\mathbf{A} \hat{\mathbf{x}}$ is the orthogonal projection of $\mathbf{b}$ into $\mathcal{C}(\mathbf{A})$. Then by the cloest point theorem, we know $Q(\mathbf{x})$ is minimized by $\hat{\mathbf{x}}$.
 
-- The direct argument also reveals that the _fitted values_ $\mathbf{A} \hat{\mathbf{x}}$ is invariant to the choice of the solution to the normal equation.
+- The direct argument also reveals that the _fitted values_ $\hat{\mathbf{b}} = \mathbf{A} \hat{\mathbf{x}}$ is invariant to the choice of the solution to the normal equation.
 
 - Now we know the normal equation is always consistent and we want to find all solution(s). In general the least squares solution can be represented as
 \begin{eqnarray*}
-(\mathbf{A}' \mathbf{A})^- \mathbf{A}' \mathbf{b} + [\mathbf{I} - (\mathbf{A}' \mathbf{A})^- (\mathbf{A}' \mathbf{A})] \mathbf{q}
+& & (\mathbf{A}' \mathbf{A})^- \mathbf{A}' \mathbf{b} + [\mathbf{I} - (\mathbf{A}' \mathbf{A})^- (\mathbf{A}' \mathbf{A})] \mathbf{q} \\
+&=& (\mathbf{A}' \mathbf{A})^- \mathbf{A}' \mathbf{b} + (\mathbf{I} - \mathbf{A}^- \mathbf{A}') \mathbf{q},
 \end{eqnarray*}
 where $\mathbf{q}$ is arbitrary. One specific solution is 
 \begin{eqnarray*}
@@ -104,11 +107,11 @@ with corresponding fitted values
 
     Proof: HW4.
 
-- $\mathbf{A} (\mathbf{A}' \mathbf{A})^- \mathbf{A}'$ is the orthogonal projector onto $\mathcal{C}(\mathbf{A})$.
+- $\mathbf{P}_{\mathbf{A}} = \mathbf{A} (\mathbf{A}' \mathbf{A})^- \mathbf{A}'$ is the orthogonal projector onto $\mathcal{C}(\mathbf{A})$.
 
     Since orthogonal projection is unique, $\mathbf{A} (\mathbf{A}' \mathbf{A})^- \mathbf{A}'$ is invariant to the choice of the generalized inverse $(\mathbf{A}' \mathbf{A})^-$ and thus can be denoted by $\mathbf{P}_{\mathbf{A}}$.
 
-- Whichever least squares solution $\hat{\mathbf{x}}$ we use, the fitted value $\hat{\mathbf{b}} = \mathbf{A} \hat{\mathbf{x}} = \mathbf{A} (\mathbf{A}' \mathbf{A})^- \mathbf{A}' \mathbf{b}$ is the same.
+- Whichever least squares solution $\hat{\mathbf{x}}$ we use, the fitted value $\hat{\mathbf{b}} = \mathbf{A} \hat{\mathbf{x}} = \mathbf{A} (\mathbf{A}' \mathbf{A})^- \mathbf{A}' \mathbf{b} = \mathbf{P}_{\mathbf{A}} \mathbf{b}$ is the same.
 
 - Geometry: The fitted value from the least squares solution $\hat{\mathbf{b}} = \mathbf{P}_{\mathbf{A}} \mathbf{b}$ is the orthogonal projection of the response vector $\mathbf{b}$ onto the column space $\mathcal{C}(\mathbf{A})$.
 
@@ -118,7 +121,7 @@ with corresponding fitted values
 
 Assume $\mathbf{A} \in \mathbb{R}^{m \times n}$ has full column rank and $\mathbf{b} \in \mathbb{R}^m$.
 
-- Step 1: Compute the (thin) QR factorization $\mathbf{A} = \mathbf{Q} \mathbf{R}$.
+- Step 1: Compute the (thin) QR factorization e.g., by [Gram–Schmidt](https://ucla-biostat-216.github.io/2023fall/slides/02-vector/02-vector.html#how-to-orthonormalize-a-set-of-vectors-gram-schmidt-algorithm) or [Household algorithm](https://ucla-biostat-216.github.io/2023fall/hw/hw4/hw4.html#q3-household-reflections) (HW4): $\mathbf{A} = \mathbf{Q} \mathbf{R}$.
 
 - Step 2: Compute $\mathbf{Q}' \mathbf{b}$.
 
