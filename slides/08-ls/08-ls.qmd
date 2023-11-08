@@ -52,7 +52,7 @@ Q(\mathbf{x}) &=& \|\mathbf{b} - \mathbf{A} \mathbf{x}\|^2 \\
 
 - **Normal equation**. To find the minimum, we take derivative and set the gradient to zero
 $$
-\nabla Q(\mathbf{b}) = -2 \mathbf{A}' \mathbf{b} + 2 \mathbf{A}' \mathbf{A} \mathbf{x} = \mathbf{0}.
+\nabla Q(\mathbf{x}) = -2 \mathbf{A}' \mathbf{b} + 2 \mathbf{A}' \mathbf{A} \mathbf{x} = \mathbf{0}.
 $$
 This leads to the normal equation
 $$
@@ -130,3 +130,4 @@ Assume $\mathbf{A} \in \mathbb{R}^{m \times n}$ has full column rank and $\mathb
 - Remark: The only difference of this algorithm from the [QR approach for solving linear equation](https://ucla-biostat-216.github.io/2023fall/slides/07-matinv/07-matinv.html#solving-linear-equations-by-qr) is that $\mathbf{A}$ and $\mathbf{Q}$ can be tall.
 
 - Total number of flops is $2mn^2 + 2mn + n^2 \approx 2mn^2$.
+

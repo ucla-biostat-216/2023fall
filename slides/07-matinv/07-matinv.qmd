@@ -197,7 +197,7 @@ where $\mathbf{A} \in \mathbb{R}^{m \times n}$ (coefficient matrix), $\mathbf{x}
 
 - Corollary: $\mathbf{A} \mathbf{x} = \mathbf{b}$ is consistent for _all_ $\mathbf{b}$ if and only if $\mathbf{A}$ has full row rank.
 
-- Corollary: If a system is consistent, its solution is unique if and only if $\mathbf{b}$ has full column rank.
+- Corollary: If a system is consistent, its solution is unique if and only if $\mathbf{A}$ has full column rank.
 
 ## Invertible matrix
 

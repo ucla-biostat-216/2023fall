@@ -3101,7 +3101,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
   <ul>
   <li><a href="#q1" id="toc-q1" class="nav-link active" data-scroll-target="#q1"><span class="header-section-number">1</span> Q1</a></li>
   <li><a href="#q2" id="toc-q2" class="nav-link" data-scroll-target="#q2"><span class="header-section-number">2</span> Q2</a></li>
-  <li><a href="#q3-household-reflections" id="toc-q3-household-reflections" class="nav-link" data-scroll-target="#q3-household-reflections"><span class="header-section-number">3</span> Q3 Household reflections</a></li>
+  <li><a href="#q3-householder-reflections" id="toc-q3-householder-reflections" class="nav-link" data-scroll-target="#q3-householder-reflections"><span class="header-section-number">3</span> Q3 Householder reflections</a></li>
   <li><a href="#q4-missile-tracking" id="toc-q4-missile-tracking" class="nav-link" data-scroll-target="#q4-missile-tracking"><span class="header-section-number">4</span> Q4 Missile tracking</a></li>
   <li><a href="#bv-exercises" id="toc-bv-exercises" class="nav-link" data-scroll-target="#bv-exercises"><span class="header-section-number">5</span> BV exercises</a></li>
   </ul>
@@ -3144,8 +3144,8 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <li><p>Show that the Moore-Penrose inverse <span class="math inline">\(\mathbf{A}^+\)</span> has the same rank as <span class="math inline">\(\mathbf{A}\)</span>.</p></li>
 </ol>
 </section>
-<section id="q3-household-reflections" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="q3-household-reflections"><span class="header-section-number">3</span> Q3 Household reflections</h2>
+<section id="q3-householder-reflections" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="q3-householder-reflections"><span class="header-section-number">3</span> Q3 Householder reflections</h2>
 <p>Let <span class="math inline">\(\mathbf{v} \in \mathbb{R}^n\)</span>. Define the <strong>Householder reflection matrix</strong> <span class="math display">\[
 \mathbf{H} = \mathbf{I} - 2 \frac{\mathbf{v} \mathbf{v}&#39;}{\|\mathbf{v}\|^2} = \mathbf{I} - 2 \mathbf{u} \mathbf{u}&#39;,
 \]</span> where <span class="math inline">\(\mathbf{u}\)</span> is the unit vector <span class="math inline">\(\mathbf{v} / \|\mathbf{v}\|\)</span>.</p>
@@ -3158,8 +3158,8 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 <li><p>Let <span class="math inline">\(\mathbf{a} \in \mathbb{R}^n\)</span>. Find a Householder matrix such that <span class="math display">\[
 \mathbf{H} \mathbf{a} = \begin{pmatrix} a_1 \\ \|\mathbf{a}_{2:n}\| \\ \mathbf{0}_{n-2} \end{pmatrix}.
 \]</span></p></li>
-<li><p>Let <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{n \times p}\)</span>. Describe how to find a sequence of Householder matrices <span class="math inline">\(\mathbf{H}_1, \ldots, \mathbf{H}_{p-1}\)</span> such that <span class="math display">\[
-\mathbf{H}_{p-1} \mathbf{H}_{p-2} \cdots \mathbf{H}_1 \mathbf{A} = \mathbf{R},
+<li><p>Let <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{n \times p}\)</span>. Describe how to find a sequence of Householder matrices <span class="math inline">\(\mathbf{H}_1, \ldots, \mathbf{H}_{p}\)</span> such that <span class="math display">\[
+\mathbf{H}_{p} \mathbf{H}_{p-1} \cdots \mathbf{H}_1 \mathbf{A} = \mathbf{R},
 \]</span> where <span class="math inline">\(\mathbf{R} \in \mathbb{R}^{n \times p}\)</span> is an upper triangular matrix.</p>
 <p>Describe how this generates a full QR decomposition of matrix <span class="math inline">\(\mathbf{A} = \mathbf{Q} \mathbf{R}\)</span>, where <span class="math inline">\(\mathbf{Q} \in \mathbb{R}^{n \times n}\)</span> is an orthogonal matrix and <span class="math inline">\(\mathbf{R}\)</span> is upper triangular.</p></li>
 </ol>

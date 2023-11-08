@@ -42,7 +42,7 @@ Let $\mathbf{A} \in \mathbb{R}^{m \times n}$.
 
 2. Show that the Moore-Penrose inverse $\mathbf{A}^+$ has the same rank as $\mathbf{A}$.
 
-## Q3 Household reflections
+## Q3 Householder reflections
 
 Let $\mathbf{v} \in \mathbb{R}^n$. Define the **Householder reflection matrix**
 $$
@@ -64,9 +64,9 @@ $$
 \mathbf{H} \mathbf{a} = \begin{pmatrix} a_1 \\ \|\mathbf{a}_{2:n}\| \\ \mathbf{0}_{n-2} \end{pmatrix}.
 $$
 
-5. Let $\mathbf{A} \in \mathbb{R}^{n \times p}$. Describe how to find a sequence of Householder matrices $\mathbf{H}_1, \ldots, \mathbf{H}_{p-1}$ such that
+5. Let $\mathbf{A} \in \mathbb{R}^{n \times p}$. Describe how to find a sequence of Householder matrices $\mathbf{H}_1, \ldots, \mathbf{H}_{p}$ such that
 $$
-\mathbf{H}_{p-1} \mathbf{H}_{p-2} \cdots \mathbf{H}_1 \mathbf{A} = \mathbf{R},
+\mathbf{H}_{p} \mathbf{H}_{p-1} \cdots \mathbf{H}_1 \mathbf{A} = \mathbf{R},
 $$
 where $\mathbf{R} \in \mathbb{R}^{n \times p}$ is an upper triangular matrix.
 
