@@ -84,6 +84,7 @@ det(A) |> Symbolics.scalarize |> expand
 <img src="./determinant.png" width=400 align="center"/>
 
 - Interpretation of the (absolute value of) determinant as the **volume of the parallelotope** defined by the columns of the matrix. For example, if $\mathbf{X} \in \mathbb{R}^2$ has two columns $\mathbf{x}_1$ and $\mathbf{x}_2$, then
+
 \begin{eqnarray*}
 	\text{area} &=& bh = \|\mathbf{x}_1\|\|\mathbf{x}_2\| \sin(\theta) \\
 	&=& \|\mathbf{x}_1\| \|\mathbf{x}_2\| \sqrt{1 - \left( \frac{\langle \mathbf{x}_1, \mathbf{x}_2 \rangle}{\|\mathbf{x}_1\| \|\mathbf{x}_2\|} \right)^2} \\
@@ -192,10 +193,10 @@ plot!(plt, Xref[1, :], Xref[2, :],
 
 - Determinant of a permutation matrix is the sign of the corresponding permutation. 
 
-- Determinant of diagonal block matrix
+- Determinant of triangular block matrix
 \begin{eqnarray*}
 	\det \left( \begin{pmatrix}
-	\mathbf{A} & \mathbf{O} \\
+	\mathbf{A} & \mathbf{B} \\
 	\mathbf{O} & \mathbf{D}
 	\end{pmatrix} \right) = \det (\mathbf{A}) \det (\mathbf{D}).
 \end{eqnarray*}
