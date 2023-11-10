@@ -1,0 +1,90 @@
+---
+title: Biostat 216 Homework 5
+subtitle: 'Due Nov 17 @ 11:59pm'
+format:
+  html:
+    theme: cosmo
+    embed-resources: true
+    number-sections: false
+    toc: true
+    toc-depth: 4
+    toc-location: left
+    code-fold: false
+jupyter:
+  jupytext:
+    formats: 'ipynb,qmd'
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.15.2
+  kernelspec:
+    display_name: Julia 1.9.3
+    language: julia
+    name: julia-1.9
+---
+
+Submit a PDF (scanned/photographed from handwritten solutions, or converted from RMarkdown or Jupyter Notebook) to Gracescope on BruinLearn.
+
+## BV exercises
+
+BV 11.5, 11.12, 11.18 11.28
+
+## Q1
+
+Let $\mathbf{A} \in \mathbb{R}^{n \times n}$ be a symmetric matrix. Prove that $\langle \mathbf{A} \mathbf{x}, \mathbf{y} \rangle = \langle \mathbf{x}, \mathbf{A} \mathbf{y} \rangle$ for all $\mathbf{x}, \mathbf{y} \in \mathbb{R}^n$. Give an example that it is not necessary true if $\mathbf{A}$ is not symmetric.
+
+## Q2 
+
+Find the orthogonal projector into the plane spanned by the vectors $\begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}$ and $\begin{pmatrix} -2 \\ 2 \\ 1 \end{pmatrix}$.   
+
+Find the orthogonal projection of the point $\mathbf{1}_3$ into the plane spanned by the vectors $\begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}$ and $\begin{pmatrix} -2 \\ 2 \\ 1 \end{pmatrix}$. 
+
+## Q3 
+
+Matrices that satisfy $\mathbf{A}' \mathbf{A} = \mathbf{A} \mathbf{A}'$ are said to be _normal_. Give an example of asymmetric (not symmetric), normal matrix. If $\mathbf{A}$ is normal, then prove that every vector in $\mathcal{C}(\mathbf{A})$ is orthogonal to every vector in $\mathcal{N}(\mathbf{A})$. 
+
+## Q4 
+
+Let $\mathbf{A}$ be a symmetric matrix. Show that the system $\mathbf{A} \mathbf{x} = \mathbf{b}$ has a solution if and only if $\mathbf{b}$ is orthogonal to $\mathcal{N}(\mathbf{A})$. 
+
+## Q5 
+
+Determinant.
+
+1. Find the determinant of the following two matrices without doing any computations:
+$$
+\begin{pmatrix}
+0 & 0 & 1\\
+0 & 1 & 0 \\
+1 & 0 & 0
+\end{pmatrix}, \quad \begin{pmatrix}
+0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix}.
+$$  
+
+2. Let $\mathbf{A} \in \mathbb{R}^{5 \times 5}$ with $\det(\mathbf{A}) = -3$. Find $\det(\mathbf{A}^3)$, $\det(\mathbf{A}^{-1})$, and $\det(2\mathbf{A})$.  
+    
+3. Find the determinant of the matrix
+$\begin{pmatrix}
+0 & 0 & 1 \\
+2 & 3 & 4 \\
+0 & 5 & 6
+\end{pmatrix}$.
+
+## Q6
+
+Prove the following facts about triangular and orthogonal matrices.
+
+1. The product of two upper (lower) triangular matrices is upper (lower) triangular.
+    
+2. The inverse of an upper (lower) triangular matrix is upper (lower) triangular.
+    
+3. The product of two unit upper (lower) triangular matrices is unit upper (lower) triangular.
+    
+4. The inverse of a unit upper (lower) triangular matrix is unit upper (lower) triangular.
+    
+5. An orthogonal upper (lower) triangular matrix is diagonal.
