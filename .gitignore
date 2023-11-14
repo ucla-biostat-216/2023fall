@@ -33,3 +33,5 @@ midterm.*
 final/
 hw*sol.*
 hw*.pdf
+
+.vscode/
