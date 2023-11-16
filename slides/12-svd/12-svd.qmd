@@ -372,15 +372,15 @@ $$
 \mathbf{A} \mathbf{x} = \mathbf{U} \boldsymbol{\Sigma} \mathbf{V}' \mathbf{x}.
 $$
 
-<img src="./svd_act.png" width=400 align="center"/>
+<img src="./svd_act.png" width=600 align="center"/>
 
 ## SVD and generalized inverse
 
-Using the SVD, the [Moore-Penrose inverse](https://ucla-biostat-216.github.io/2022fall/slides/06-matinv/06-matinv.html#Generalized-inverse-and-Moore-Penrose-inverse-(optional)) is given by
+Using the SVD, the [Moore-Penrose inverse](https://ucla-biostat-216.github.io/2023fall/slides/07-matinv/07-matinv.html#generalized-inverse-and-moore-penrose-inverse) is given by
 $$
 \mathbf{A}^+ = \mathbf{V} \boldsymbol{\Sigma}^+ \mathbf{U}^T = \mathbf{V}_r \boldsymbol{\Sigma}_r^{-1} \mathbf{U}_r' = \sum_{i=1}^r \sigma_i^{-1} \mathbf{v}_i \mathbf{u}_i',
 $$
-where $\boldsymbol{\Sigma}^+ = \text{diag}(\sigma_1^{-1}, \ldots, \sigma_r^{-1}, 0, \ldots, 0)$, $r= \text{rank}(\mathbf{A})$. In HW7, you verify this definition satisifes all properties of the Moore-Pensorse inverse. This is how the [`pinv`](https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/#LinearAlgebra.pinv) function is implemented in Julia, Matlab, Python, or R.
+where $\boldsymbol{\Sigma}^+ = \text{diag}(\sigma_1^{-1}, \ldots, \sigma_r^{-1}, 0, \ldots, 0)$, $r= \text{rank}(\mathbf{A})$. In HW6, you verify this definition satisifes all properties of the Moore-Pensorse inverse. This is how the [`pinv`](https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/#LinearAlgebra.pinv) function is implemented in Julia, Matlab, Python, or R.
 
 ```{julia}
 Random.seed!(216)
@@ -469,7 +469,7 @@ $$
 \|\mathbf{Q}_1 \mathbf{A} \mathbf{Q}_2'\| = \|\mathbf{A}\| \text{ for orthogonal } \mathbf{Q}_1 \text{ and } \mathbf{Q}_2.
 $$
 
-    Proof: HW7.
+    Proof: HW6.
 
 - **Eckart-Young theorem.** Assuming SVD of $\mathbf{A} \in \mathbb{R}^{m \times n}$ with rank $r$:
 $$
@@ -716,20 +716,3 @@ plot!(p, xlabel="PC1", ylabel="PC2", zlabel="PC3")
 <img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnature07331/MediaObjects/41586_2008_Article_BFnature07331_Fig1_HTML.jpg?as=webp" width="400" align="center"/>
 
 Above picture is from the article [Genes mirror geography within Europe](http://www.nature.com/nature/journal/v456/n7218/full/nature07331.html) by Novembre et al (2008) published in _Nature_.  
-
-## Matrix completion
-
-Missing data is ubiquitous. Matrix completion (a hot topic in machine learning) aims to recover the missing values in a huge matrix. 
-
-Candes and Tao proposes a technique to complete a matrix $\mathbf{Y}$ with a large number of missing entries by an optimization problem
-\begin{eqnarray*}
-    &\text{minimize}& \|\mathbf{X}\|_{\text{nuc}} \\
-    &\text{subject to }& x_{ij}=y_{ij} \text{ for all observed entries} y_{ij}.
-\end{eqnarray*}
-That is we seek the matrix with minimal nuclear norm that agrees with the observed entries.
-
-See an example [here](https://ucla-biostat-257-2020spring.github.io/slides/22-juliaopt/juliaopt.html#Example:-matrix-completion).
-
-## Compressed sensing
-
-See an example [here](https://ucla-biostat-257-2020spring.github.io/slides/29-lp/lp.html#LP-example:-compressed-sensing).
