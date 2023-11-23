@@ -33,5 +33,6 @@ midterm.*
 final/
 hw*sol.*
 hw*.pdf
+hw*sol_files/
 
 .vscode/
