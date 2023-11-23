@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Dr. Hua Zhou @ UCLA">
-<meta name="dcterms.date" content="2023-11-16">
+<meta name="dcterms.date" content="2023-11-22">
 
 <title>Singular Value Decomposition (SVD) (BR Chapter 12)</title>
 <style>
@@ -3179,7 +3179,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 16, 2023</p>
+      <p class="date">November 22, 2023</p>
     </div>
   </div>
   
@@ -3502,7 +3502,9 @@ Vt factor:
 </ul>
 Proof of existence of SVD: Start from positive eigenvalues <span class="math inline">\(\lambda_i &gt; 0\)</span> and corresponding (orthonormal) eigenvectors <span class="math inline">\(\mathbf{v}_i\)</span> of <span class="math inline">\(\mathbf{A}&#39; \mathbf{A}\)</span>. Set <span class="math inline">\(\sigma_i = \sqrt \lambda_i\)</span> and <span class="math display">\[
 \mathbf{u}_i = \frac{\mathbf{A} \mathbf{v}_i}{\sigma_i}, \quad i = 1,\ldots,r.
-\]</span> Verify that <span class="math inline">\(\mathbf{u}_i\)</span> are orthonormal. Lastly, augment <span class="math inline">\(\mathbf{u}_i\)</span>s by an orthonormal basis in <span class="math inline">\(\mathcal{N}(\mathbf{A}&#39;)\)</span> and augment <span class="math inline">\(\mathbf{v}_i\)</span>s by an orthonormal basis in <span class="math inline">\(\mathcal{N}(\mathbf{A})\)</span>.</li>
+\]</span> Verify that <span class="math inline">\(\mathbf{u}_i\)</span> are orthonormal. Lastly, augment <span class="math inline">\(\mathbf{u}_i\)</span>s by an orthonormal basis in <span class="math inline">\(\mathcal{N}(\mathbf{A}&#39;) = \mathcal{N}(\mathbf{A} \mathbf{A}&#39;)\)</span> and augment <span class="math inline">\(\mathbf{v}_i\)</span>s by an orthonormal basis in <span class="math inline">\(\mathcal{N}(\mathbf{A}) = \mathcal{N}(\mathbf{A}&#39; \mathbf{A})\)</span>. Finally we verify that <span class="math display">\[
+\sum_{i=1}^r \sigma_i \mathbf{u}_i \mathbf{v}_i&#39; = \sum_{i=1}^r \sigma_i \frac{\mathbf{A} \mathbf{v}_i}{\sigma_i} \mathbf{v}_i = \mathbf{A} \sum_{i=1}^r \mathbf{v}_i \mathbf{v_i}&#39; = \mathbf{A} \sum_{i=1}^n \mathbf{v}_i \mathbf{v}_i&#39; = \mathbf{A} \mathbf{I} = \mathbf{A}.
+\]</span> The third equality is because <span class="math inline">\(\mathbf{v}_i \in \mathcal{N}(\mathbf{A})\)</span> for <span class="math inline">\(i=r+1,\ldots,n\)</span>.</li>
 </ul>
 <div class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># revisit our earlier 5-by-3, rank-2 matrix</span></span>
