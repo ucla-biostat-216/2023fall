@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Dr. Hua Zhou @ UCLA">
-<meta name="dcterms.date" content="2023-11-22">
+<meta name="dcterms.date" content="2023-11-28">
 
 <title>Singular Value Decomposition (SVD) (BR Chapter 12)</title>
 <style>
@@ -3179,7 +3179,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 22, 2023</p>
+      <p class="date">November 28, 2023</p>
     </div>
   </div>
   
@@ -3503,7 +3503,7 @@ Vt factor:
 Proof of existence of SVD: Start from positive eigenvalues <span class="math inline">\(\lambda_i &gt; 0\)</span> and corresponding (orthonormal) eigenvectors <span class="math inline">\(\mathbf{v}_i\)</span> of <span class="math inline">\(\mathbf{A}&#39; \mathbf{A}\)</span>. Set <span class="math inline">\(\sigma_i = \sqrt \lambda_i\)</span> and <span class="math display">\[
 \mathbf{u}_i = \frac{\mathbf{A} \mathbf{v}_i}{\sigma_i}, \quad i = 1,\ldots,r.
 \]</span> Verify that <span class="math inline">\(\mathbf{u}_i\)</span> are orthonormal. Lastly, augment <span class="math inline">\(\mathbf{u}_i\)</span>s by an orthonormal basis in <span class="math inline">\(\mathcal{N}(\mathbf{A}&#39;) = \mathcal{N}(\mathbf{A} \mathbf{A}&#39;)\)</span> and augment <span class="math inline">\(\mathbf{v}_i\)</span>s by an orthonormal basis in <span class="math inline">\(\mathcal{N}(\mathbf{A}) = \mathcal{N}(\mathbf{A}&#39; \mathbf{A})\)</span>. Finally we verify that <span class="math display">\[
-\sum_{i=1}^r \sigma_i \mathbf{u}_i \mathbf{v}_i&#39; = \sum_{i=1}^r \sigma_i \frac{\mathbf{A} \mathbf{v}_i}{\sigma_i} \mathbf{v}_i = \mathbf{A} \sum_{i=1}^r \mathbf{v}_i \mathbf{v_i}&#39; = \mathbf{A} \sum_{i=1}^n \mathbf{v}_i \mathbf{v}_i&#39; = \mathbf{A} \mathbf{I} = \mathbf{A}.
+\sum_{i=1}^r \sigma_i \mathbf{u}_i \mathbf{v}_i&#39; = \sum_{i=1}^r \sigma_i \frac{\mathbf{A} \mathbf{v}_i}{\sigma_i} \mathbf{v}_i&#39; = \mathbf{A} \sum_{i=1}^r \mathbf{v}_i \mathbf{v_i}&#39; = \mathbf{A} \sum_{i=1}^n \mathbf{v}_i \mathbf{v}_i&#39; = \mathbf{A} \mathbf{I} = \mathbf{A}.
 \]</span> The third equality is because <span class="math inline">\(\mathbf{v}_i \in \mathcal{N}(\mathbf{A})\)</span> for <span class="math inline">\(i=r+1,\ldots,n\)</span>.</li>
 </ul>
 <div class="cell" data-execution_count="20">
@@ -4134,13 +4134,11 @@ Vt factor:
 \text{subject to} &amp;\quad&amp; \mathbf{x} \perp \mathbf{v}_1.
 \end{eqnarray*}\]</span></p></li>
 <li><p><strong>Submatrices have smaller singular values</strong>. Let <span class="math inline">\(\mathbf{B}\)</span> be a submatrix of <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{m \times n}\)</span>. Then <span class="math display">\[
-\|\mathbf{B}\| \le \|\mathbf{A}\|
+\|\mathbf{B}\|_2 \le \|\mathbf{A}\|_2
 \]</span> or equivalently <span class="math display">\[
 \sigma_1 (\mathbf{B}) \le \sigma_1 (\mathbf{A}).
 \]</span></p>
-<p>Proof: Let <span class="math inline">\(\tilde{\mathbf{y}} \in \mathbb{R}^n\)</span> hold corresponding entries in <span class="math inline">\(\mathbf{y}\)</span> and be zero elsewhere. Then <span class="math display">\[
-\sigma_1 (\mathbf{B}) = \max_{\mathbf{y}} \frac{\|\mathbf{B} \mathbf{y}\|}{\|\mathbf{y}\|} \le \max_{\tilde{\mathbf{y}}} \frac{\|\mathbf{A} \tilde{\mathbf{y}}\|}{\|\tilde{\mathbf{y}}\|} \le \max_{\mathbf{x}} \frac{\|\mathbf{A} \mathbf{x}\|}{\|\mathbf{x}\|} = \sigma_1 (\mathbf{A}).
-\]</span></p></li>
+<p>Proof: HW6 Q12. Hint: use Rayleigh quotient.</p></li>
 </ul>
 <div class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb106"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">svd</span>(A[<span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
