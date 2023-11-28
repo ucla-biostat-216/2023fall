@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Dr. Hua Zhou @ UCLA">
-<meta name="dcterms.date" content="2023-11-18">
+<meta name="dcterms.date" content="2023-11-28">
 
 <title>Optimization and Multivariate Calculus</title>
 <style>
@@ -3139,13 +3139,17 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
   <li><a href="#chain-rule-for-multivariate-calculus" id="toc-chain-rule-for-multivariate-calculus" class="nav-link" data-scroll-target="#chain-rule-for-multivariate-calculus"><span class="header-section-number">2</span> Chain rule for multivariate calculus</a></li>
   <li><a href="#optimization-and-optimality-conditions" id="toc-optimization-and-optimality-conditions" class="nav-link" data-scroll-target="#optimization-and-optimality-conditions"><span class="header-section-number">3</span> Optimization and optimality conditions</a></li>
   <li><a href="#convexity" id="toc-convexity" class="nav-link" data-scroll-target="#convexity"><span class="header-section-number">4</span> Convexity</a></li>
-  <li><a href="#lagrange-multiplier-method-for-constrained-optimization" id="toc-lagrange-multiplier-method-for-constrained-optimization" class="nav-link" data-scroll-target="#lagrange-multiplier-method-for-constrained-optimization"><span class="header-section-number">5</span> Lagrange multiplier method for constrained optimization</a></li>
-  <li><a href="#example-mle-of-multinomial-model" id="toc-example-mle-of-multinomial-model" class="nav-link" data-scroll-target="#example-mle-of-multinomial-model"><span class="header-section-number">6</span> Example: MLE of multinomial model</a></li>
-  <li><a href="#newton-raphson-method-for-optimization" id="toc-newton-raphson-method-for-optimization" class="nav-link" data-scroll-target="#newton-raphson-method-for-optimization"><span class="header-section-number">7</span> Newton-Raphson method for optimization</a></li>
-  <li><a href="#gradient-descent" id="toc-gradient-descent" class="nav-link" data-scroll-target="#gradient-descent"><span class="header-section-number">8</span> Gradient descent</a></li>
-  <li><a href="#gradient-descent-with-momentum" id="toc-gradient-descent-with-momentum" class="nav-link" data-scroll-target="#gradient-descent-with-momentum"><span class="header-section-number">9</span> Gradient descent with momentum</a></li>
-  <li><a href="#nesterov-acceleration-of-gradient-descent" id="toc-nesterov-acceleration-of-gradient-descent" class="nav-link" data-scroll-target="#nesterov-acceleration-of-gradient-descent"><span class="header-section-number">10</span> Nesterov acceleration of gradient descent</a></li>
-  <li><a href="#stochastic-gradient-descent" id="toc-stochastic-gradient-descent" class="nav-link" data-scroll-target="#stochastic-gradient-descent"><span class="header-section-number">11</span> Stochastic gradient descent</a></li>
+  <li><a href="#lagrange-multiplier-method-for-constrained-optimization" id="toc-lagrange-multiplier-method-for-constrained-optimization" class="nav-link" data-scroll-target="#lagrange-multiplier-method-for-constrained-optimization"><span class="header-section-number">5</span> Lagrange multiplier method for constrained optimization</a>
+  <ul>
+  <li><a href="#example-mle-of-multinomial-model" id="toc-example-mle-of-multinomial-model" class="nav-link" data-scroll-target="#example-mle-of-multinomial-model"><span class="header-section-number">5.1</span> Example: MLE of multinomial model</a></li>
+  <li><a href="#example-hw6-q18-smallest-matrix-subject-to-linear-constraints" id="toc-example-hw6-q18-smallest-matrix-subject-to-linear-constraints" class="nav-link" data-scroll-target="#example-hw6-q18-smallest-matrix-subject-to-linear-constraints"><span class="header-section-number">5.2</span> Example: HW6, Q18 (Smallest matrix subject to linear constraints)</a></li>
+  <li><a href="#example-hw6-q19-minimizing-a-convex-quadratic-form-over-manifold" id="toc-example-hw6-q19-minimizing-a-convex-quadratic-form-over-manifold" class="nav-link" data-scroll-target="#example-hw6-q19-minimizing-a-convex-quadratic-form-over-manifold"><span class="header-section-number">5.3</span> Example: HW6, Q19 (Minimizing a convex quadratic form over manifold)</a></li>
+  </ul></li>
+  <li><a href="#newton-raphson-method-for-optimization" id="toc-newton-raphson-method-for-optimization" class="nav-link" data-scroll-target="#newton-raphson-method-for-optimization"><span class="header-section-number">6</span> Newton-Raphson method for optimization</a></li>
+  <li><a href="#gradient-descent" id="toc-gradient-descent" class="nav-link" data-scroll-target="#gradient-descent"><span class="header-section-number">7</span> Gradient descent</a></li>
+  <li><a href="#gradient-descent-with-momentum" id="toc-gradient-descent-with-momentum" class="nav-link" data-scroll-target="#gradient-descent-with-momentum"><span class="header-section-number">8</span> Gradient descent with momentum</a></li>
+  <li><a href="#nesterov-acceleration-of-gradient-descent" id="toc-nesterov-acceleration-of-gradient-descent" class="nav-link" data-scroll-target="#nesterov-acceleration-of-gradient-descent"><span class="header-section-number">9</span> Nesterov acceleration of gradient descent</a></li>
+  <li><a href="#stochastic-gradient-descent" id="toc-stochastic-gradient-descent" class="nav-link" data-scroll-target="#stochastic-gradient-descent"><span class="header-section-number">10</span> Stochastic gradient descent</a></li>
   </ul>
 </nav>
 </div>
@@ -3173,7 +3177,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 18, 2023</p>
+      <p class="date">November 28, 2023</p>
     </div>
   </div>
   
@@ -3316,9 +3320,18 @@ e^{2z_1 + z_2}
 <section id="chain-rule-for-multivariate-calculus" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="chain-rule-for-multivariate-calculus"><span class="header-section-number">2</span> Chain rule for multivariate calculus</h2>
 <ul>
-<li><p>Taking derivative and Hessian of functions with vector or matrix argument can be frustrating. The key is to adopt a consistent notation that enables chain rule. Familiarize yourself with the content of this <a href="https://ucla-biostat216-2019fall.github.io/slides/16-matrixcalc/16-matrixcalc.html">lecture</a>. It can be one of the most useful notes for your graduate study or even research projects.</p></li>
+<li><p>Taking derivative and Hessian of functions with vector or matrix argument can be frustrating. The key is to adopt a consistent notation that enables chain rule. Familiarize yourself with the content of this <a href="https://ucla-biostat216-2019fall.github.io/slides/16-matrixcalc/16-matrixcalc.html">lecture</a>. It can be one of the most useful notes for your graduate study and research projects.</p></li>
 <li><p>Some notations such as Kronecker product and commutation matrix appear in the above lecture note. Basic properties of these matrices are summarized in this <a href="https://ucla-biostat216-2019fall.github.io/slides/13-kron/13-kron.html">lecture note</a>.</p></li>
 <li><p>We will practice use of these results in homework problems.</p></li>
+<li><p>Exercise: Take derivative of the <a href="https://ucla-biostat-216.github.io/2023fall/slides/12-svd/12-svd.html#singular-vectors-and-rayleigh-quotient">Rayleigh quotient</a>.</p></li>
+<li><p>Exercise: Take derivative of the function <span class="math inline">\(f(\mathbf{C}, \mathbf{R}) = \|\mathbf{A} - \mathbf{C} \mathbf{R}\|_{\text{F}}^2\)</span> in the proof of the <a href="https://ucla-biostat-216.github.io/2023fall/slides/12-svd/12-svd.html#eckart-young-theorem-best-approximation-to-a-matrix">Eckart-Young theorem</a>.</p></li>
+<li><p>Exercise: <a href="https://ucla-biostat-216.github.io/2023fall/hw/hw6/hw6.html#q17-mle-of-multivariate-normal">HW6 Q17</a>. Take derivative of the multivariate normal log-density.</p></li>
+<li><p>Exercise: <a href="https://ucla-biostat-216.github.io/2023fall/hw/hw6/hw6.html#q20-procrustes-rotation">HW6 Q20</a>. Take derivative of the Procrustes criterion function.</p></li>
+<li><p>Exercise: <a href="https://ucla-biostat-216.github.io/2023fall/hw/hw6/hw6.html#q22-factor-analysis">HW6 Q22</a>. Take derivative of the factor analysis log-likelihood function. Hint: The answer is <span class="math display">\[\begin{eqnarray*}
+  \frac{\partial \ell(\mathbf{F}, \mathbf{D})}{\partial \mathbf{F}} = - \frac n2 \boldsymbol{\Omega}^{-1} \mathbf{F} + \frac n2 \boldsymbol{\Omega}^{-1} \mathbf{S} \boldsymbol{\Omega}^{-1} \mathbf{F}
+\end{eqnarray*}\]</span> and <span class="math display">\[\begin{eqnarray*}
+  \frac{\partial \ell(\mathbf{F}, \mathbf{D})}{\partial \mathbf{D}} = - \frac n2 \text{diag} (\boldsymbol{\Omega}^{-1} -\boldsymbol{\Omega}^{-1} \mathbf{S} \boldsymbol{\Omega}^{-1}),
+\end{eqnarray*}\]</span> where <span class="math inline">\(\boldsymbol{\Omega} = \mathbf{F} \mathbf{F}&#39; + \mathbf{D}\)</span>.</p></li>
 </ul>
 </section>
 <section id="optimization-and-optimality-conditions" class="level2" data-number="3">
@@ -3452,9 +3465,8 @@ f^\star = \frac 12 \mathbf{b}&#39; (\mathbf{A}&#39; \mathbf{S}^{-1} \mathbf{A})^
 \]</span></p></li>
 <li><p>The saddle point matrix (or KKT matrix) has <span class="math inline">\(n\)</span> positive eigenvalues and <span class="math inline">\(m\)</span> negative eigenvalue. The Lagrangian function is convex in <span class="math inline">\(\mathbf{x}\)</span> and concave in <span class="math inline">\(\boldsymbol{\lambda}\)</span>.</p></li>
 </ul>
-</section>
-<section id="example-mle-of-multinomial-model" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="example-mle-of-multinomial-model"><span class="header-section-number">6</span> Example: MLE of multinomial model</h2>
+<section id="example-mle-of-multinomial-model" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="example-mle-of-multinomial-model"><span class="header-section-number">5.1</span> Example: MLE of multinomial model</h3>
 <p>Consider a multinomial experiment with <span class="math inline">\(n\)</span> trials and observed outcomes <span class="math inline">\(n_1, \ldots, n_m\)</span> over <span class="math inline">\(m\)</span> categories. The maximum likelihood estimate (MLE) seeks maximizer of likelihood<br>
 <span class="math display">\[
 L(p_1,\ldots,p_m) = \binom{n}{n_1 \cdots n_m} \prod_{i=1}^m p_i^{n_i}.
@@ -3467,7 +3479,7 @@ L(p_1,\ldots,p_m, \lambda) = - \log \binom{n}{n_1 \cdots n_m} - \sum_{i=1}^m n_i
 \]</span><br>
 Solving<br>
 <span class="math display">\[
-\frac{\partial}{\partial p_i} L = - \frac{n_i}{p_i} + \lambda = 0
+\frac{\partial L}{\partial p_i} = - \frac{n_i}{p_i} + \lambda = 0
 \]</span><br>
 gives<br>
 <span class="math display">\[
@@ -3479,8 +3491,15 @@ p_i^\star &amp;=&amp; \frac{n_i}{n}, \quad i=1,\ldots,m, \\
 \lambda^\star &amp;=&amp; n.
 \end{eqnarray*}\]</span> Note the nonnegativity constraint is automatically satisfied.</p>
 </section>
-<section id="newton-raphson-method-for-optimization" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="newton-raphson-method-for-optimization"><span class="header-section-number">7</span> Newton-Raphson method for optimization</h2>
+<section id="example-hw6-q18-smallest-matrix-subject-to-linear-constraints" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="example-hw6-q18-smallest-matrix-subject-to-linear-constraints"><span class="header-section-number">5.2</span> Example: <a href="https://ucla-biostat-216.github.io/2023fall/hw/hw6/hw6.html#q18-smallest-matrix-subject-to-linear-constraints">HW6, Q18</a> (Smallest matrix subject to linear constraints)</h3>
+</section>
+<section id="example-hw6-q19-minimizing-a-convex-quadratic-form-over-manifold" class="level3" data-number="5.3">
+<h3 data-number="5.3" class="anchored" data-anchor-id="example-hw6-q19-minimizing-a-convex-quadratic-form-over-manifold"><span class="header-section-number">5.3</span> Example: <a href="https://ucla-biostat-216.github.io/2023fall/hw/hw6/hw6.html#q19-minimizing-a-convex-quadratic-form-over-manifold">HW6, Q19</a> (Minimizing a convex quadratic form over manifold)</h3>
+</section>
+</section>
+<section id="newton-raphson-method-for-optimization" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="newton-raphson-method-for-optimization"><span class="header-section-number">6</span> Newton-Raphson method for optimization</h2>
 <ul>
 <li><p>We are looking for a point <span class="math inline">\(\mathbf{x}^\star\)</span> such that <span class="math inline">\(\nabla f(\mathbf{x}^\star) = \mathbf{0}\)</span>. Multivariate calculus gives us a principled way to move towards such an <span class="math inline">\(\mathbf{x}^\star\)</span>.</p></li>
 <li><p><strong>Second-order Taylor approximation</strong> to a function <span class="math inline">\(f\)</span> at current iterate <span class="math inline">\(\mathbf{x}^{(t)}\)</span> says <span class="math display">\[
@@ -3529,8 +3548,8 @@ x^{(t+1)} - 2 = \frac 12 \left( x^{(t)} + \frac{4}{x^{(t)}} \right) - 2 = \frac{
 </ol></li>
 </ul>
 </section>
-<section id="gradient-descent" class="level2" data-number="8">
-<h2 data-number="8" class="anchored" data-anchor-id="gradient-descent"><span class="header-section-number">8</span> Gradient descent</h2>
+<section id="gradient-descent" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="gradient-descent"><span class="header-section-number">7</span> Gradient descent</h2>
 <ul>
 <li><p>If we use the identity matrix as a very crude approximation of the Hessian matrix, we obtain the classical <strong>gradient descent</strong>, or <strong>steepest descent</strong>, algorithm: <span class="math display">\[
 \mathbf{x}^{(t+1)} = \mathbf{x}^{(t)} - s^{(t)} \nabla f(\mathbf{x}^{(t)}).
@@ -3606,8 +3625,8 @@ f(\mathbf{x}^{(t+1)}) - f(\mathbf{x}^\star) \le \left( 1 - \frac mM \right) [f(\
 <li><p>In practice, we often perform inexact line search such as backtracking, because exact line search is expensive.</p></li>
 </ul>
 </section>
-<section id="gradient-descent-with-momentum" class="level2" data-number="9">
-<h2 data-number="9" class="anchored" data-anchor-id="gradient-descent-with-momentum"><span class="header-section-number">9</span> Gradient descent with momentum</h2>
+<section id="gradient-descent-with-momentum" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="gradient-descent-with-momentum"><span class="header-section-number">8</span> Gradient descent with momentum</h2>
 <ul>
 <li><p>To mitigate the frustrating zig-zagging of gradient descent, Polyak proposed to add a <strong>momentum</strong> with coefficient <span class="math inline">\(\beta\)</span> to the gradient. The idea is that a heavy ball rolling downhill has less zig-zagging.</p></li>
 <li><p><strong>Gradient descent with momentum</strong>:<br>
@@ -3668,8 +3687,8 @@ f(x_1^{(t)}, x_2^{(t)}) = \left( \frac{1 - \sqrt b}{1 + \sqrt b} \right)^{2t} f(
 </div>
 </div>
 </section>
-<section id="nesterov-acceleration-of-gradient-descent" class="level2" data-number="10">
-<h2 data-number="10" class="anchored" data-anchor-id="nesterov-acceleration-of-gradient-descent"><span class="header-section-number">10</span> Nesterov acceleration of gradient descent</h2>
+<section id="nesterov-acceleration-of-gradient-descent" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="nesterov-acceleration-of-gradient-descent"><span class="header-section-number">9</span> Nesterov acceleration of gradient descent</h2>
 <ul>
 <li><p>Yuri Nesterov proposed that, instead of evaluating the gradient <span class="math inline">\(\nabla f\)</span> at current iterate <span class="math inline">\(\mathbf{x}^{(t)}\)</span>, we shift the evaluation point to <span class="math inline">\(\mathbf{x}^{(t)} + \gamma (\mathbf{x}^{(t)} - \mathbf{x}^{(t-1)})\)</span>.</p></li>
 <li><p><strong>Nesetrov accelerated gradient descent</strong> <span class="math display">\[\begin{eqnarray*}
@@ -3725,8 +3744,8 @@ s &amp;=&amp; \frac{1}{\lambda_{\text{max}}} \\
 </div>
 </div>
 </section>
-<section id="stochastic-gradient-descent" class="level2" data-number="11">
-<h2 data-number="11" class="anchored" data-anchor-id="stochastic-gradient-descent"><span class="header-section-number">11</span> Stochastic gradient descent</h2>
+<section id="stochastic-gradient-descent" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="stochastic-gradient-descent"><span class="header-section-number">10</span> Stochastic gradient descent</h2>
 <ul>
 <li><p>In machine learning and statistics, we need to minimize the loss function of training data <span class="math display">\[
 L(\mathbf{x}) = \frac 1N \sum_{i=1}^N \ell(\mathbf{x}, \mathbf{v}_i),
